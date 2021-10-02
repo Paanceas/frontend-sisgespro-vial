@@ -97,7 +97,7 @@ form {
   bottom: -2px;
   width: 0%;
   height: 2px;
-  background-color: #f9a826;
+  background-color: #ffef05;
   transition: .4s;
 }
 
@@ -119,7 +119,7 @@ form {
 }
 
 .input-div>.i>em:focus-within{
-  color: #f9a826;
+  color: #ffef05;
 }
 
 .input-div>div>input {
@@ -151,7 +151,7 @@ a {
 }
 
 a:hover {
-  color: #f9a826;
+  color: #ffef05;
 }
 
 .btn {
@@ -161,10 +161,10 @@ a:hover {
   border-radius: 25px;
   outline: none;
   border: none;
-  background-image: linear-gradient(to right, #faa113, #f9a826, #f7a014);
+  background-image: linear-gradient(to right, #ffef05, #ffef05, #f1e20d);
   background-size: 200%;
   font-size: 1.2rem;
-  color: #fff;
+  color: #333;
   font-family: 'Poppins', sans-serif;
   text-transform: uppercase;
   margin: 1rem 0;
