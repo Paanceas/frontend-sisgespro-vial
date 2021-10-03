@@ -10,7 +10,7 @@
         <h2>Bienvenido</h2>
         <div class="input-div" [ngClass]="{'error': userControl.touched && userControl.errors?.required}">
           <div class="i">
-            <em class="fas fa-user"></em>
+            <em class="bx bx-user"></em>
           </div>
           <div>
             <input type="text" name="user" [(ngModel)]="user.user" #userControl="ngModel" placeholder="Usuario" required>
@@ -18,7 +18,7 @@
         </div>
         <div class="input-div" [ngClass]="{'error': passwordControl.touched && passwordControl.errors?.required}">
           <div class="i">
-            <em class="fas fa-lock"></em>
+            <em class="bx bx-lock"></em>
           </div>
           <div>
             <input type="password" name="password" [(ngModel)]="user.password"  #passwordControl="ngModel" placeholder="Contraseña" required>

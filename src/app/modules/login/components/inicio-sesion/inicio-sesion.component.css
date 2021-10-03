@@ -164,7 +164,7 @@ a:hover {
   background-image: linear-gradient(to right, #ffef05, #ffef05, #f1e20d);
   background-size: 200%;
   font-size: 1.2rem;
-  color: #333;
+  color:  var(--bg-color);
   font-family: 'Poppins', sans-serif;
   text-transform: uppercase;
   margin: 1rem 0;

@@ -2,6 +2,24 @@
 @import "~animate.css/animate.min.css";
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
 
+/*===== VARIABLES CSS =====*/
+:root{
+  --nav-width: 92px;
+  /*===== Colores =====*/
+  --first-color: #ffef05;
+  --bg-color: #12192C;
+  --sub-color: #F6F6F6;
+  --white-color: #FFF;
+
+  /*===== Fuente y tipografia =====*/
+  --body-font: 'Poppins', sans-serif;
+  --normal-font-size: 1rem;
+  --small-font-size: .875rem;
+
+  /*===== z index =====*/
+  --z-fixed: 100;
+}
+
 *{
   padding: 0;
   margin: 0;
@@ -9,8 +27,11 @@
 }
 body{
   font-family: 'Poppins', sans-serif;
+  color: var(--bg-color);
 }
-
+a{
+  text-decoration: none;
+}
 div.error, input.error{
   border-bottom: 2px solid #e77171  !important;
   color: #e77171;
