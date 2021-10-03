@@ -7,7 +7,21 @@
   margin: 0;
   box-sizing: border-box;
 }
-
 body{
   font-family: 'Poppins', sans-serif;
+}
+
+div.error, input.error{
+  border-bottom: 2px solid #e77171  !important;
+  color: #e77171;
+}
+input.error2{
+  border: 4px solid #e77171  !important;
+  color: #e77171;
+}
+.error::placeholder, .error>input::placeholder, .error> div > input::placeholder {
+  color: #e77171;
+}
+.error > em, label.error, .error > .i > em {
+  color: #e77171;
 }

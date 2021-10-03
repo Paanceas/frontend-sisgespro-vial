@@ -5,26 +5,26 @@
       <img src="assets/img/road.svg" alt="">
     </div>
     <div class="login-content">
-      <form>
+      <form #loginForm="ngForm">
         <img class="avatar" src="assets/img/logo.png" alt="">
         <h2>Bienvenido</h2>
-        <div class="input-div">
+        <div class="input-div" [ngClass]="{'error': userControl.touched && userControl.errors?.required}">
           <div class="i">
             <em class="fas fa-user"></em>
           </div>
           <div>
-            <input type="text" name="" id="" placeholder="Usuario">
+            <input type="text" name="user" [(ngModel)]="user.user" #userControl="ngModel" placeholder="Usuario" required>
           </div>
         </div>
-        <div class="input-div">
+        <div class="input-div" [ngClass]="{'error': passwordControl.touched && passwordControl.errors?.required}">
           <div class="i">
             <em class="fas fa-lock"></em>
           </div>
           <div>
-            <input type="text" name="" id="" placeholder="Contraseña">
+            <input type="password" name="password" [(ngModel)]="user.password"  #passwordControl="ngModel" placeholder="Contraseña" required>
           </div>
         </div>
-        <button class="btn">ingresar</button>
+        <button class="btn" [disabled]="loginForm.invalid" (click)="loadSesion()">ingresar</button>
       </form>
     </div>
   </div>

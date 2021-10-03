@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from 'src/app/models/User';
+import { SpinnerService } from 'src/app/services/spinner.service';
 
 @Component({
   selector: 'app-inicio-sesion',
@@ -7,9 +9,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InicioSesionComponent implements OnInit {
 
-  constructor() { }
+  user:User = {
+    password: '',
+    roll: '',
+    user: ''
+  };
+
+  constructor(private spinner:SpinnerService) { }
 
   ngOnInit(): void {
   }
 
+  loadSesion(){
+    this.spinner.loader(true);
+    setTimeout(() => {
+      this.spinner.loader(false);
+    }, 3000);
+  }
 }

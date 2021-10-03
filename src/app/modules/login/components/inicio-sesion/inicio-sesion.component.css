@@ -176,6 +176,10 @@ a:hover {
   background-position: right;
 }
 
+.btn:disabled {
+  background: #ccc;
+}
+
 @media screen and (max-width: 1050px) {
   .container {
     grid-gap: 5rem;
