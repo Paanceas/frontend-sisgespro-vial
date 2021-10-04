@@ -1,0 +1,4 @@
+.sidebar{
+  min-width: var(--nav-width);
+  width: calc(var(--nav-width) + 9.25rem);
+}
