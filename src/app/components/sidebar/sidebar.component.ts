@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Sidebar } from 'src/app/models/Sidebar';
+import { GlobalsService } from 'src/app/services/globals.service';
 import * as roles from '../../common/roles.json';
 @Component({
   selector: 'app-sidebar',
@@ -8,7 +10,10 @@ import * as roles from '../../common/roles.json';
 })
 export class SidebarComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private _router:Router,
+    private globalSvc:GlobalsService
+  ) { }
 
   listSidebar:Sidebar[] = [
     {
@@ -79,6 +84,12 @@ export class SidebarComponent implements OnInit {
     this.listSidebar.forEach(element => {
       element.active = element.id === id ? true : false;
     });
+  }
+
+  closeSession(){
+    this._router.navigate(["/inicio"]);
+    window.sessionStorage.clear();
+    this.globalSvc.updateSession(false);
   }
 
 }
