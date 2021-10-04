@@ -1,3 +1,9 @@
-<router-outlet></router-outlet>
-<!-- <app-sidebar></app-sidebar> -->
+<div style="display: {{session ? 'flex' : 'block'}};">
+  <div class="sidebar" *ngIf="session">
+    <app-sidebar></app-sidebar>
+  </div>
+  <div>
+    <router-outlet></router-outlet>
+  </div>
+</div>
 <ngx-spinner bdColor = "rgba(0,0,0,0.86)" size = "large" color = "#ffef05" type = "ball-pulse" [fullScreen] = "true"><p style="color: white" > Cargando... </p></ngx-spinner>

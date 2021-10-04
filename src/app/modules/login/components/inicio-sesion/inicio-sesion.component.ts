@@ -5,6 +5,8 @@ import { LoginService } from '../../services/login.service';
 import { Subscription } from 'rxjs';
 import Swal from 'sweetalert2';
 import { Util } from 'src/app/common/util';
+import { Router } from '@angular/router';
+import { GlobalsService } from 'src/app/services/globals.service';
 @Component({
   selector: 'app-inicio-sesion',
   templateUrl: './inicio-sesion.component.html',
@@ -24,10 +26,14 @@ export class InicioSesionComponent implements OnInit {
 
   constructor(
     private spinner: SpinnerService,
-    private svc: LoginService
+    private svc: LoginService,
+    private _router:Router,
+    private globalSvc:GlobalsService
   ) { }
 
   ngOnInit(): void {
+    window.sessionStorage.clear();
+    this.globalSvc.updateSession(false);
   }
 
   ngOnDestroy(): void {
@@ -46,7 +52,8 @@ export class InicioSesionComponent implements OnInit {
 
   loadSesion() {
     this.spinner.loader(true);
-    this.svc.login(this.user)
+    this.subscriptions.push(
+      this.svc.login(this.user)
       .subscribe(
         (data: any) => {
           this.spinner.loader(false);
@@ -56,7 +63,8 @@ export class InicioSesionComponent implements OnInit {
               if (usuarioL.estado === 0) {
                 this.util.setObj("token", JSON.stringify('828fbcc651f82f21e0b6fc0c23a4f5c4'));
                 this.util.setObj("usuario", JSON.stringify(usuarioL));
-                Swal.fire('Usuario Exitoso', `El usuario ${this.user.user} se encuentra activo`, 'success');
+                this.globalSvc.updateSession(true);
+                this._router.navigate(['/sisgespro']);
               } else {
                 Swal.fire('Usuario Inactivo', `El usuario ${this.user.user} se encuentra inactivo`, 'warning');
                 this.resetUser();
@@ -81,5 +89,6 @@ export class InicioSesionComponent implements OnInit {
           Swal.fire('Error', msn, 'error')
         }
       )
+    )
   }
 }
