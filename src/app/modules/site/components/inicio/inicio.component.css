@@ -9,7 +9,7 @@ body{
     font-size: 14px;
     font-family: 'Poppins', sans-serif;
     background-color: #545257;
-    background: url(img/OPN02X0.jpg) no-repeat center center/cover;;
+    background: url(img/OPN02X02.jpg) no-repeat center center/cover;
     }
 ul{
     /*Eliminar estilos*/
@@ -84,6 +84,7 @@ hr{
     grid-template-columns: 1fr 1fr 1fr 1fr;
     gap: 25px;
     margin: 10px 0;
+    color: black;
 }
 .capitulos img{
     width: 100%;
@@ -93,10 +94,11 @@ hr{
 .capitulos h3{
     font-size: 15px;
     margin: 10px 0;
+    color: black;
 }
 .capitulos a{
     padding: 10px 0;
-    color: #fff;
+    color: rgb(0, 0, 0);
     text-transform: uppercase;
 }
 .capitulos a:hover{
@@ -105,7 +107,6 @@ hr{
 .banner{
     width: 100%;
     height: 350px;
-    background: url(img/Download\ Abstract\ Gradient\ Circuit\ Board\ Background\ for\ free.jfif) no-repeat center center/cover;
     margin-bottom: 40px;
 }
 .banner .content{
@@ -118,8 +119,8 @@ hr{
 .banner_2{
     width: 100%;
     height: 350px;
-    background: url(img/Download\ Abstract\ Gradient\ Circuit\ Board\ Background\ for\ free.jfif) no-repeat center center/cover;
-}
+    background: #262626;
+    }
 .banner_2 .content{
     width: 40%;
     padding: 90px 0 0 30px;
