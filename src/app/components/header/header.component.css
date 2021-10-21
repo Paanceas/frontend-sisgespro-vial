@@ -1,0 +1,39 @@
+header{
+  align-items: center;
+  background-color: #fff;
+  display: flex;
+  height: 80px;
+  padding: 10px;
+  width: 100%;
+}
+.image--cover {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center right;
+}
+.pseudo-search {
+  display: inline;
+  border: 2px solid #ccc;
+  border-radius: 100px;
+  padding: 10px 15px;
+  transition: background-color 0.5 ease-in-out;
+}
+.pseudo-search input {
+  border: 0;
+  background-color: transparent;
+  width: 200px;
+}
+.pseudo-search input:focus {
+  outline: none;
+}
+.pseudo-search button,
+.pseudo-search i {
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+.pseudo-search select {
+  border: none;
+}

@@ -15,6 +15,10 @@ const routes: Routes = [
     path: 'sisgespro',
     loadChildren: () => import('./modules/principal/principal.module').then(m => m.PrincipalModule)
   },
+  {
+    path: 'usuarios',
+    loadChildren: () => import('./modules/usuarios/usuarios.module').then(m => m.UsuariosModule)
+  },
   { path: '', redirectTo:'/inicio', pathMatch:'full'},
   { path: '**', redirectTo:'/inicio', pathMatch:'full'}
 ];

@@ -12,11 +12,11 @@
             <div *ngFor="let item of listSidebar">
               <a class="nav__link" [routerLink]="[item.path]" (click)="active(item.id)" [ngClass]="{'active': item.active}" *ngIf="item.submenu.length === 0">
                   <em class="nav__icon {{item.icon}}"></em>
-                  <span class="nav__name">{{item.name}}</span>
+                  <span class="nav__name">{{item.name}} {{item.submenu.length}}</span>
               </a>
               <div  class="nav__link collapse" [ngClass]="{'active': item.active}" *ngIf="item.submenu.length >= 1">
                 <em class="nav__icon {{item.icon}}" (click)="openSubmenu(item.id)"></em>
-                <span class="nav__name" (click)="openSubmenu(item.id)">{{item.name}}</span>
+                <span class="nav__name" (click)="openSubmenu(item.id)">{{item.name}} {{item.submenu.length}}</span>
                 <em id="collapse__{{item.id}}" class="collapse__link bx bx-chevron-down" (click)="openSubmenu(item.id)"></em>
                 <ul class="collapse__menu">
                     <a [routerLink]="[sub.path]" class="collapse__sublink" *ngFor="let sub of item.submenu">

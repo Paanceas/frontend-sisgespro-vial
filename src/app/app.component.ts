@@ -37,6 +37,18 @@ export class AppComponent implements OnInit {
     }
   }
 
+  sizeView(event:any){
+    const template = document.querySelector(".sidebar");
+    const body = document.querySelector(".body");
+    if(event){
+      template?.classList.add("expander");
+      body?.classList.add("body-expander");
+    }else{
+      template?.classList.remove("expander");
+      body?.classList.remove("body-expander");
+    }
+  }
+
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
   }

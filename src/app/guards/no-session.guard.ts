@@ -27,5 +27,4 @@ export class NoSessionGuard implements CanActivate {
     }
     return false;
   }
-
 }

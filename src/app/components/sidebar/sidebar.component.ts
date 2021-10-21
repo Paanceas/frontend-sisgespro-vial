@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
+import { Util } from 'src/app/common/util';
 import { Sidebar } from 'src/app/models/Sidebar';
+import { UserResponse } from 'src/app/models/User';
 import { GlobalsService } from 'src/app/services/globals.service';
-import * as roles from '../../common/roles.json';
+import * as modulos from '../../common/modulos.json';
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
@@ -10,57 +12,18 @@ import * as roles from '../../common/roles.json';
 })
 export class SidebarComponent implements OnInit {
 
+  @Output() size = new EventEmitter();
+
+  private util:Util = new Util();
   constructor(
     private _router:Router,
     private globalSvc:GlobalsService
   ) { }
 
-  listSidebar:Sidebar[] = [
-    {
-      id:1,
-      icon:"bx bx-lock",
-      active:false,
-      name:"Inventario",
-      path:"/inventario",
-      roles: roles.default,
-      submenu:[]
-    },
-    {
-      id:2,
-      icon:"bx bx-run",
-      active:false,
-      name:"Inventario2",
-      path:"/login",
-      roles: roles.default,
-      submenu:[]
-    },
-    {
-      id:3,
-      icon:"bx bx-mail-send",
-      active:true,
-      name:"Inventario3",
-      path:"/inventario",
-      roles: roles.default,
-      submenu:[]
-    },
-    {
-      id:4,
-      icon:"bx bx-server",
-      active:false,
-      name:"Inventario4",
-      path:"/inventario",
-      roles: roles.default,
-      submenu:[
-        {
-          name:'prueba',
-          path:"/login"
-        }
-      ]
-    }
-  ];
+  listSidebar:Sidebar[] = [];
 
   ngOnInit(): void {
-
+    this.listSidebar = this.valideModules();
   }
 
   ngAfterContentInit(): void {
@@ -70,6 +33,7 @@ export class SidebarComponent implements OnInit {
   showMenu(){
     const navbar:any = document.getElementById('navbar');
     navbar.classList.toggle('expander')
+    this.size.emit(navbar.classList.contains('expander'));
   }
 
   openSubmenu(id:number){
@@ -90,6 +54,25 @@ export class SidebarComponent implements OnInit {
     this._router.navigate(["/inicio"]);
     window.sessionStorage.clear();
     this.globalSvc.updateSession(false);
+  }
+
+  valideModules(): Sidebar[]{
+    const u:UserResponse = this.util.getObj("usuario",true);
+    let newList:Sidebar[] = [];
+    if(u){
+      const list:Sidebar[] = modulos.default;
+      newList = list.filter((m)=>{
+        return m.roles.some((s:any) => s.name === u.roll);
+      });
+      newList.forEach((m:Sidebar) => {
+         m.submenu = m.submenu.filter((s)=>{
+          return s.roles.some((s:any) => s.name === u.roll);
+        })
+      });
+    }
+    console.log("newList",newList);
+    this.globalSvc.updateSidebar(newList);
+    return newList;
   }
 
 }

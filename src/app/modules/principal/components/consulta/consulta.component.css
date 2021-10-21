@@ -1,0 +1,6 @@
+.icon-big{
+  font-size: 5em;
+  text-align: center;
+  text-shadow: 2px 2px 2px silver;
+  color: var(--bg-color);
+}

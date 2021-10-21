@@ -61,10 +61,6 @@
   font-size: var(--small-font-size);
 }
 
-/*Expander menu*/
-.expander{
-  width: calc(var(--nav-width) + 9.25rem);
-}
 
 /*Add padding body*/
 .body-pd{

@@ -97,7 +97,7 @@ form {
   bottom: -2px;
   width: 0%;
   height: 2px;
-  background-color: #ffef05;
+  background-color: var(--first-color);
   transition: .4s;
 }
 
@@ -119,7 +119,7 @@ form {
 }
 
 .input-div>.i>em:focus-within{
-  color: #ffef05;
+  color: var(--first-color);
 }
 
 .input-div>div>input {
@@ -151,7 +151,7 @@ a {
 }
 
 a:hover {
-  color: #ffef05;
+  color: var(--first-color);
 }
 
 .btn {
@@ -161,7 +161,7 @@ a:hover {
   border-radius: 25px;
   outline: none;
   border: none;
-  background-image: linear-gradient(to right, #ffef05, #ffef05, #f1e20d);
+  background-image: linear-gradient(to right, var(--first-color), var(--first-color), #f1e20d);
   background-size: 200%;
   font-size: 1.2rem;
   color:  var(--bg-color);
