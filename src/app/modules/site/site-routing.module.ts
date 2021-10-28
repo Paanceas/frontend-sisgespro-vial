@@ -6,7 +6,7 @@ import { NoSessionGuard } from 'src/app/guards/no-session.guard';
 const routes: Routes = [
     {path:'', component: InicioComponent, canActivate:[NoSessionGuard]},
     {path:'inicio', component: InicioComponent, canActivate:[NoSessionGuard] },
-    {path:'**', component:InicioComponent, canActivate:[NoSessionGuard]}
+    {path:'**', redirectTo:'/inicio', pathMatch:'full'}
 ];
 
 @NgModule({

@@ -1,186 +1,246 @@
-.texto-todo{
-    text-transform: uppercase;
-    color: black;
-    background-image:  linear-gradient(-45deg,#ffffff, #efff0d);
-    font-size: 14px;
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-ul{
-
-    list-style: none;
-}
-a{
-    color: rgb(0, 0, 0);
-    text-decoration: none;
-}
-.container{
-    width: 90%;
-    margin: auto;
-}
-.nav-main{
-    font-size: 16px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 60px;
-    padding: 20px 0;
-    
-}
-.nav-logo{
-    width: 50px;
-    
-}
-.nav-main ul{
-    display: flex;
-}
-.nav-main ul li{
-    padding: 980px;
-    font-size: 20px;
-    text-transform: uppercase;
-
-}
-.nav-main ul.nav-menu{
-    flex: 1;
-    margin-left: 20px;
-}
-hr{
-    margin: 10px 0px;
-    border: 10px solid #000000;
-    border-radius: 50px ;
-    height: 0px;
-    text-align: center;
-    border-color: black;
-}
-.principal{
-    width: 100%;
-    height: 550px;
-    background: url(/src/app/modules/site/components/inicio/fondo-login.jpg);
-    padding: 50px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-end;
-}
-.btn{
-    cursor: pointer;
-    display: inline-block;
-    font-weight: bold ;
-    padding: 10px 20px;
-    background: #262626;
-    font-size: 14px;
-    border: solid 1px #fff;
-    margin: 10px 0;
-}
-.btn:hover{
-    opacity: .9;
-}
-.capitulos{
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    gap: 25px;
-    margin: 10px 0;
-}
-.capitulos img{
-    width: 100%;
-    height: 180px;
+/* Utility Classes */
+.container {
+  margin: auto;
+  max-width: 1300px;
+  overflow: auto;
+  padding: 0 20px;
 }
 
-.capitulos h3{
-    font-size: 15px;
-    margin: 10px 0;
-}
-.capitulos a{
-    padding: 10px 0;
-    color: rgb(0, 0, 0);
-    text-transform: uppercase;
-}
-.capitulos a:hover{
-    text-decoration: underline;
-
-}
-.menu-btn{
-    position: absolute;
-    cursor: pointer;
-    top: 15px;
-    right: 30px;
-    z-index: 2;
-    font-size: 1.5rem;
+.display-1 {
+  font-size: 88px;
+  font-weight: 300;
 }
 
-.nav-main ul li a:hover{
-    border-bottom: 2px solid rgb(0, 0, 0)
+.display-2 {
+  font-size: 56px;
+  font-weight: 300;
 }
-.banner{
-    width: 100%;
-    height: 350px;
-    margin-bottom: 40px;
-}
-.banner .content{
-    width: 40%;
-    padding: 90px 0 0 30px;
-}.banner p,
-.banner h2{
-    margin: 10px 0 20px;
-}
-.banner_2{
-    width: 100%;
-    height: 350px;
-}
-.banner_2 .content{
-    width: 40%;
-    padding: 10px 10px 10px 10px;
-    color: rgb(0, 0, 0);
-}
-.banner_2 p,
-.banner_2 h2{
-    margin: 10px 0 20px 0;
-}
-.social{
-    margin: 50px;
 
+.btn {
+  background: var(--first-color);
+  color: #000;
+  display: inline-block;
+  font-size: 15px;
+  padding: 12px 23px;
+  cursor: pointer;
+  letter-spacing: 1px;
+  border-radius: 4px;
 }
-.social p{
-    text-align: center;
-    font-size: 30px;
-    margin-bottom: 20px;
+
+.ucompensar{
+  background-color: #ffffff;
+  border-radius: 10px;
 }
-.links{
-    display: flex;
-    align-items: center;
-    justify-content: center;
+
+/* Header */
+#main-header {
+  background: url('/assets/page/fondo.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  color: #fff;
+  padding-top: 160px;
 }
-.links a{
-    margin: 0 30px;
+
+#main-header .logo {
+  font-size: 32px;
+  text-transform: uppercase;
 }
-.links a i{
-    font-size: 2rem;
+
+#main-header h1 {
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
-.otros-enlaces{
-    background: #2f3640;
-    color: #616161;
-    font-size: 12px;
-    padding: 35px;
+
+#main-header p {
+  width: 70%;
+  padding-bottom: 40px;
 }
-.otros-container{
-    display: grid;
-    grid-template-columns: repeat(4,1fr);
-    gap: 10px;
-    align-items: flex-start;
-    justify-content: center;
+
+/* Description */
+#description {
+  padding-top: 120px;
+  padding-bottom: 100px;
+  text-align: center;
 }
-.otros-container ul{
-    margin: 0 auto;
+
+#description h2 {
+  padding-bottom: 20px;
 }
-.otros-container ul li{
-    line-height: 2.5;
+
+.description-row {
+  padding-top: 20px;
 }
-.footer{
-    background: #000000;
-    color: #fcfcfc;
-    font-size: 12px;
-    padding: 20px 0;
-    text-align: center;
-    
+
+.description-box {
+  float: left;
+  width: 33%;
+  padding: 25px;
+}
+
+/* Testimonial */
+#testimonial {
+  background: url('/assets/page/fondo2.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  padding-top: 80px;
+  padding-bottom: 80px;
+  color: #fff;
+  text-align: center;
+  font-weight: 300;
+}
+
+#testimonial h4 {
+  padding-bottom: 40px;
+}
+
+#testimonial img {
+  border-radius: 50%;
+  padding-bottom: 20px;
+}
+
+#testimonial p {
+  width: 70%;
+  margin: 0 auto;
+}
+
+#testimonial .customer {
+  padding-top: 20px;
+}
+
+/* Features */
+#features {
+  background: #f9f9f9;
+  padding-top: 80px;
+  padding-bottom: 80px;
+  text-align: center;
+}
+
+.features-box {
+  float: left;
+  width: 33%;
+  padding: 25px;
+}
+
+.features-box img {
+  width: 100%;
+}
+
+/* About */
+#about {
+  padding-top: 80px;
+  padding-bottom: 80px;
+}
+
+.about-image {
+  float: left;
+  width: 50%;
+  padding: 40px;
+}
+
+.about-image img {
+  width: 100%;
+}
+
+.about-text {
+  float: right;
+  width: 50%;
+  padding: 150px 50px;
+}
+
+.about-text p {
+  padding-top: 20px;
+}
+
+/* Footer */
+.footer-dark {
+  padding:50px 0;
+  color:#f0f9ff;
+  background-color:#282d32;
+}
+
+.footer-dark h3 {
+  margin-top:0;
+  margin-bottom:12px;
+  font-weight:bold;
+  font-size:16px;
+}
+
+.footer-dark ul {
+  padding:0;
+  list-style:none;
+  line-height:1.6;
+  font-size:14px;
+  margin-bottom:0;
+}
+
+.footer-dark ul a {
+  color:inherit;
+  text-decoration:none;
+  opacity:0.6;
+}
+
+.footer-dark ul a:hover {
+  opacity:0.8;
+}
+
+@media (max-width:767px) {
+  .footer-dark .item:not(.social) {
+    text-align:center;
+    padding-bottom:20px;
+  }
+}
+
+.footer-dark .item.text {
+  margin-bottom:36px;
+}
+
+@media (max-width:767px) {
+  .footer-dark .item.text {
+    margin-bottom:0;
+  }
+}
+
+.footer-dark .item.text p {
+  opacity:0.6;
+  margin-bottom:0;
+}
+
+.footer-dark .item.social {
+  text-align:center;
+}
+
+@media (max-width:991px) {
+  .footer-dark .item.social {
+    text-align:center;
+    margin-top:20px;
+  }
+}
+
+.footer-dark .item.social > a {
+  font-size:20px;
+  width:36px;
+  height:36px;
+  line-height:36px;
+  display:inline-block;
+  text-align:center;
+  border-radius:50%;
+  box-shadow:0 0 0 1px rgba(255,255,255,0.4);
+  margin:0 8px;
+  color:#fff;
+  opacity:0.75;
+}
+
+.footer-dark .item.social > a:hover {
+  opacity:0.9;
+}
+
+.footer-dark .copyright {
+  text-align:center;
+  padding-top:24px;
+  opacity:0.3;
+  font-size:13px;
+  margin-bottom:0;
 }

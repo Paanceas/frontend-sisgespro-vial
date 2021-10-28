@@ -33,7 +33,11 @@
               "src/styles.css",
               "node_modules/sweetalert2/src/sweetalert2.scss"
             ],
-            "scripts": []
+            "scripts": [
+              "./node_modules/@popperjs/core/dist/umd/popper.min.js",
+              "./node_modules/bootstrap/dist/js/bootstrap.min.js",
+              "./node_modules/wow.js/dist/wow.min.js"
+            ]
           },
           "configurations": {
             "production": {

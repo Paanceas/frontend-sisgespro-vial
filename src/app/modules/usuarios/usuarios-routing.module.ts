@@ -4,7 +4,9 @@ import { AccesoTokenGuard } from 'src/app/guards/acceso-token.guard';
 import { ConsultaUsuariosComponent } from './components/consulta-usuarios/consulta-usuarios.component';
 
 const routes: Routes = [
-  {path:'consulta', component: ConsultaUsuariosComponent, canActivate:[AccesoTokenGuard]}
+  {path:'consulta', component: ConsultaUsuariosComponent, canActivate:[AccesoTokenGuard]},
+  {path: '**', redirectTo:'/sisgespro', pathMatch:'full'},
+
 ];
 
 @NgModule({
