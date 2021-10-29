@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { timeout } from 'rxjs/operators';
 import { SpinnerService } from 'src/app/services/spinner.service';
 declare var bootstrap: any
-declare var WOW: any
+declare var ScrollReveal: any
 @Component({
   selector: 'app-inicio',
   templateUrl: './inicio.component.html',
@@ -23,9 +22,9 @@ export class InicioComponent implements OnInit {
     //Called after ngAfterContentInit when the component's view has been initialized. Applies to components only.
     //Add 'implements AfterViewInit' to the class.
     var myCarousel = document.querySelector('#carouselExampleSlidesOnly');
-    new bootstrap.Carousel(myCarousel)
-    console.log("object",WOW);
-    new WOW().init();
+    new bootstrap.Carousel(myCarousel);
+
+    ScrollReveal().reveal('.showAnimation', { delay: 500 });
 
     setTimeout(() => {
       this.spinner.loader(false);
