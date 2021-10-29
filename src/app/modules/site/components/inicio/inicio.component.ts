@@ -19,13 +19,7 @@ export class InicioComponent implements OnInit {
   }
 
   ngAfterViewInit(): void {
-    //Called after ngAfterContentInit when the component's view has been initialized. Applies to components only.
-    //Add 'implements AfterViewInit' to the class.
-    var myCarousel = document.querySelector('#carouselExampleSlidesOnly');
-    new bootstrap.Carousel(myCarousel);
-
     ScrollReveal().reveal('.showAnimation');
-
     setTimeout(() => {
       this.spinner.loader(false);
     }, 1000);
