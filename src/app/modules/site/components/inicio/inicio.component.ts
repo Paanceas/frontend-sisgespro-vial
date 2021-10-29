@@ -24,7 +24,7 @@ export class InicioComponent implements OnInit {
     var myCarousel = document.querySelector('#carouselExampleSlidesOnly');
     new bootstrap.Carousel(myCarousel);
 
-    ScrollReveal().reveal('.showAnimation', { delay: 500 });
+    ScrollReveal().reveal('.showAnimation');
 
     setTimeout(() => {
       this.spinner.loader(false);
