@@ -75,6 +75,9 @@
 .description-row {
   padding-top: 20px;
 }
+.features-row{
+  padding: 15px;
+}
 
 .description-box {
   float: left;
@@ -126,6 +129,10 @@
 .features-box {
   float: left;
   width: 33%;
+  padding: 25px;
+}
+
+.features-box h4 {
   padding: 25px;
 }
 
