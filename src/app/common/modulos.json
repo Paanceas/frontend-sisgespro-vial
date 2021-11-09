@@ -14,42 +14,10 @@
   },
   {
     "id": 2,
-    "icon": "bx bx-run",
+    "icon": "bx bx-group",
     "active": false,
-    "name": "Inventario2",
-    "path": "/login",
-    "roles": [
-      {
-        "name": "Administrador"
-      },
-      {
-        "name": "Secretaria"
-      }
-    ],
-    "submenu": []
-  },
-  {
-    "id": 3,
-    "icon": "bx bx-mail-send",
-    "active": false,
-    "name": "Inventario3",
-    "path": "/inventario",
-    "roles": [
-      {
-        "name": "Administrador"
-      },
-      {
-        "name": "Secretaria"
-      }
-    ],
-    "submenu": []
-  },
-  {
-    "id": 4,
-    "icon": "bx bx-server",
-    "active": false,
-    "name": "Inventario4",
-    "path": "/inventario",
+    "name": "Proveedores",
+    "path": "/proveedores",
     "roles": [
       {
         "name": "Administrador"
@@ -60,14 +28,23 @@
     ],
     "submenu": [
       {
-        "name": "prueba",
-        "path": "/login",
+        "name": "consulta",
+        "path": "/proveedores/consulta",
         "roles": [
           {
             "name": "Administrador"
           },
           {
             "name": "Secretaria"
+          }
+        ]
+      },
+      {
+        "name": "crear",
+        "path": "/proveedores/creacion",
+        "roles": [
+          {
+            "name": "Administrador"
           }
         ]
       }
