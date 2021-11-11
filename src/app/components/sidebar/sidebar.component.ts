@@ -61,7 +61,7 @@ export class SidebarComponent implements OnInit {
     let newList:Sidebar[] = [];
     if(u){
       const list:Sidebar[] = modulos.default;
-      debugger;
+
       console.log("lista",list);
       newList = list.filter((m)=>{
         console.log("m", m);
@@ -74,7 +74,7 @@ export class SidebarComponent implements OnInit {
           return s.roles.some((s:any) => s.name === u.roll);
         })
       });
-      debugger;
+
     }
     console.log("newList",newList);
     this.globalSvc.updateSidebar(newList);

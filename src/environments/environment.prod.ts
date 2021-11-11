@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'http://localhost/api/'
+  apiUrl: 'https://sisgesprovial.azurewebsites.net/api/'
 };
