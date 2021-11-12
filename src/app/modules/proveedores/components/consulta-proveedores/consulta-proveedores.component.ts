@@ -34,7 +34,6 @@ export class ConsultaProveedoresComponent implements OnInit {
     this.srv.getProveedores()
     .subscribe(
       (data:any)=>{
-        console.log(data);
         if(data && data.body && data.status === 200){
           this.listaProveedores = data.body;
         }
@@ -42,7 +41,6 @@ export class ConsultaProveedoresComponent implements OnInit {
       },
       err=>{
         let msn = 'al ingresar al aplicativo!';
-        console.error(err);
         if (err.error && err.error.message) {
           msn = err.error.message;
         }

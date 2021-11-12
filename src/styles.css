@@ -64,3 +64,6 @@ input.error2 {
 .w-48{
   width: 48% !important;
 }
+.max-width{
+  max-width: 90vw !important;
+}

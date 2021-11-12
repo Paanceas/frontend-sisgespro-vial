@@ -6,7 +6,7 @@
     </div>
     <div class="card-body">
       <table class="table">
-        <caption>Total usuarios: {{listaAdquisicion.length}} </caption>
+        <caption>Total adquisciones: {{listaAdquisicion.length}} </caption>
         <thead class="table-dark">
           <tr>
             <th scope="col"># id</th>
@@ -22,7 +22,7 @@
             <td>${{item.valor_total_adquisicion}}</td>
             <td>
               <div class="btn-group" role="group" aria-label="Basic outlined example">
-                <button type="button" class="btn btn-outline-primary"><i class="fas fa-eye"></i></button>
+                <button type="button" class="btn btn-outline-primary" (click)="detalle(item)"><i class="fas fa-eye"></i></button>
                 <button type="button" appRoll class="btn btn-outline-primary"><i class="fas fa-trash-alt"></i></button>
               </div>
             </td>

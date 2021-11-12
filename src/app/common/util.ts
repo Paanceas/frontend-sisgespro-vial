@@ -27,7 +27,6 @@ export class Util {
   validObject(object:any){
     let val:boolean = true;
     Object.keys(object).forEach(el => {
-       console.log(el);
        if(!object[el]){
         Swal.fire('Advertencia', "Falta el campo "+el, 'warning');
         val = false;

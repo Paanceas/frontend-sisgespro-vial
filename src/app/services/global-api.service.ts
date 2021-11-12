@@ -29,4 +29,12 @@ export class GlobalApiService {
     return this.api.apiGet(environment.services['type-ids']);
   }
 
+  getTipoUnidadMedida(){
+    return this.api.apiGet(environment.services['type-units']);
+  }
+
+  getCategoria(){
+    return this.api.apiGet(environment.services.category);
+  }
+
 }

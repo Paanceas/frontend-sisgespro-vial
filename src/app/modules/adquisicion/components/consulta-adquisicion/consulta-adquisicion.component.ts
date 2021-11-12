@@ -4,6 +4,7 @@ import { AdquicisionesResponse } from '../../models/AdquicisionesResponse';
 import { AdquisicionService } from '../../services/adquisicion.service';
 import Swal from 'sweetalert2';
 import { Util } from 'src/app/common/util';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-consulta-adquisicion',
@@ -15,6 +16,7 @@ export class ConsultaAdquisicionComponent implements OnInit {
   constructor(
     private srv: AdquisicionService,
     private spinner: SpinnerService,
+    private _router:Router,
   ) { }
 
   private util:Util = new Util();
@@ -137,8 +139,11 @@ export class ConsultaAdquisicionComponent implements OnInit {
       };
       dataChart.push(obj);
     });
-    console.log("1",this.char);
     this.char.data.datasets = dataChart;
-    console.log("2",this.char);
+  }
+
+  detalle(prov:AdquicisionesResponse){
+    this.util.setObj('adquisicion',JSON.stringify(prov));
+    this._router.navigate(["/adquisiciones/detalle",prov.id_adquisicion]);
   }
 }
