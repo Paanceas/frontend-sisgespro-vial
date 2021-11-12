@@ -27,6 +27,10 @@ const routes: Routes = [
     path: 'adquisiciones',
     loadChildren: () => import('./modules/adquisicion/adquisicion.module').then(m => m.AdquisicionModule)
   },
+  {
+    path: 'cotizaciones',
+    loadChildren: () => import('./modules/cotizaciones/cotizaciones.module').then(m => m.CotizacionesModule)
+  },
   { path: '', redirectTo:'/inicio', pathMatch:'full'},
   { path: '**', redirectTo:'/inicio', pathMatch:'full'}
 ];

@@ -94,5 +94,46 @@
         ]
       }
     ]
+  },
+  {
+    "id": 4,
+    "icon": "bx bx-money",
+    "view": true,
+    "active": false,
+    "name": "Cotizaciones",
+    "path": "/cotizaciones",
+    "roles": [
+      {
+        "name": "Administrador"
+      },
+      {
+        "name": "Secretaria"
+      }
+    ],
+    "submenu": [
+      {
+        "view": true,
+        "name": "consulta",
+        "path": "/cotizaciones/consulta",
+        "roles": [
+          {
+            "name": "Administrador"
+          },
+          {
+            "name": "Secretaria"
+          }
+        ]
+      },
+      {
+        "view": true,
+        "name": "crear",
+        "path": "/cotizaciones/creacion",
+        "roles": [
+          {
+            "name": "Administrador"
+          }
+        ]
+      }
+    ]
   }
 ]

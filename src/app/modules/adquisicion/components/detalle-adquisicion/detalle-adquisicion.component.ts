@@ -39,7 +39,7 @@ export class DetalleAdquisicionComponent implements OnInit {
         if(!this.adquisicion){
           this._router.navigate(["/adquisicion/consulta"]);
         }
-        this.util.delObj("proveedor");
+        this.util.delObj("adquisicion");
         this.getAdquisicion();
       }
     );
