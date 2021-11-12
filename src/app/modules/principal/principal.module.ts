@@ -4,8 +4,7 @@ import { InformacionComponent } from './components/informacion/informacion.compo
 import { PrincipalRoutingModule } from './principal-routing.module';
 import { UnauthorizedComponent } from './components/unauthorized/unauthorized.component';
 import { ConsultaComponent } from './components/consulta/consulta.component';
-
-
+import { ChartModule } from 'angular2-chartjs';
 
 @NgModule({
   declarations: [
@@ -15,7 +14,8 @@ import { ConsultaComponent } from './components/consulta/consulta.component';
   ],
   imports: [
     CommonModule,
-    PrincipalRoutingModule
+    PrincipalRoutingModule,
+    ChartModule
   ]
 })
 export class PrincipalModule { }
