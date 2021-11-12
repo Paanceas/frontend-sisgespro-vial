@@ -1,0 +1,6 @@
+.container-cotizacion{
+  display: flex;
+  max-width: 90vw;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}

@@ -3,12 +3,14 @@ import { CommonModule } from '@angular/common';
 import { ConsultaCotizacionesComponent } from './components/consulta-cotizaciones/consulta-cotizaciones.component';
 import { FormsModule } from '@angular/forms';
 import { CotizacionesRoutingModule } from './cotizaciones-routing.module';
+import { DetalleCotizacionComponent } from './components/detalle-cotizacion/detalle-cotizacion.component';
 
 
 
 @NgModule({
   declarations: [
-    ConsultaCotizacionesComponent
+    ConsultaCotizacionesComponent,
+    DetalleCotizacionComponent
   ],
   imports: [
     CommonModule,
