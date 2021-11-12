@@ -24,7 +24,8 @@ export const environment = {
     quotations:"quotations.php",
     employees:"employees.php",
     projects:"projects.php",
-    project:"project.php"
+    project:"project.php",
+    users:"users.php"
   }
 };
 

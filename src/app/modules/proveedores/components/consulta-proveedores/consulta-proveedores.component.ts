@@ -4,7 +4,6 @@ import { SpinnerService } from 'src/app/services/spinner.service';
 import Swal from 'sweetalert2';
 import { ProveedoresResponse } from '../../models/ProveedoresResponse';
 import { ProveedoresService } from '../../services/proveedores.service';
-import * as modulos from '../../common/pathValid.json';
 import { Util } from 'src/app/common/util';
 
 @Component({

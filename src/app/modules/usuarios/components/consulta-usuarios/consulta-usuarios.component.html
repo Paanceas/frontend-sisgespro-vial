@@ -1,1 +1,44 @@
-<p>consulta-usuarios works!</p>
+<h1 class="h3 mb-2 text-gray-800">Consulta de Usuarios</h1>
+<div class="card shadow mb-4">
+  <div class="card-body">
+    <table class="table">
+      <caption>Total usuarios: {{listaUsuarios.length}} </caption>
+      <thead class="table-dark">
+        <tr>
+          <th scope="col"># id</th>
+          <th scope="col">Nombre</th>
+          <th scope="col">Roll</th>
+          <th scope="col">Estado</th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of listaUsuarios">
+          <th scope="row">{{item.id_usuario}}</th>
+          <td>{{item.nombre_usuario}}</td>
+          <td>{{item.tipo_roll}}</td>
+          <td>
+            <a class="btn btn-success btn-icon-split" *ngIf="!item.estado">
+                <span class="icon text-white-50">
+                    <i class="fas fa-check"></i>
+                </span>
+                <span class="text">Activo</span>
+            </a>
+            <a class="btn btn-danger btn-icon-split" *ngIf="item.estado">
+              <span class="icon text-white-50">
+                  <i class="fas fa-close"></i>
+              </span>
+              <span class="text">Inactivo</span>
+          </a>
+          </td>
+          <td>
+            <div class="btn-group" role="group" aria-label="Basic outlined example">
+              <button type="button" class="btn btn-outline-primary"><i class="fas {{item.estado ? 'fa-check' :'fa-close' }}"></i></button>
+              <button type="button" appRoll class="btn btn-outline-primary"><i class="fas fa-trash-alt"></i></button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
