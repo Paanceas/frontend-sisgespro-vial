@@ -36,7 +36,7 @@ a {
   text-decoration: none;
 }
 
-div.error, input.error {
+div.error, input.error, extarea.error {
   border-bottom: 2px solid #e77171 !important;
   color: #e77171;
 }

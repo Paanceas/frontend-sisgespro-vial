@@ -4,13 +4,15 @@ import { ConsultaCotizacionesComponent } from './components/consulta-cotizacione
 import { FormsModule } from '@angular/forms';
 import { CotizacionesRoutingModule } from './cotizaciones-routing.module';
 import { DetalleCotizacionComponent } from './components/detalle-cotizacion/detalle-cotizacion.component';
+import { CreacionCotizacionComponent } from './components/creacion-cotizacion/creacion-cotizacion.component';
 
 
 
 @NgModule({
   declarations: [
     ConsultaCotizacionesComponent,
-    DetalleCotizacionComponent
+    DetalleCotizacionComponent,
+    CreacionCotizacionComponent
   ],
   imports: [
     CommonModule,

@@ -25,6 +25,8 @@ export const environment = {
     employees:"employees.php",
     projects:"projects.php",
     project:"project.php",
+    clients:"clients.php",
+    materials:"materials.php",
     users:"users.php"
   }
 };

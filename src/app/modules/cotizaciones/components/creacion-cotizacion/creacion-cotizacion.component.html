@@ -1,0 +1,114 @@
+<div class="container-fluid max-width">
+  <h1 class="h3 mb-1 text-gray-800">Creación de Cotización</h1>
+  <p class="mb-4">En este apartado podra crear las diferentes cotizaciones de su compañia</p>
+
+  <div class="card shadow mb-4">
+    <div class="card-header py-3">
+      <h6 class="m-0 font-weight-bold text-primary">Formulario de creación</h6>
+    </div>
+    <div class="card-body">
+      <form #cotizacionForm="ngForm">
+        <div class="form-row">
+          <div class="form-group col-md-3">
+            <label for="fecha_cotizacion">Fecha cotizacion</label>
+            <input type="date" class="form-control" id="fecha_cotizacion" [(ngModel)]="cotizacion.fecha_cotizacion" name="fecha_cotizacion" required #fecha_cotizacionControl="ngModel" [ngClass]="{'error': fecha_cotizacionControl.touched && fecha_cotizacionControl.errors?.required}" >
+          </div>
+          <div class="form-group col-md-6">
+            <label for="id_cliente">Cliente</label>
+            <select name="id_cliente" id="id_cliente" class="form-control" [(ngModel)]="cotizacion.id_cliente">
+              <option [ngValue]="null">Seleccione...</option>
+              <option *ngFor="let pr of listaClientes" [value]="pr.id_cliente" >{{pr.tipo_identificacion}}-{{pr.identificacion}}-{{pr.nombre}}</option>
+            </select>
+          </div>
+          <div class="form-group col-md-3">
+            <label for="iva">Iva</label>
+            <input type="number" class="form-control" id="iva" [(ngModel)]="cotizacion.iva" name="iva" required #ivaControl="ngModel" [ngClass]="{'error': ivaControl.touched && ivaControl.errors?.required}" (change)="calcularValores()">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="nota_inicio">Nota Inicial:</label>
+          <textarea cols="30" class="form-control" rows="5" id="nota_inicio" name="nota_inicio" [(ngModel)]="cotizacion.nota_inicio" required #nota_inicioControl="ngModel" [ngClass]="{'border-bottom-danger': nota_inicioControl.touched && nota_inicioControl.errors?.required}"></textarea>
+        </div>
+        <div class="form-group col">
+          <div class="d-flex justify-content-between">
+            <label>Materiales</label>
+            <a (click)="addRow()" class="btn btn-info btn-icon-split btn-sm">
+              <span class="icon text-white-50">
+                  <i class="fas fa-plus"></i>
+              </span>
+              <span class="text">Agregar fila</span>
+            </a>
+          </div>
+          <br>
+          <table class="table">
+            <thead class="thead-light">
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Material</th>
+                <th scope="col">Unidad medida</th>
+                <th scope="col">Precio</th>
+                <th scope="col">Cantidad</th>
+                <th scope="col">Descripción</th>
+                <th scope="col">Total</th>
+                <th scope="col"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let mat of cotizacion.materiales_cotizacion; index as key">
+                <th scope="row">{{key+1}}</th>
+                <td>
+                    <select name="id_proveedor{{key}}" id="id_proveedor{{key}}" class="form-control" [(ngModel)]="mat.id_material">
+                      <option [ngValue]="null">Seleccione...</option>
+                      <option *ngFor="let pr of listaMateriales" [value]="pr.id_material" >{{pr.codigo_material}}</option>
+                    </select>
+                </td>
+                <td>
+                  <select name="id_tipo_uni_medida{{key}}" id="id_tipo_uni_medida{{key}}" class="form-control" [(ngModel)]="mat.id_tipo_uni_medida">
+                    <option [ngValue]="null">Seleccione...</option>
+                    <option *ngFor="let pr of listaUnidadMedida" [value]="pr.id_tipo_uni_medida" >{{pr.nombre_tipo_uni_medida}}</option>
+                  </select>
+                </td>
+                <td>
+                  <input type="number" class="form-control" id="precio{{key}}" [(ngModel)]="mat.precio" name="precio{{key}}" (change)="calcularValores()">
+                </td>
+                <td>
+                  <input type="number" class="form-control" id="cantidad{{key}}" [(ngModel)]="mat.cantidad" name="cantidad{{key}}" (change)="calcularValores()">
+                </td>
+                <td>
+                  <input type="text" class="form-control" id="descripcion{{key}}" [(ngModel)]="mat.descripcion" name="descripcion{{key}}">
+                </td>
+                <td>
+                  <input type="text" class="form-control" id="total{{key}}" value="${{mat.cantidad*mat.precio}}" name="total{{key}}" disabled>
+                </td>
+                <td>
+                  <a (click)="removeRow(key)" class="btn btn-danger btn-circle btn-sm">
+                    <i class="fas fa-trash"></i>
+                  </a>
+                </td>
+              </tr>
+              <tr>
+                <tr>
+                  <td colspan="7" class="text-right">Total Neto</td>
+                  <td>${{totalNeto}}</td>
+                </tr>
+                <tr>
+                  <td colspan="7" class="text-right">IVA {{cotizacion.iva}}%</td>
+                  <td>${{totalIva}}</td>
+                </tr>
+                <tr>
+                  <td colspan="7" class="text-right">Total</td>
+                  <td>${{valor_cotizacion}}</td>
+                </tr>
+            </tbody>
+          </table>
+        </div>
+        <br>
+        <div class="form-group">
+          <label for="nota_final">Nota Final:</label>
+          <textarea cols="30" class="form-control" rows="5" id="nota_final" name="nota_final" [(ngModel)]="cotizacion.nota_final" required #nota_finalControl="ngModel" [ngClass]="{'border-bottom-danger': nota_finalControl.touched && nota_finalControl.errors?.required}"></textarea>
+        </div>
+        <button class="btn btn-primary" [disabled]="cotizacionForm.invalid" (click)="guardar()">Crear Cotización</button>
+      </form>
+    </div>
+  </div>
+</div>

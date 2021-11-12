@@ -37,4 +37,12 @@ export class GlobalApiService {
     return this.api.apiGet(environment.services.category);
   }
 
+  getClientes(){
+    return this.api.apiGet(environment.services.clients);
+  }
+
+  getMateriales(){
+    return this.api.apiGet(environment.services.materials);
+  }
+
 }

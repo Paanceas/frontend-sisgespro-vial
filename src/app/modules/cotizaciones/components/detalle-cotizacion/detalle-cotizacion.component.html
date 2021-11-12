@@ -43,11 +43,13 @@
         <div class="form-row">
           <div class="form-group col-md-2">
             <label for="tipo_identificacion">Tipo Documento</label>
-            <input type="text" class="form-control" id="tipo_identificacion" name="tipo_identificacion" [(ngModel)]="cotizacion.tipo_identificacion" disabled>
+            <input type="text" class="form-control" id="tipo_identificacion" name="tipo_identificacion"
+              [(ngModel)]="cotizacion.tipo_identificacion" disabled>
           </div>
           <div class="form-group col-md-2">
             <label for="identificacion">Número Documento</label>
-            <input type="text" class="form-control" id="identificacion" name="identificacion" [(ngModel)]="cotizacion.identificacion" disabled>
+            <input type="text" class="form-control" id="identificacion" name="identificacion"
+              [(ngModel)]="cotizacion.identificacion" disabled>
           </div>
           <div class="form-group col-md-6">
             <label for="identificacion">Nombre</label>
@@ -55,12 +57,14 @@
           </div>
           <div class="form-group col-md-2">
             <label for="telefono">Télefono</label>
-            <input type="text" class="form-control" id="telefono" name="telefono" [(ngModel)]="cotizacion.telefono" disabled>
+            <input type="text" class="form-control" id="telefono" name="telefono" [(ngModel)]="cotizacion.telefono"
+              disabled>
           </div>
         </div>
         <div class="form-group">
           <label for="nota_inicio">Nota Inicial:</label>
-          <textarea cols="30" class="form-control" rows="5" id="nota_inicio" name="nota_inicio" [(ngModel)]="cotizacion.nota_inicio" disabled></textarea>
+          <textarea cols="30" class="form-control" rows="5" id="nota_inicio" name="nota_inicio"
+            [(ngModel)]="cotizacion.nota_inicio" disabled></textarea>
         </div>
         <div class="form-group">
           <label>Materiales</label>
@@ -90,25 +94,25 @@
                   <td>${{mat.precio*mat.cantidad}}</td>
                 </tr>
                 <tr>
-                  <tr>
-                    <td colspan="7" class="text-right">Total Neto</td>
-                    <td>${{totalNeto}}</td>
-                  </tr>
-                  <tr>
-                    <td colspan="7" class="text-right">IVA {{cotizacion.iva}}%</td>
-                    <td>${{totalIva}}</td>
-                  </tr>
-                  <tr>
-                    <td colspan="7" class="text-right">Total</td>
-                    <td>${{valor_cotizacion}}</td>
-                  </tr>
+                  <td colspan="7" class="text-right">Total Neto</td>
+                  <td>${{totalNeto}}</td>
+                </tr>
+                <tr>
+                  <td colspan="7" class="text-right">IVA {{cotizacion.iva}}%</td>
+                  <td>${{totalIva}}</td>
+                </tr>
+                <tr>
+                  <td colspan="7" class="text-right">Total</td>
+                  <td>${{valor_cotizacion}}</td>
+                </tr>
               </tbody>
             </table>
           </div>
         </div>
         <div class="form-group">
           <label for="nota_final">Nota Final:</label>
-          <textarea cols="30" class="form-control" rows="5" id="nota_final" name="nota_final" [(ngModel)]="cotizacion.nota_final" disabled></textarea>
+          <textarea cols="30" class="form-control" rows="5" id="nota_final" name="nota_final"
+            [(ngModel)]="cotizacion.nota_final" disabled></textarea>
         </div>
       </form>
     </div>
