@@ -39,7 +39,7 @@ export class DetalleProyectoComponent implements OnInit {
           this._router.navigate(["/proyectos/consulta"]);
         }
         console.log(this.proyecto);
-        this.util.delObj("proveedor");
+        this.util.delObj("proyecto");
         this.getProyecto();
       }
     );

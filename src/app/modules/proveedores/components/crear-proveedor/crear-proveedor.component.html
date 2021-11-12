@@ -42,7 +42,7 @@
           </div>
           <div class="form-group col-md-4">
             <label for="correo">Correo</label>
-            <input type="email" class="form-control" id="correo" [(ngModel)]="proveedor.correo" name="correo" required #correoControl="ngModel" [ngClass]="{'error': telefonoControl.touched && correoControl.errors?.required}">
+            <input type="email" class="form-control" id="correo" [(ngModel)]="proveedor.correo" name="correo" required #correoControl="ngModel" [ngClass]="{'error': correoControl.touched && correoControl.errors?.required}">
           </div>
         </div>
         <div class="form-row">
