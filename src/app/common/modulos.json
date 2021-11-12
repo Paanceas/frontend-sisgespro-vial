@@ -53,5 +53,46 @@
         ]
       }
     ]
+  },
+  {
+    "id": 3,
+    "icon": "bx bx-cart",
+    "view": true,
+    "active": false,
+    "name": "Adquisicion",
+    "path": "/adquisiciones",
+    "roles": [
+      {
+        "name": "Administrador"
+      },
+      {
+        "name": "Secretaria"
+      }
+    ],
+    "submenu": [
+      {
+        "view": true,
+        "name": "consulta",
+        "path": "/adquisiciones/consulta",
+        "roles": [
+          {
+            "name": "Administrador"
+          },
+          {
+            "name": "Secretaria"
+          }
+        ]
+      },
+      {
+        "view": true,
+        "name": "crear",
+        "path": "/adquisiciones/creacion",
+        "roles": [
+          {
+            "name": "Administrador"
+          }
+        ]
+      }
+    ]
   }
 ]
