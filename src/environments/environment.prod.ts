@@ -1,6 +1,7 @@
 export const environment = {
   production: true,
   apiUrl: 'https://sisgesprovial.azurewebsites.net/api/',
+  key:'AIzaSyCIDUBM6nFG-SXXeuRA3V9JAWv8ZUlKbcw',
   services:{
     user:"user.php",
     vendors:"vendors.php",

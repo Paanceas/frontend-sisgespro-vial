@@ -43,7 +43,7 @@ export class DetalleCotizacionComponent implements OnInit {
         if(!this.cotizacion){
           this._router.navigate(["/cotizaciones/consulta"]);
         }
-        this.util.delObj("proveedor");
+        this.util.delObj("cotizacion");
         this.getCotizaciones();
       }
     );

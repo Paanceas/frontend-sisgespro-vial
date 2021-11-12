@@ -135,5 +135,46 @@
         ]
       }
     ]
+  },
+  {
+    "id": 5,
+    "icon": "bx bx-trip",
+    "view": true,
+    "active": false,
+    "name": "Proyectos",
+    "path": "/proyectos",
+    "roles": [
+      {
+        "name": "Administrador"
+      },
+      {
+        "name": "Secretaria"
+      }
+    ],
+    "submenu": [
+      {
+        "view": true,
+        "name": "consulta",
+        "path": "/proyectos/consulta",
+        "roles": [
+          {
+            "name": "Administrador"
+          },
+          {
+            "name": "Secretaria"
+          }
+        ]
+      },
+      {
+        "view": true,
+        "name": "crear",
+        "path": "/proyectos/creacion",
+        "roles": [
+          {
+            "name": "Administrador"
+          }
+        ]
+      }
+    ]
   }
 ]

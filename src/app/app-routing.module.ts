@@ -28,6 +28,10 @@ const routes: Routes = [
     loadChildren: () => import('./modules/adquisicion/adquisicion.module').then(m => m.AdquisicionModule)
   },
   {
+    path: 'proyectos',
+    loadChildren: () => import('./modules/proyectos/proyectos.module').then(m => m.ProyectosModule)
+  },
+  {
     path: 'cotizaciones',
     loadChildren: () => import('./modules/cotizaciones/cotizaciones.module').then(m => m.CotizacionesModule)
   },

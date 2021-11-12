@@ -16,5 +16,8 @@
   },
   {
     "path":"/cotizaciones/detalle/"
+  },
+  {
+    "path":"/proyectos/detalle/"
   }
 ]
