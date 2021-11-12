@@ -33,6 +33,18 @@ export class ConsultaAdquisicionComponent implements OnInit {
     }
   }
 
+  pie:any = {
+    type : 'pie',
+    data : {
+      labels: [],
+      datasets: []
+    },
+    options : {
+      responsive: true,
+      maintainAspectRatio: true
+    }
+  }
+
   ngOnInit(): void {
     this.getAdquisicion();
   }
@@ -140,6 +152,27 @@ export class ConsultaAdquisicionComponent implements OnInit {
       dataChart.push(obj);
     });
     this.char.data.datasets = dataChart;
+    this.gasto(anios);
+  }
+
+  gasto(dataChart:any[]){
+    let dataSet:any[] = [];
+    let dataBack:any[] = [];
+    dataChart.forEach((pie:any)=> {
+      let total = 0;
+      this.pie.data.labels.push(pie.anio);
+      pie.data.forEach((da:any) => {
+        total += da.valor_total_adquisicion;
+      });
+      dataSet.push(total);
+      dataBack.push(this.util.getRandomColor());
+    });
+
+    this.pie.data.datasets = [{
+      label: "gastos",
+      data: dataSet,
+      backgroundColor: dataBack
+    }];
   }
 
   detalle(prov:AdquicisionesResponse){

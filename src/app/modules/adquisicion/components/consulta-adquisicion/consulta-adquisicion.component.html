@@ -1,43 +1,56 @@
-<h1 class="h3 mb-2 text-gray-800">Adquisiciones</h1>
-<div class="d-flex justify-content-between align-items-stretch">
-  <div class="w-48 card shadow mb-4">
-    <div class="card-header py-3">
-      <h6 class="m-0 font-weight-bold text-primary">Lista de Adquisiciones</h6>
+<h1 class="h3 mb-2 ml-4 text-gray-800">Adquisiciones</h1>
+<div class="max-width ml-4">
+  <div class="d-flex justify-content-between align-items-stretch">
+    <div class="w-48 card shadow mb-4">
+      <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Lista de Adquisiciones</h6>
+      </div>
+      <div class="card-body">
+        <table class="table">
+          <caption>Total adquisciones: {{listaAdquisicion.length}} </caption>
+          <thead class="table-dark">
+            <tr>
+              <th scope="col"># id</th>
+              <th scope="col">Fecha</th>
+              <th scope="col">Valor</th>
+              <th scope="col"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of listaAdquisicion">
+              <th scope="row">{{item.id_adquisicion}}</th>
+              <td>{{item.fecha_adquisicion}}</td>
+              <td>{{item.valor_total_adquisicion}}</td>
+              <td>
+                <div class="btn-group" role="group" aria-label="Basic outlined example">
+                  <button type="button" class="btn btn-outline-primary" (click)="detalle(item)"><i class="fas fa-eye"></i></button>
+                  <button type="button" appRoll class="btn btn-outline-primary"><i class="fas fa-trash-alt"></i></button>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
-    <div class="card-body">
-      <table class="table">
-        <caption>Total adquisciones: {{listaAdquisicion.length}} </caption>
-        <thead class="table-dark">
-          <tr>
-            <th scope="col"># id</th>
-            <th scope="col">Fecha</th>
-            <th scope="col">Valor</th>
-            <th scope="col"></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let item of listaAdquisicion">
-            <th scope="row">{{item.id_adquisicion}}</th>
-            <td>{{item.fecha_adquisicion}}</td>
-            <td>{{item.valor_total_adquisicion}}</td>
-            <td>
-              <div class="btn-group" role="group" aria-label="Basic outlined example">
-                <button type="button" class="btn btn-outline-primary" (click)="detalle(item)"><i class="fas fa-eye"></i></button>
-                <button type="button" appRoll class="btn btn-outline-primary"><i class="fas fa-trash-alt"></i></button>
-              </div>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+    <div class="w-48 card shadow mb-4">
+      <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">grafica de adquisciones</h6>
+      </div>
+      <div class="card-body">
+        <div class="chart-wrapper" *ngIf="char.data.datasets.length > 0">
+          <chart [type]="char.type" [data]="char.data" [options]="char.options"></chart>
+        </div>
+        <br>
+      </div>
     </div>
   </div>
-  <div class="w-48 card shadow mb-4">
+  <div class="w-100 card shadow mb-4">
     <div class="card-header py-3">
-      <h6 class="m-0 font-weight-bold text-primary">grafica de adquisciones</h6>
+      <h6 class="m-0 font-weight-bold text-primary">Gastos anuales</h6>
     </div>
     <div class="card-body">
-      <div class="chart-wrapper" *ngIf="char.data.datasets.length > 0">
-        <chart [type]="char.type" [data]="char.data" [options]="char.options"></chart>
+      <div class="chart-wrapper" *ngIf="pie.data.labels.length > 0">
+        <chart [type]="pie.type" [data]="pie.data" [options]="pie.options"></chart>
       </div>
       <br>
     </div>
