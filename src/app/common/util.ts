@@ -1,3 +1,4 @@
+import Swal from 'sweetalert2';
 export class Util {
 
   delObj(nom: string): void {
@@ -20,6 +21,19 @@ export class Util {
     } catch (error) {
       return null;
     }
+  }
+
+
+  validObject(object:any){
+    let val:boolean = true;
+    Object.keys(object).forEach(el => {
+       console.log(el);
+       if(!object[el]){
+        Swal.fire('Advertencia', "Falta el campo "+el, 'warning');
+        val = false;
+       }
+    });
+    return val;
   }
 
   // clearObj(data:any,trasnsformJson?:boolean):any{

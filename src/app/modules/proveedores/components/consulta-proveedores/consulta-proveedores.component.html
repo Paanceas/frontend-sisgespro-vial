@@ -2,7 +2,7 @@
 <div class="card shadow mb-4">
   <div class="card-body">
     <table class="table">
-      <caption>Lista de {{listaProveedores.length}} proveedores</caption>
+      <caption>Total proveedores: {{listaProveedores.length}} </caption>
       <thead class="table-dark">
         <tr>
           <th scope="col">#</th>
@@ -24,7 +24,7 @@
           <td>{{item.nombre_ciudad}} - {{item.nombre_ubicacion}} - {{item.abreviatura}}</td>
           <td>
             <div class="btn-group" role="group" aria-label="Basic outlined example">
-              <button type="button" class="btn btn-outline-primary"><i class="far fa-eye"></i></button>
+              <button type="button" class="btn btn-outline-primary" (click)="detalle(item)"><i class="far fa-eye"></i></button>
               <button type="button" appRoll class="btn btn-outline-primary" (click)="confirmDel(item)"><i class="fas fa-trash-alt"></i></button>
             </div>
           </td>

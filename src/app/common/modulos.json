@@ -1,6 +1,7 @@
 [
   {
     "id": 1,
+    "view": true,
     "icon": "bx bx-user",
     "active": false,
     "name": "Usuarios",
@@ -15,6 +16,7 @@
   {
     "id": 2,
     "icon": "bx bx-group",
+    "view": true,
     "active": false,
     "name": "Proveedores",
     "path": "/proveedores",
@@ -28,6 +30,7 @@
     ],
     "submenu": [
       {
+        "view": true,
         "name": "consulta",
         "path": "/proveedores/consulta",
         "roles": [
@@ -40,6 +43,7 @@
         ]
       },
       {
+        "view": true,
         "name": "crear",
         "path": "/proveedores/creacion",
         "roles": [

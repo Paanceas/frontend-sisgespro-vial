@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { SpinnerService } from 'src/app/services/spinner.service';
 import Swal from 'sweetalert2';
 import { ProveedoresResponse } from '../../models/ProveedoresResponse';
 import { ProveedoresService } from '../../services/proveedores.service';
+import * as modulos from '../../common/pathValid.json';
+import { Util } from 'src/app/common/util';
 
 @Component({
   selector: 'app-consulta-proveedores',
@@ -13,8 +16,12 @@ export class ConsultaProveedoresComponent implements OnInit {
 
   constructor(
     private srv:ProveedoresService,
-    private spinner: SpinnerService
+    private spinner: SpinnerService,
+    private _router:Router,
+
   ) { }
+
+  private util:Util = new Util();
 
   listaProveedores:ProveedoresResponse[] = [];
 
@@ -61,5 +68,10 @@ export class ConsultaProveedoresComponent implements OnInit {
           console.log(result);
         }
       })
+  }
+
+  detalle(prov:ProveedoresResponse){
+    this.util.setObj('proveedor',JSON.stringify(prov));
+    this._router.navigate(["/proveedores/detalle",prov.id_proveedor]);
   }
 }

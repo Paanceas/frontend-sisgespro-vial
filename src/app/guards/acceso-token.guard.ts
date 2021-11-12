@@ -59,10 +59,14 @@ export class AccesoTokenGuard implements CanActivate {
   }
 
   validaPath(state:RouterStateSnapshot){
-    const inicio = "/sisgespro";
-    const unauthorized = "/sisgespro/unauthorized";
-    const search = "/sisgespro/consulta/";
-    return inicio !== state.url && unauthorized !== state.url  && !state.url.includes(search)
+    const lista:any[] = modulos.default;
+    let valid = true;
+    lista.forEach(route => {
+      if(!state.url.includes(route.path)){
+        valid = false;
+      }
+    });
+    return valid;
   }
 
 

@@ -13,4 +13,8 @@ export class ApiService {
     return this.http.get(`${environment.apiUrl+service}${params ? '?'+params : ''}`);
   }
 
+  apiPost(service:string, body:any){
+    return this.http.post(`${environment.apiUrl+service}`,body);
+  }
+
 }

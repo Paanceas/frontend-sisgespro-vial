@@ -61,3 +61,6 @@ input.error2 {
 .container-sisgespro{
   min-height: 70vh;
 }
+.w-48{
+  width: 48% !important;
+}

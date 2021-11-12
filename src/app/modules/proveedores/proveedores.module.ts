@@ -4,18 +4,22 @@ import { ConsultaProveedoresComponent } from './components/consulta-proveedores/
 import { ProveedoresRoutingModule } from './proveedores-routing.module';
 import { CrearProveedorComponent } from './components/crear-proveedor/crear-proveedor.component';
 import { DirectivesModule } from 'src/app/directives/directives.module';
+import { DetalleProveedorComponent } from './components/detalle-proveedor/detalle-proveedor.component';
+import { FormsModule } from '@angular/forms';
 
 
 
 @NgModule({
   declarations: [
     ConsultaProveedoresComponent,
-    CrearProveedorComponent
+    CrearProveedorComponent,
+    DetalleProveedorComponent
   ],
   imports: [
     CommonModule,
     ProveedoresRoutingModule,
-    DirectivesModule
+    DirectivesModule,
+    FormsModule
   ]
 })
 export class ProveedoresModule { }

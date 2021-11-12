@@ -1,0 +1,14 @@
+[
+  {
+    "path":"/sisgespro"
+  },
+  {
+    "path":"/sisgespro/unauthorized"
+  },
+  {
+    "path":"/sisgespro/consulta/"
+  },
+  {
+    "path":"/proveedores/detalle/"
+  }
+]

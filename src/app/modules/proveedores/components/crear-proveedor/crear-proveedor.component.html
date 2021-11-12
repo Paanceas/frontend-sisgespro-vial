@@ -1,1 +1,78 @@
-<p>crear-proveedor works!</p>
+<div class="container-fluid">
+  <h1 class="h3 mb-1 text-gray-800">Creación de proveedores</h1>
+  <p class="mb-4">En este apartado podra crear los diferentes proveedores de su compañia</p>
+
+
+
+  <div class="card shadow mb-4">
+    <div class="card-header py-3">
+      <h6 class="m-0 font-weight-bold text-primary">Formulario de creación</h6>
+    </div>
+    <div class="card-body">
+      <form #proveedorForm="ngForm">
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="id_tipo_identificacion">Tipo de Identificación</label>
+            <select name="id_tipo_identificacion" id="id_tipo_identificacion" class="form-control" [(ngModel)]="proveedor.id_tipo_identificacion" required #id_tipo_identificacionControl="ngModel" [ngClass]="{'error': id_tipo_identificacionControl.touched && id_tipo_identificacionControl.errors?.required}">
+              <option [ngValue]="null">Seleccione...</option>
+              <option *ngFor="let ti of listaTipoIdentificacion" [value]="ti.id_tipo_identificacion" >{{ti.tipo_identificacion}}</option>
+            </select>
+          </div>
+          <div class="form-group col-md-6">
+            <label for="identificacion">Número Identificación</label>
+            <input type="number" class="form-control" id="identificacion" [(ngModel)]="proveedor.identificacion" name="identificacion" required #identificacionControl="ngModel" [ngClass]="{'error': identificacionControl.touched && identificacionControl.errors?.required}">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="nombre">Nombre Proveedor</label>
+          <input type="text" class="form-control" id="nombre" [(ngModel)]="proveedor.nombre" name="nombre" required #nombreControl="ngModel" [ngClass]="{'error': nombreControl.touched && nombreControl.errors?.required}" >
+        </div>
+        <div class="form-group">
+          <label for="direccion">Dirección</label>
+          <input type="text" class="form-control" id="direccion" [(ngModel)]="proveedor.direccion" name="direccion" required #direccionControl="ngModel" [ngClass]="{'error': direccionControl.touched && direccionControl.errors?.required}" >
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-4">
+            <label for="celular">Celular</label>
+            <input type="tel" class="form-control" id="celular" [(ngModel)]="proveedor.celular" name="celular" required #celularControl="ngModel"  [ngClass]="{'error': celularControl.touched && celularControl.errors?.required}">
+          </div>
+          <div class="form-group col-md-4">
+            <label for="telefono">Télefono</label>
+            <input type="tel" class="form-control" id="telefono" [(ngModel)]="proveedor.telefono" name="telefono" required #telefonoControl="ngModel" [ngClass]="{'error': telefonoControl.touched && telefonoControl.errors?.required}">
+          </div>
+          <div class="form-group col-md-4">
+            <label for="correo">Correo</label>
+            <input type="email" class="form-control" id="correo" [(ngModel)]="proveedor.correo" name="correo" required #correoControl="ngModel" [ngClass]="{'error': telefonoControl.touched && correoControl.errors?.required}">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-4">
+            <label for="id_pais">Pais</label>
+            <select name="id_pais" id="id_pais" class="form-control" [(ngModel)]="id_pais" (change)="cargaDepartamentos()" required #id_paisControl="ngModel" [ngClass]="{'error': id_paisControl.touched && id_paisControl.errors?.required}">
+              <option [ngValue]="null">Seleccione...</option>
+              <option *ngFor="let pais of listaPaises" [value]="pais.id_pais" >{{pais.nombre_pais}}-{{pais.abreviatura}}</option>
+            </select>
+          </div>
+          <div class="form-group col-md-4">
+            <label for="id_departamento">Departamentos o Estados</label>
+            <select name="id_departamento" id="id_departamento" class="form-control" [(ngModel)]="id_departamento" (change)="cargaCiudades()" required #id_departamentoControl="ngModel" [ngClass]="{'error': id_departamentoControl.touched && id_departamentoControl.errors?.required}">
+              <option [ngValue]="null">Seleccione...</option>
+              <option *ngFor="let dep of listaDepartamentos" [value]="dep.id_ubicacion" >{{dep.nombre_ubicacion}}</option>
+            </select>
+          </div>
+          <div class="form-group col-md-4">
+            <label for="id_ciudad">Ciudad </label>
+            <select name="id_ciudad" id="id_ciudad" class="form-control" [(ngModel)]="proveedor.id_ciudad" required #id_ciudadControl="ngModel" [ngClass]="{'error': id_ciudadControl.touched && id_ciudadControl.errors?.required}">
+              <option [ngValue]="null">Seleccione...</option>
+              <option *ngFor="let ciu of listaCiudades" [value]="ciu.id_ciudad" >{{ciu.nombre_ciudad}}</option>
+            </select>
+          </div>
+        </div>
+        <button class="btn btn-primary" (click)="guardarProveedor()" [disabled]="proveedorForm.invalid">Crear proveedor</button>
+      </form>
+    </div>
+  </div>
+
+
+
+</div>

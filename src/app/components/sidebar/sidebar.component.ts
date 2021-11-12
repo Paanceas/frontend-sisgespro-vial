@@ -62,21 +62,16 @@ export class SidebarComponent implements OnInit {
     if(u){
       const list:Sidebar[] = modulos.default;
 
-      console.log("lista",list);
       newList = list.filter((m)=>{
-        console.log("m", m);
         return m.roles.some((s:any) => s.name === u.roll);
       });
       newList.forEach((m:Sidebar) => {
-        console.log("m2", m);
          m.submenu = m.submenu.filter((s)=>{
-          console.log("s", m);
           return s.roles.some((s:any) => s.name === u.roll);
         })
       });
 
     }
-    console.log("newList",newList);
     this.globalSvc.updateSidebar(newList);
     return newList;
   }
