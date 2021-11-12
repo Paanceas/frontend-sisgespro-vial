@@ -20,14 +20,14 @@ export class CrearProyectoComponent implements OnInit {
 
   }
 
-  ngAfterViewInit(): void {
-    this.loader.load().then(() => {
-      this.map = new google.maps.Map(document.getElementById("map") as HTMLElement, {
-        center: { lat: -34.397, lng: 150.644 },
-        zoom: 8,
-      });
-    });
-  }
+  // ngAfterViewInit(): void {
+  //   this.loader.load().then(() => {
+  //     this.map = new google.maps.Map(document.getElementById("map") as HTMLElement, {
+  //       center: { lat: -34.397, lng: 150.644 },
+  //       zoom: 8,
+  //     });
+  //   });
+  // }
 
 
 
