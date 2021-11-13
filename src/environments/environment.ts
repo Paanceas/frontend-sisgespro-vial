@@ -1,7 +1,7 @@
 export const environment = {
   production: false,
   apiUrl: 'http://localhost/api/',
-  key:'AIzaSyCIDUBM6nFG-SXXeuRA3V9JAWv8ZUlKbcw',
+  key:'AIzaSyCIDUBM6nFG-SXXeuRA3V9JAWv8ZUlKbcw3EWS',
   services:{
     user:"user.php",
     vendors:"vendors.php",
