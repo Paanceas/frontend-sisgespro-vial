@@ -1,0 +1,18 @@
+<div class="card-body">
+  <input
+    id="place-search"
+    class="form-control mb-3"
+    type="text"
+    placeholder="Buscar lugar..."
+  />
+  <div class="container-map">
+    <div id="map" style="height: 400px"></div>
+    <button
+      class="btn return btn-default btn-circle"
+      (click)="removeLastPoint()"
+      title="eliminar punto anterior"
+    >
+      <em class="bx bxs-eraser"></em>
+    </button>
+  </div>
+</div>

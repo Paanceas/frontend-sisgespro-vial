@@ -36,6 +36,11 @@ a {
   text-decoration: none;
 }
 
+#map {
+  width: 100%;
+  height: 600px;
+}
+
 div.error, input.error, extarea.error {
   border-bottom: 2px solid #e77171 !important;
   color: #e77171;
@@ -58,12 +63,33 @@ input.error2 {
   width: calc(var(--nav-width) + 9.25rem) !important;
 }
 
-.container-sisgespro{
+.container-sisgespro {
   min-height: 70vh;
 }
-.w-48{
+
+.w-48 {
   width: 48% !important;
 }
-.max-width{
+
+.max-width {
   max-width: 90vw !important;
+}
+
+.btn-circle.btn-xl {
+  width: 70px;
+  height: 70px;
+  padding: 10px 16px;
+  border-radius: 35px;
+  font-size: 24px;
+  line-height: 1.33;
+}
+
+.btn-circle {
+  width: 40px;
+  height: 40px;
+  padding: 6px 0px;
+  border-radius: 15px;
+  text-align: center;
+  font-size: 12px;
+  line-height: 1.42857;
 }

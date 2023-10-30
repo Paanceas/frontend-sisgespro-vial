@@ -7,6 +7,7 @@ import Swal from 'sweetalert2';
 import { Util } from 'src/app/common/util';
 import { Loader } from '@googlemaps/js-api-loader';
 import { environment } from 'src/environments/environment';
+import { GoogleMapsLoaderService } from '../../services/googleMapsLoader.service';
 
 @Component({
   selector: 'app-consulta-proyectos',
@@ -18,19 +19,16 @@ export class ConsultaProyectosComponent implements OnInit {
   constructor(
     private srv: ProyectoService,
     private spinner: SpinnerService,
-    private _router:Router,
+    private _router: Router,
+    private googleMapsLoader: GoogleMapsLoaderService
   ) { }
 
-  private util:Util = new Util();
-  showMap:boolean = false;
+  private util: Util = new Util();
+  showMap: boolean = false;
 
-  map:any;
-  loader = new Loader({
-    apiKey: environment.key,
-    version: "weekly"
-  });
+  map: any;
 
-  listaProyectos:ProyectosResponse[] = [];
+  listaProyectos: ProyectosResponse[] = [];
 
   ngOnInit(): void {
     this.getProyectos();
@@ -58,27 +56,27 @@ export class ConsultaProyectosComponent implements OnInit {
       );
   }
 
-  cargarMap(pro:ProyectosResponse){
+  cargarMap(pro: ProyectosResponse) {
     this.spinner.loader(true);
     this.showMap = true;
     setTimeout(() => {
-      this.loader.load().then(() => {
+      this.googleMapsLoader.loader.load().then(() => {
         this.initMap(pro);
       });
     }, 1000);
   }
 
-  closeMap(){
+  closeMap() {
     this.showMap = false;
   }
 
-  initMap(pro:ProyectosResponse): void {
-    const geo:any[] = JSON.parse(pro.geoposicion)
+  initMap(pro: ProyectosResponse): void {
+    const geo: any[] = JSON.parse(pro.geoposicion)
     const map = new google.maps.Map(
       document.getElementById("map") as HTMLElement,
       {
         zoom: 13,
-        center: { lat: geo[0].lat, lng: geo[geo.length-1].lng },
+        center: { lat: geo[0].lat, lng: geo[geo.length - 1].lng },
         mapTypeId: "terrain",
       }
     );
@@ -97,9 +95,9 @@ export class ConsultaProyectosComponent implements OnInit {
   }
 
 
-  detalle(prov:ProyectosResponse){
-      this.util.setObj('proyecto',JSON.stringify(prov));
-      this._router.navigate(["/proyectos/detalle",prov.id_proyecto]);
+  detalle(prov: ProyectosResponse) {
+    this.util.setObj('proyecto', JSON.stringify(prov));
+    this._router.navigate(["/proyectos/detalle", prov.id_proyecto]);
   }
 
 }

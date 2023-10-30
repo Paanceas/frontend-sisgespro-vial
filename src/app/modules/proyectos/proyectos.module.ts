@@ -4,6 +4,7 @@ import { ConsultaProyectosComponent } from './components/consulta-proyectos/cons
 import { ProyectosRoutingModule } from './proyectos-routing.module';
 import { CrearProyectoComponent } from './components/crear-proyecto/crear-proyecto.component';
 import { DetalleProyectoComponent } from './components/detalle-proyecto/detalle-proyecto.component';
+import { MapaProyectoComponent } from './components/mapa-proyecto/mapa-proyecto.component';
 
 
 
@@ -11,7 +12,8 @@ import { DetalleProyectoComponent } from './components/detalle-proyecto/detalle-
   declarations: [
     ConsultaProyectosComponent,
     CrearProyectoComponent,
-    DetalleProyectoComponent
+    DetalleProyectoComponent,
+    MapaProyectoComponent
   ],
   imports: [
     CommonModule,

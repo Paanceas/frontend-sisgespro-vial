@@ -1,5 +1,8 @@
-<div class="d-flex flex-column align-items-center justify-content-center w-100 container-sisgespro">
-  <h2> En construcción</h2>
-  <br>
-  <img src="./assets/img/construction.svg" alt="">
+<div class="card-header py-3">
+  <h6 class="m-0 font-weight-bold text-primary">Formulario de creación</h6>
 </div>
+<button (click)="triggerReset()">Reset Map</button>
+<app-mapa-proyecto
+  [resetSignal]="resetMapSignal"
+  (pathCreated)="handlePathCreated($event)"
+></app-mapa-proyecto>

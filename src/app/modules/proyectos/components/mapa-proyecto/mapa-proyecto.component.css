@@ -1,0 +1,15 @@
+.container-map {
+  position: relative;
+}
+
+.container-map .return {
+  position: absolute;
+  top: 60px;
+  right: 10px;
+  font-size: 1.5em;
+}
+
+.btn-default {
+  color: #000;
+  background-color: #fff;
+}
