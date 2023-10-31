@@ -114,6 +114,8 @@ export class MapaProyectoComponent implements OnInit {
   }
 
   resetMap(): void {
+    const input = document.getElementById("place-search") as HTMLInputElement;
+    input.value = "";
     this.markers.forEach(this.removeMarker);
     this.markers = [];
     this.resetPolyline();

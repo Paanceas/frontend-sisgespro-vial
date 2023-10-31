@@ -8,41 +8,44 @@ import { ApiService } from './api.service';
 export class GlobalApiService {
 
   constructor(
-    private api:ApiService
+    private api: ApiService
   ) { }
 
-  getPais(){
+  getPais() {
     return this.api.apiGet(environment.services.countries);
   }
 
-  getDepartamentos(id_pais:number){
+  getDepartamentos(id_pais: number) {
     const params = `pais=${id_pais}`
     return this.api.apiGet(environment.services.states, params);
   }
 
-  getCiudades(id_departamento:number){
+  getCiudades(id_departamento: number) {
     const params = `ubicacion=${id_departamento}`
     return this.api.apiGet(environment.services.cities, params);
   }
 
-  getTipoIdentificacion(){
+  getTipoIdentificacion() {
     return this.api.apiGet(environment.services['type-ids']);
   }
 
-  getTipoUnidadMedida(){
+  getTipoUnidadMedida() {
     return this.api.apiGet(environment.services['type-units']);
   }
 
-  getCategoria(){
+  getCategoria() {
     return this.api.apiGet(environment.services.category);
   }
 
-  getClientes(){
+  getClientes() {
     return this.api.apiGet(environment.services.clients);
   }
 
-  getMateriales(){
+  getMateriales() {
     return this.api.apiGet(environment.services.materials);
   }
 
+  getEmpleados() {
+    return this.api.apiGet(environment.services.employees);
+  }
 }

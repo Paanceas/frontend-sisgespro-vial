@@ -41,7 +41,7 @@ a {
   height: 600px;
 }
 
-div.error, input.error, extarea.error {
+div.error, input.error, textarea.error {
   border-bottom: 2px solid #e77171 !important;
   color: #e77171;
 }

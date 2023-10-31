@@ -1,12 +1,17 @@
 <h1 class="h3 mb-2 text-gray-800">Proyectos</h1>
 <div class="d-flex justify-content-between align-items-stretch">
-  <div class="{{ showMap ? 'w-48' : 'w-100'}} card shadow mb-4">
+  <div class="{{ showMap ? 'w-48' : 'w-100' }} card shadow mb-4">
     <div class="card-header py-3">
       <h6 class="m-0 font-weight-bold text-primary">Lista de Proyectos</h6>
     </div>
     <div class="card-body">
       <table class="table">
-        <caption>Total proyectos: {{listaProyectos.length}} </caption>
+        <caption>
+          Total proyectos:
+          {{
+            listaProyectos.length
+          }}
+        </caption>
         <thead class="table-dark">
           <tr>
             <th scope="col"># id</th>
@@ -18,35 +23,62 @@
         </thead>
         <tbody>
           <tr *ngFor="let item of listaProyectos">
-            <th scope="row">{{item.id_proyecto}}</th>
-            <td>{{item.codigo_proyecto}}</td>
-            <td>{{item.nombre_proyecto}}</td>
+            <th scope="row">{{ item.id_proyecto }}</th>
+            <td>{{ item.codigo_proyecto }}</td>
+            <td>{{ item.nombre_proyecto }}</td>
             <td>
-              <a class="btn btn-warning btn-icon-split" *ngIf="item.id_estado == 1">
+              <a
+                class="btn btn-warning btn-icon-split"
+                *ngIf="item.id_estado == 1"
+              >
                 <span class="icon text-white-50">
-                    <i class="fas fa-check"></i>
+                  <i class="fas fa-check"></i>
                 </span>
-                <span class="text fn10">{{item.tipo_estado}}</span>
+                <span class="text fn10">{{ item.tipo_estado }}</span>
               </a>
-              <a class="btn btn-info btn-icon-split" *ngIf="item.id_estado == 2">
+              <a
+                class="btn btn-info btn-icon-split"
+                *ngIf="item.id_estado == 2"
+              >
                 <span class="icon text-white-50">
-                    <i class="fas fa-check"></i>
+                  <i class="fas fa-check"></i>
                 </span>
-                <span class="text fn10">{{item.tipo_estado}}</span>
+                <span class="text fn10">{{ item.tipo_estado }}</span>
               </a>
-              <a class="btn btn-success btn-icon-split" *ngIf="item.id_estado == 3">
+              <a
+                class="btn btn-success btn-icon-split"
+                *ngIf="item.id_estado == 3"
+              >
                 <span class="icon text-white-50">
-                    <i class="fas fa-check"></i>
+                  <i class="fas fa-check"></i>
                 </span>
-                <span class="text fn10">{{item.tipo_estado}}</span>
+                <span class="text fn10">{{ item.tipo_estado }}</span>
               </a>
             </td>
             <td>
-              <div class="btn-group" role="group" aria-label="Basic outlined example">
-                <button type="button" class="btn btn-outline-primary" (click)="detalle(item)"><i
-                    class="fas fa-eye"></i></button>
-                <button type="button" appRoll class="btn btn-outline-primary"><i class="fas fa-trash-alt"></i></button>
-                <button type="button" class="btn btn-outline-primary" (click)="cargarMap(item)" *ngIf="item.geoposicion" ><i class="fas fa-map"></i></button>
+              <div
+                class="btn-group"
+                role="group"
+                aria-label="Basic outlined example"
+              >
+                <button
+                  type="button"
+                  class="btn btn-outline-primary"
+                  (click)="detalle(item)"
+                >
+                  <i class="fas fa-eye"></i>
+                </button>
+                <button type="button" appRoll class="btn btn-outline-primary">
+                  <i class="fas fa-solid fa-stopwatch"></i>
+                </button>
+                <button
+                  type="button"
+                  class="btn btn-outline-primary"
+                  (click)="cargarMap(item)"
+                  *ngIf="item.geoposicion"
+                >
+                  <i class="fas fa-map"></i>
+                </button>
               </div>
             </td>
           </tr>
@@ -55,9 +87,13 @@
     </div>
   </div>
   <div class="w-48 card shadow mb-4" *ngIf="showMap">
-    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+    <div
+      class="card-header py-3 d-flex flex-row align-items-center justify-content-between"
+    >
       <h6 class="m-0 font-weight-bold text-primary">Geolocalización</h6>
-      <a style="cursor: pointer;" (click)="closeMap()"><i class="fas fa-close"></i></a>
+      <a style="cursor: pointer" (click)="closeMap()"
+        ><i class="fas fa-close"></i
+      ></a>
     </div>
     <div class="card-body">
       <div id="map"></div>

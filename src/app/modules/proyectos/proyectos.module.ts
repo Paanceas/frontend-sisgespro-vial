@@ -5,6 +5,9 @@ import { ProyectosRoutingModule } from './proyectos-routing.module';
 import { CrearProyectoComponent } from './components/crear-proyecto/crear-proyecto.component';
 import { DetalleProyectoComponent } from './components/detalle-proyecto/detalle-proyecto.component';
 import { MapaProyectoComponent } from './components/mapa-proyecto/mapa-proyecto.component';
+import { FormsModule } from '@angular/forms';
+import { EmpleadosProyectoComponent } from './components/empleados-proyecto/empleados-proyecto.component';
+import { FilterPipe } from './pipes/Filter.pipe';
 
 
 
@@ -13,10 +16,13 @@ import { MapaProyectoComponent } from './components/mapa-proyecto/mapa-proyecto.
     ConsultaProyectosComponent,
     CrearProyectoComponent,
     DetalleProyectoComponent,
-    MapaProyectoComponent
+    MapaProyectoComponent,
+    EmpleadosProyectoComponent,
+    FilterPipe
   ],
   imports: [
     CommonModule,
+    FormsModule,
     ProyectosRoutingModule
   ]
 })

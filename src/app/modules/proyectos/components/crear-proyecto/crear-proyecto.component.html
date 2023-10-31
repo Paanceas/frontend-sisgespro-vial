@@ -1,8 +1,187 @@
-<div class="card-header py-3">
-  <h6 class="m-0 font-weight-bold text-primary">Formulario de creación</h6>
+<div class="container-fluid max-width">
+  <h1 class="h3 mb-1 text-gray-800">Creación de Proyecto</h1>
+  <div class="d-flex justify-content-between mb-4">
+    <p class="mb-4">
+      En este apartado podrá crear los diferentes proyectos de su compañía
+    </p>
+    <button
+      class="btn btn-primary"
+      (click)="guardarProyecto()"
+      [disabled]="proyectoForm.invalid"
+    >
+      Crear Proyecto
+    </button>
+  </div>
+
+  <form
+    #proyectoForm="ngForm"
+    class="d-flex justify-content-between align-items-stretch flex-wrap"
+  >
+    <div class="card w-48 shadow mb-4">
+      <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">
+          Formulario de creación
+        </h6>
+      </div>
+      <div class="card-body">
+        <div class="form-row">
+          <div class="form-group col-12">
+            <label for="id_cotizacion">Cotización</label>
+            <select
+              type="string"
+              class="form-control"
+              id="id_cotizacion"
+              [(ngModel)]="proyecto.id_cotizacion"
+              name="id_cotizacion"
+              required
+              #id_cotizacionControl="ngModel"
+              [ngClass]="{
+                error:
+                  id_cotizacionControl.touched &&
+                  id_cotizacionControl.errors?.required
+              }"
+            >
+              <option [ngValue]="null">Seleccione...</option>
+              <option
+                *ngFor="let ctz of listaCotizaciones"
+                [value]="ctz.id_cotizacion"
+              >
+                Cotización: #{{ ctz.id_cotizacion }}-{{ ctz.nombre }}
+              </option>
+            </select>
+          </div>
+          <div class="form-group col-6">
+            <label for="nombre_proyecto">Nombre Proyecto</label>
+            <input
+              type="string"
+              class="form-control"
+              id="nombre_proyecto"
+              [(ngModel)]="proyecto.nombre_proyecto"
+              name="nombre_proyecto"
+              required
+              #nombre_proyectoControl="ngModel"
+              [ngClass]="{
+                error:
+                  nombre_proyectoControl.touched &&
+                  nombre_proyectoControl.errors?.required
+              }"
+            />
+          </div>
+          <div class="form-group col-6">
+            <label for="codigo_proyecto">Código Proyecto</label>
+            <input
+              type="string"
+              class="form-control"
+              id="codigo_proyecto"
+              [(ngModel)]="proyecto.codigo_proyecto"
+              name="codigo_proyecto"
+              required
+              #codigo_proyectoControl="ngModel"
+              [ngClass]="{
+                error:
+                  codigo_proyectoControl.touched &&
+                  codigo_proyectoControl.errors?.required
+              }"
+            />
+          </div>
+          <div class="form-group col-12">
+            <label for="descripcion_proyecto">Descripción Proyecto</label>
+            <textarea
+              type="string"
+              class="form-control"
+              id="descripcion_proyecto"
+              [(ngModel)]="proyecto.descripcion_proyecto"
+              name="descripcion_proyecto"
+              required
+              #descripcion_proyectoControl="ngModel"
+              [ngClass]="{
+                error:
+                  descripcion_proyectoControl.touched &&
+                  descripcion_proyectoControl.errors?.required
+              }"
+            ></textarea>
+          </div>
+          <div class="form-group col-6">
+            <label for="fecha_adquisicion">Fecha inicio Proyecto</label>
+            <input
+              type="date"
+              class="form-control"
+              id="fecha_inicio_proyecto"
+              [(ngModel)]="proyecto.fecha_inicio_proyecto"
+              name="fecha_inicio_proyecto"
+              required
+              #fecha_inicio_proyectoControl="ngModel"
+              [ngClass]="{
+                error:
+                  fecha_inicio_proyectoControl.touched &&
+                  fecha_inicio_proyectoControl.errors?.required
+              }"
+            />
+          </div>
+          <div class="form-group col-6">
+            <label for="valor_anticipado">Valor Anticipo</label>
+            <input
+              type="number"
+              class="form-control"
+              id="valor_anticipado"
+              [(ngModel)]="proyecto.valor_anticipado"
+              name="valor_anticipado"
+              required
+              #valor_anticipadoControl="ngModel"
+              [ngClass]="{
+                error:
+                  valor_anticipadoControl.touched &&
+                  valor_anticipadoControl.errors?.required
+              }"
+            />
+          </div>
+          <div class="form-group col-12">
+            <label for="valor_total_proyecto">Valor Total</label>
+            <input
+              type="number"
+              class="form-control"
+              id="valor_total_proyecto"
+              [(ngModel)]="proyecto.valor_total_proyecto"
+              name="valor_total_proyecto"
+              required
+              #valor_total_proyectoControl="ngModel"
+              [ngClass]="{
+                error:
+                  valor_total_proyectoControl.touched &&
+                  valor_total_proyectoControl.errors?.required
+              }"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card w-48 shadow mb-4">
+      <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">
+          Asignación de Empleados
+        </h6>
+      </div>
+      <div class="card-body">
+        <app-empleados-proyecto
+          [resetSignal]="resetMapSignal"
+          (empleadosCambiados)="manejarCambioEmpleados($event)"
+        ></app-empleados-proyecto>
+      </div>
+    </div>
+
+    <div class="card w-100 shadow mb-4">
+      <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">
+          Formulario trazado de mapa
+        </h6>
+      </div>
+      <div class="card-body">
+        <app-mapa-proyecto
+          [resetSignal]="resetMapSignal"
+          (pathCreated)="handlePathCreated($event)"
+        ></app-mapa-proyecto>
+      </div>
+    </div>
+  </form>
 </div>
-<button (click)="triggerReset()">Reset Map</button>
-<app-mapa-proyecto
-  [resetSignal]="resetMapSignal"
-  (pathCreated)="handlePathCreated($event)"
-></app-mapa-proyecto>

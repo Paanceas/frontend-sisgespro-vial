@@ -5,8 +5,6 @@ import { ProyectosResponse } from '../../models/ProyectosResponse';
 import { ProyectoService } from '../../services/proyecto.service';
 import Swal from 'sweetalert2';
 import { Util } from 'src/app/common/util';
-import { Loader } from '@googlemaps/js-api-loader';
-import { environment } from 'src/environments/environment';
 import { GoogleMapsLoaderService } from '../../services/googleMapsLoader.service';
 
 @Component({
@@ -75,22 +73,29 @@ export class ConsultaProyectosComponent implements OnInit {
     const map = new google.maps.Map(
       document.getElementById("map") as HTMLElement,
       {
-        zoom: 13,
+        zoom: geo.length === 1 ? 17 : 13,
         center: { lat: geo[0].lat, lng: geo[geo.length - 1].lng },
         mapTypeId: "terrain",
       }
     );
 
-    const flightPlanCoordinates = geo;
-    const flightPath = new google.maps.Polyline({
-      path: flightPlanCoordinates,
-      geodesic: true,
-      strokeColor: "#FF0000",
-      strokeOpacity: 1.0,
-      strokeWeight: 2,
-    });
-
-    flightPath.setMap(map);
+    if (geo.length === 1) {
+      const marker = new google.maps.Marker({
+        position: { lat: geo[0].lat, lng: geo[0].lng },
+        map: map,
+        icon: 'assets/img/marker.png',
+      });
+    } else if (geo.length > 1) {
+      const flightPlanCoordinates = geo;
+      const flightPath = new google.maps.Polyline({
+        path: flightPlanCoordinates,
+        geodesic: true,
+        strokeColor: "#FEEE04",
+        strokeOpacity: 1.0,
+        strokeWeight: 2,
+      });
+      flightPath.setMap(map);
+    }
     this.spinner.loader(false);
   }
 
