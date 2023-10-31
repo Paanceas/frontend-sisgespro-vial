@@ -1,22 +1,37 @@
-<div class="d-flex flex-column align-items-center justify-content-center w-100 container-sisgespro"
-  *ngIf="modules.length === 0">
-  <h2> No se encontrarón resultados para <u>{{search}}</u> </h2>
-  <br>
-  <img src="./assets/img/empty.svg" alt="">
+<div
+  class="d-flex flex-column align-items-center justify-content-center w-100 container-sisgespro"
+  *ngIf="modules.length === 0"
+>
+  <h2>
+    No se encontraron resultados para <u>{{ search }}</u>
+  </h2>
+  <br />
+  <img src="./assets/img/empty.svg" alt="" />
 </div>
 
 <div *ngIf="modules.length > 0">
-  <h2 class="m-5 mt-0 mb-0">Resultados de busqueda para <u>{{search}}</u> </h2>
+  <h2 class="m-5 mt-0 mb-0">
+    Resultados de búsqueda para <u>{{ search }}</u>
+  </h2>
   <div class="d-flex align-items-center w-100 flex-wrap">
-    <div class="card m-5 align-self-stretch" style="width: 18rem;" *ngFor="let m of modules">
-      <em class="icon-big {{m.icon}}"></em>
+    <div
+      class="card m-5 align-self-stretch"
+      style="width: 18rem"
+      *ngFor="let m of modules"
+    >
+      <em class="icon-big {{ m.icon }}"></em>
       <div class="card-body">
-        <h5 class="card-title">{{m.name}}</h5>
-        <a *ngIf="m.submenu.length === 0" [routerLink]="[m.path]" class="card-link">Ir al Módulo</a>
+        <h5 class="card-title">{{ m.name }}</h5>
+        <a
+          *ngIf="m.submenu.length === 0"
+          [routerLink]="[m.path]"
+          class="card-link"
+          >Ir al Módulo</a
+        >
       </div>
       <ul class="list-group list-group-flush" *ngFor="let sub of m.submenu">
         <li class="list-group-item d-flex justify-content-between">
-          {{sub.name}}
+          {{ sub.name }}
           <a [routerLink]="[sub.path]" class="card-link">Ir al Módulo</a>
         </li>
       </ul>

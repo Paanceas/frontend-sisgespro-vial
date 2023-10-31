@@ -5,13 +5,13 @@ import { environment } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root'
 })
-export class UsuariosService {
+export class ClientesService {
 
   constructor(
     private api: ApiService
   ) { }
 
-  getUsuarios() {
-    return this.api.apiGet(environment.services.users);
+  getClientes() {
+    return this.api.apiGet(environment.services.clients);
   }
 }

@@ -12,7 +12,7 @@ import { UsuariosService } from '../../services/usuarios.service';
 export class ConsultaUsuariosComponent implements OnInit {
 
   constructor(
-    private srv:UsuariosService,
+    private srv: UsuariosService,
     private spinner: SpinnerService,
   ) { }
 
@@ -20,28 +20,28 @@ export class ConsultaUsuariosComponent implements OnInit {
     this.getUsuarios();
   }
 
-  listaUsuarios:UserResponse[] = []
+  listaUsuarios: UserResponse[] = []
 
-  private getUsuarios(){
+  private getUsuarios() {
     this.spinner.loader(true);
     this.srv.getUsuarios()
-    .subscribe(
-      (data:any)=>{
-        if(data && data.body && data.status === 200){
-          this.listaUsuarios = data.body;
+      .subscribe(
+        (data: any) => {
+          if (data && data.body && data.status === 200) {
+            this.listaUsuarios = data.body;
+          }
+          this.spinner.loader(false);
+        },
+        err => {
+          let msn = 'al ingresar al cargar usuarios!';
+          console.error(err);
+          if (err.error && err.error.message) {
+            msn = err.error.message;
+          }
+          this.spinner.loader(false);
+          Swal.fire('Error', msn, 'error')
         }
-        this.spinner.loader(false);
-      },
-      err=>{
-        let msn = 'al ingresar al cargar usuarios!';
-        console.error(err);
-        if (err.error && err.error.message) {
-          msn = err.error.message;
-        }
-        this.spinner.loader(false);
-        Swal.fire('Error', msn, 'error')
-      }
-    );
+      );
   }
 
 }

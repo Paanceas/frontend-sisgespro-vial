@@ -1,23 +1,23 @@
 [
   {
-    "path":"/sisgespro"
+    "path": "/sisgespro"
   },
   {
-    "path":"/sisgespro/unauthorized"
+    "path": "/sisgespro/unauthorized"
   },
   {
-    "path":"/sisgespro/consulta/"
+    "path": "/sisgespro/consulta/"
   },
   {
-    "path":"/proveedores/detalle/"
+    "path": "/proveedores/detalle/"
   },
   {
-    "path":"/adquisiciones/detalle/"
+    "path": "/adquisiciones/detalle/"
   },
   {
-    "path":"/cotizaciones/detalle/"
+    "path": "/cotizaciones/detalle/"
   },
   {
-    "path":"/proyectos/detalle/"
+    "path": "/proyectos/detalle/"
   }
 ]

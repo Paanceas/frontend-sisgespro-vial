@@ -15,6 +15,20 @@
   },
   {
     "id": 2,
+    "view": true,
+    "icon": "bx bx-user-pin",
+    "active": false,
+    "name": "Clientes",
+    "path": "/clientes/consulta",
+    "roles": [
+      {
+        "name": "Administrador"
+      }
+    ],
+    "submenu": []
+  },
+  {
+    "id": 3,
     "icon": "bx bx-group",
     "view": true,
     "active": false,
@@ -55,7 +69,7 @@
     ]
   },
   {
-    "id": 3,
+    "id": 4,
     "icon": "bx bx-cart",
     "view": true,
     "active": false,
@@ -96,7 +110,7 @@
     ]
   },
   {
-    "id": 4,
+    "id": 5,
     "icon": "bx bx-money",
     "view": true,
     "active": false,
@@ -137,7 +151,7 @@
     ]
   },
   {
-    "id": 5,
+    "id": 6,
     "icon": "bx bx-trip",
     "view": true,
     "active": false,
