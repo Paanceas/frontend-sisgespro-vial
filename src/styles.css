@@ -93,3 +93,9 @@ input.error2 {
   font-size: 12px;
   line-height: 1.42857;
 }
+
+@media print {
+  .no-imprimir {
+    display: none !important;
+  }
+}

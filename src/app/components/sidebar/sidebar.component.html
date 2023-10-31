@@ -1,38 +1,65 @@
-<div class="l-navbar" id="navbar">
+<div class="l-navbar no-imprimir" id="navbar">
   <nav class="nav">
-      <div>
-          <div class="nav__brand">
-            <em class="bx bx-menu nav__toggle" id="nav-toggle" (click)="showMenu()"></em>
-            <a href="#" class="nav__logo">
-              <img src="assets/img/logo.png" alt="" width="20">
-              SISGESPRO
-            </a>
-          </div>
-          <div class="nav__list">
-            <div *ngFor="let item of listSidebar">
-              <a class="nav__link" [routerLink]="[item.path]" (click)="active(item.id)" [ngClass]="{'active': item.active}" *ngIf="item.submenu.length === 0 && item.view">
-                  <em class="nav__icon {{item.icon}}"></em>
-                  <span class="nav__name">{{item.name}}</span>
-              </a>
-              <div  class="nav__link collapse" [ngClass]="{'active': item.active}" *ngIf="item.submenu.length >= 1">
-                <em class="nav__icon {{item.icon}}" (click)="openSubmenu(item.id)"></em>
-                <span class="nav__name" (click)="openSubmenu(item.id)">{{item.name}}</span>
-                <em id="collapse__{{item.id}}" class="collapse__link bx bx-chevron-down" (click)="openSubmenu(item.id)"></em>
-                <ul class="collapse__menu">
-                    <div *ngFor="let sub of item.submenu">
-                      <a [routerLink]="[sub.path]" class="collapse__sublink" *ngIf="sub.view" >
-                        {{sub.name}}
-                      </a>
-                    </div>
-                </ul>
-            </div>
-            </div>
-          </div>
+    <div>
+      <div class="nav__brand">
+        <em
+          class="bx bx-menu nav__toggle"
+          id="nav-toggle"
+          (click)="showMenu()"
+        ></em>
+        <a href="#" class="nav__logo">
+          <img src="assets/img/logo.png" alt="" width="20" />
+          SISGESPRO
+        </a>
       </div>
+      <div class="nav__list">
+        <div *ngFor="let item of listSidebar">
+          <a
+            class="nav__link"
+            [routerLink]="[item.path]"
+            (click)="active(item.id)"
+            [ngClass]="{ active: item.active }"
+            *ngIf="item.submenu.length === 0 && item.view"
+          >
+            <em class="nav__icon {{ item.icon }}"></em>
+            <span class="nav__name">{{ item.name }}</span>
+          </a>
+          <div
+            class="nav__link collapse"
+            [ngClass]="{ active: item.active }"
+            *ngIf="item.submenu.length >= 1"
+          >
+            <em
+              class="nav__icon {{ item.icon }}"
+              (click)="openSubmenu(item.id)"
+            ></em>
+            <span class="nav__name" (click)="openSubmenu(item.id)">{{
+              item.name
+            }}</span>
+            <em
+              id="collapse__{{ item.id }}"
+              class="collapse__link bx bx-chevron-down"
+              (click)="openSubmenu(item.id)"
+            ></em>
+            <ul class="collapse__menu">
+              <div *ngFor="let sub of item.submenu">
+                <a
+                  [routerLink]="[sub.path]"
+                  class="collapse__sublink"
+                  *ngIf="sub.view"
+                >
+                  {{ sub.name }}
+                </a>
+              </div>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
 
-      <a class="nav__link" (click)="closeSession()">
-          <em class="bx bx-log-out nav__icon"></em>
-          <span class="nav__name">Salir</span>
-      </a>
+    <a class="nav__link" (click)="closeSession()">
+      <em class="bx bx-log-out nav__icon"></em>
+      <span class="nav__name">Salir</span>
+    </a>
   </nav>
 </div>

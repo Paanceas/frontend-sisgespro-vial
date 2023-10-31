@@ -1,21 +1,28 @@
-<header class="shadow">
-  <nav class="navbar navbar-top navbar-expand navbar-dashboard navbar-dark p-0 w-100">
-      <div class="d-flex justify-content-between align-items-center w-100">
-          <!-- Search form -->
-          <form class="pl-3 navbar-search form-inline">
-            <div class="pseudo-search">
-              <input type="text" [(ngModel)]="search" name="search" placeholder="Buscar...">
-              <button class="fa fa-search" (click)="goToSearch()"></button>
-            </div>
-          </form>
-        <!-- Navbar links -->
-          <div class="d-flex justify-content-end w-25">
-            <div class="mx-4">
-              <h4 class="mb-0">{{nickname}}</h4>
-              <span>{{rol}}</span>
-            </div>
-            <img src="./assets/img/user.svg" alt="" class="image--cover" />
-          </div>
+<header class="shadow no-imprimir">
+  <nav
+    class="navbar navbar-top navbar-expand navbar-dashboard navbar-dark p-0 w-100"
+  >
+    <div class="d-flex justify-content-between align-items-center w-100">
+      <!-- Search form -->
+      <form class="pl-3 navbar-search form-inline">
+        <div class="pseudo-search">
+          <input
+            type="text"
+            [(ngModel)]="search"
+            name="search"
+            placeholder="Buscar..."
+          />
+          <button class="fa fa-search" (click)="goToSearch()"></button>
+        </div>
+      </form>
+      <!-- Navbar links -->
+      <div class="d-flex justify-content-end w-25">
+        <div class="mx-4">
+          <h4 class="mb-0">{{ nickname }}</h4>
+          <span>{{ rol }}</span>
+        </div>
+        <img src="./assets/img/user.svg" alt="" class="image--cover" />
       </div>
+    </div>
   </nav>
 </header>
