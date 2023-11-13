@@ -1,6 +1,6 @@
 export const environment = {
   production: true,
-  apiUrl: 'https://sisgesprovial.azurewebsites.net/api/',
+  apiUrl: 'https://sisgespro-vial.azurewebsites.ne/api/',
   key: 'AIzaSyAzjQ5j2uDoBsQLM9e65IoDPHmgbAUqg5s',
   services: {
     user: "user.php",
