@@ -9,7 +9,10 @@
       (keydown)="seleccionarConTeclado($event)"
     />
 
-    <div *ngIf="searchTerm" class="list-group position-absolute w-100">
+    <div
+      *ngIf="searchTerm"
+      class="list-empleados list-group position-absolute w-100"
+    >
       <button
         type="button"
         class="list-group-item list-group-item-action"

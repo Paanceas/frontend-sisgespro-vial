@@ -1,5 +1,5 @@
 .list-empleados {
   z-index: 9999;
-  overflow: scroll;
-  max-height: 200px;
+  overflow-x: hidden;
+  max-height: 300px;
 }
