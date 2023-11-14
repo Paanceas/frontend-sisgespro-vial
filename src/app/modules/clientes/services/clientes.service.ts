@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
+import { HttpMethod } from 'src/app/common/enums/httpMethod.enum';
 import { ApiService } from 'src/app/services/api.service';
-import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +12,6 @@ export class ClientesService {
   ) { }
 
   getClientes() {
-    return this.api.apiGet(environment.services.clients);
+    return this.api.apiGet(HttpMethod.clients);
   }
 }

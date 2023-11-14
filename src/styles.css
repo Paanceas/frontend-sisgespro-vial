@@ -98,4 +98,8 @@ input.error2 {
   .no-imprimir {
     display: none !important;
   }
+
+  .body {
+    width: 100% !important;
+  }
 }

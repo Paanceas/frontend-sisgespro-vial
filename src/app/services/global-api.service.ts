@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { environment } from 'src/environments/environment';
 import { ApiService } from './api.service';
+import { HttpMethod } from '../common/enums/httpMethod.enum';
 
 @Injectable({
   providedIn: 'root'
@@ -12,40 +12,52 @@ export class GlobalApiService {
   ) { }
 
   getPais() {
-    return this.api.apiGet(environment.services.countries);
+    return this.api.apiGet(HttpMethod.countries);
   }
 
   getDepartamentos(id_pais: number) {
     const params = `pais=${id_pais}`
-    return this.api.apiGet(environment.services.states, params);
+    return this.api.apiGet(HttpMethod.states, params);
   }
 
   getCiudades(id_departamento: number) {
     const params = `ubicacion=${id_departamento}`
-    return this.api.apiGet(environment.services.cities, params);
+    return this.api.apiGet(HttpMethod.cities, params);
   }
 
   getTipoIdentificacion() {
-    return this.api.apiGet(environment.services['type-ids']);
+    return this.api.apiGet(HttpMethod['type-ids']);
   }
 
   getTipoUnidadMedida() {
-    return this.api.apiGet(environment.services['type-units']);
+    return this.api.apiGet(HttpMethod['type-units']);
   }
 
   getCategoria() {
-    return this.api.apiGet(environment.services.category);
+    return this.api.apiGet(HttpMethod.category);
   }
 
   getClientes() {
-    return this.api.apiGet(environment.services.clients);
+    return this.api.apiGet(HttpMethod.clients);
   }
 
   getMateriales() {
-    return this.api.apiGet(environment.services.materials);
+    return this.api.apiGet(HttpMethod.materials);
   }
 
   getEmpleados() {
-    return this.api.apiGet(environment.services.employees);
+    return this.api.apiGet(HttpMethod.employees);
+  }
+
+  getSummaryInfo() {
+    return this.api.apiGet(HttpMethod['summary-info']);
+  }
+
+  getStatusProjects() {
+    return this.api.apiGet(HttpMethod['status-projects']);
+  }
+
+  getQuotationData() {
+    return this.api.apiGet(HttpMethod['quotation-data']);
   }
 }

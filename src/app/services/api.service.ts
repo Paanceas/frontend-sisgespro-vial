@@ -7,14 +7,14 @@ import { environment } from 'src/environments/environment';
 })
 export class ApiService {
 
-  constructor(private http:HttpClient) { }
+  constructor(private http: HttpClient) { }
 
-  apiGet(service:string, params?:string){
-    return this.http.get(`${environment.apiUrl+service}${params ? '?'+params : ''}`);
+  apiGet(service: string, params?: string) {
+    return this.http.get(`${environment.apiUrl + service}${params ? '?' + params : ''}`);
   }
 
-  apiPost(service:string, body:any){
-    return this.http.post(`${environment.apiUrl+service}`,body);
+  apiPost(service: string, body: any) {
+    return this.http.post(`${environment.apiUrl + service}`, body);
   }
 
 }

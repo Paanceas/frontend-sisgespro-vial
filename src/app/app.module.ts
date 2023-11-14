@@ -11,8 +11,6 @@ import { HeaderComponent } from './components/header/header.component';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AuthInterceptorService } from './services/auth-interceptor.service';
-import { RollDirective } from './directives/roll.directive';
-import { DirectivesModule } from './directives/directives.module';
 @NgModule({
   declarations: [
     AppComponent,

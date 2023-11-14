@@ -1,5 +1,7 @@
 import { Component, OnInit, Output, EventEmitter, Input, SimpleChanges } from '@angular/core';
 import { GoogleMapsLoaderService } from '../../services/googleMapsLoader.service';
+import Swal from 'sweetalert2';
+import { mapData } from '../../models/MapData';
 
 @Component({
   selector: 'app-mapa-proyecto',
@@ -8,7 +10,7 @@ import { GoogleMapsLoaderService } from '../../services/googleMapsLoader.service
 })
 export class MapaProyectoComponent implements OnInit {
 
-  @Output() pathCreated = new EventEmitter<any[]>();
+  @Output() pathCreated = new EventEmitter<mapData>();
   @Input() resetSignal: boolean = false;
 
   private poly: google.maps.Polyline = {} as google.maps.Polyline;
@@ -99,6 +101,7 @@ export class MapaProyectoComponent implements OnInit {
     const place: any = autocomplete.getPlace();
     if (!place.geometry || !place.geometry.location) {
       window.alert(`No se encontró el lugar: '${place.name}'`);
+      Swal.fire('Atención', `No se encontró el lugar: '${place.name}'`, 'warning');
       return;
     }
     this.map.setCenter(place.geometry.location);
@@ -107,10 +110,20 @@ export class MapaProyectoComponent implements OnInit {
 
   private savePolyline(): void {
     const path = this.poly.getPath().getArray();
-    const formattedPath = path.map((latLng) => {
+    const formattedPath: any = path.map((latLng) => {
       return { lat: latLng.lat(), lng: latLng.lng() };
     });
-    this.pathCreated.emit(formattedPath);
+
+    if (JSON.stringify(formattedPath).length > 1000) {
+      Swal.fire('Atención', "Superaste el limite de puntos a trazar", 'warning');
+      this.removeLastPoint();
+      return;
+    }
+
+    this.pathCreated.emit({
+      kilometers: this.calculatePolylineDistance(),
+      path: formattedPath
+    });
   }
 
   resetMap(): void {
@@ -136,4 +149,17 @@ export class MapaProyectoComponent implements OnInit {
     this.map.setCenter(this.defaultCenter);
     this.map.setZoom(this.defaultZoom);
   }
+
+  private calculatePolylineDistance(): number {
+    const path = this.poly.getPath();
+    let distance = 0;
+
+    for (let i = 0; i < path.getLength() - 1; i++) {
+      const point1 = path.getAt(i);
+      const point2 = path.getAt(i + 1);
+      distance += google.maps.geometry.spherical.computeDistanceBetween(point1, point2);
+    }
+    return Math.round((distance / 1000) * 100) / 100;
+  }
+
 }

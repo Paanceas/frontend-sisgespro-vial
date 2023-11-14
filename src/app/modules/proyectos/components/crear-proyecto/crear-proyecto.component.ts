@@ -6,6 +6,7 @@ import { SpinnerService } from 'src/app/services/spinner.service';
 import Swal from 'sweetalert2';
 import { ProyectoService } from '../../services/proyecto.service';
 import { Router } from '@angular/router';
+import { mapData } from '../../models/MapData';
 
 @Component({
   selector: 'app-crear-proyecto',
@@ -17,6 +18,7 @@ export class CrearProyectoComponent implements OnInit {
   polylinePath: google.maps.LatLng[] = [];
   resetMapSignal: boolean = false;
   proyecto: Proyecto = {} as Proyecto;
+  km: number = 0;
 
   listaCotizaciones: CotizacionesResponse[] = [];
 
@@ -49,12 +51,9 @@ export class CrearProyectoComponent implements OnInit {
     setTimeout(() => this.resetMapSignal = false, 0);
   }
 
-  handlePathCreated(path: google.maps.LatLng[]): void {
-    this.polylinePath = path;
-    if (JSON.stringify(this.polylinePath).length > 1000) {
-      Swal.fire('Error', "Superaste el limite de puntos a trazar", 'warning')
-      return;
-    }
+  handlePathCreated(data: mapData): void {
+    this.polylinePath = data.path;
+    this.km = data.kilometers;
     this.proyecto.geoposicion = JSON.stringify(this.polylinePath);
   }
 

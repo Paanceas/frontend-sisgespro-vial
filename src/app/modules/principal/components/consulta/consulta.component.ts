@@ -11,49 +11,48 @@ import { GlobalsService } from 'src/app/services/globals.service';
 })
 export class ConsultaComponent implements OnInit {
 
-  private subscription:Subscription;
-  private subscriptionP:Subscription;
-  private listSidebar:Sidebar[] = [];
+  private subscription: Subscription;
+  private subscriptionP: Subscription;
+  private listSidebar: Sidebar[] = [];
 
-  modules:Sidebar[] = [];
+  modules: Sidebar[] = [];
   search: string = "";
 
   constructor(
     private rutaActiva: ActivatedRoute,
-    private globalSvc:GlobalsService
+    private globalSvc: GlobalsService
   ) {
     this.subscriptionP = new Subscription();
     this.subscription = new Subscription();
   }
 
   ngOnInit(): void {
-    this.subscription =  this.rutaActiva.params.subscribe(
+    this.subscription = this.rutaActiva.params.subscribe(
       (params: Params) => {
         this.search = params.search;
         this.find();
       }
     );
-    this.subscription = this.globalSvc.getSidebar$().subscribe(response =>{
+    this.subscription = this.globalSvc.getSidebar$().subscribe(response => {
       this.listSidebar = response;
       this.find();
     });
   }
 
-  find(){
+  find() {
     this.listSidebar = this.globalSvc.getSidebar();
-    console.log("response",this.listSidebar);
-    if(this.listSidebar.length > 0){
+    if (this.listSidebar.length > 0) {
       this.modules = this.valideModules(this.listSidebar, this.search);
-    }else{
+    } else {
       this.modules = this.listSidebar;
     }
   }
 
-  valideModules(list:Sidebar[], search:string): Sidebar[]{
-    let newList:Sidebar[] = [];
-    newList = list.filter((m)=>{
+  valideModules(list: Sidebar[], search: string): Sidebar[] {
+    let newList: Sidebar[] = [];
+    newList = list.filter((m) => {
       return m.name.toLowerCase()
-      .includes(search.toLowerCase());
+        .includes(search.toLowerCase());
     });
     return newList;
   }

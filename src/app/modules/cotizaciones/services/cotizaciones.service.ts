@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ApiService } from 'src/app/services/api.service';
-import { environment } from 'src/environments/environment';
 import { Cotizacion } from '../models/Contizacion';
+import { HttpMethod } from 'src/app/common/enums/httpMethod.enum';
 
 @Injectable({
   providedIn: 'root'
@@ -9,19 +9,19 @@ import { Cotizacion } from '../models/Contizacion';
 export class CotizacionesService {
 
   constructor(
-    private api:ApiService
+    private api: ApiService
   ) { }
 
-  getCotizaciones(){
-    return this.api.apiGet(environment.services.quotations);
+  getCotizaciones() {
+    return this.api.apiGet(HttpMethod.quotations);
   }
-  getCotizacion(id_cotizacion:number){
+  getCotizacion(id_cotizacion: number) {
     const params = `cotizacion=${id_cotizacion}`
-    return this.api.apiGet(environment.services.quotation,params);
+    return this.api.apiGet(HttpMethod.quotation, params);
   }
 
-  postCotizacion(ad:Cotizacion){
-    return this.api.apiPost(environment.services.quotation,ad);
+  postCotizacion(ad: Cotizacion) {
+    return this.api.apiPost(HttpMethod.quotation, ad);
   }
 
 }

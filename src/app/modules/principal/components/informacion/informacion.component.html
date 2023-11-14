@@ -1,10 +1,198 @@
-<div class="d-flex flex-column align-items-center justify-content-center w-100 container-sisgespro">
-  <h2><img src="./assets/img/logo.png" alt=""> BIENVENIDO </h2>
-  <br>
-  <img src="./assets/img/hello.svg" alt="">
-  <!-- <div class="dasboard">
-    <div class="chart-wrapper">
-      <chart [type]="type" [data]="data" [options]="options"></chart>
+<div class="w-100 container-sisgespro">
+  <div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">
+      <img src="./assets/img/logo.png" width="40" alt="" /> BIENVENIDO
+    </h1>
+    <a
+      href="#"
+      class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
+      ><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a
+    >
+  </div>
+  <div class="row">
+    <div class="col-xl-3 col-md-6 mb-4">
+      <div class="card border-left-primary shadow h-100 py-2">
+        <div class="card-body">
+          <div class="row no-gutters align-items-center">
+            <div class="col mr-2">
+              <div
+                class="text-xs font-weight-bold text-primary text-uppercase mb-1"
+              >
+                Total de clientes activos
+              </div>
+              <div class="h5 mb-0 font-weight-bold text-gray-800">
+                {{ summaryInfo.total_clientes_activos }}
+              </div>
+            </div>
+            <div class="col-auto">
+              <i class="fas fa-users fa-2x text-gray-300"></i>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-  </div> -->
+    <div class="col-xl-3 col-md-6 mb-4">
+      <div class="card border-left-primary shadow h-100 py-2">
+        <div class="card-body">
+          <div class="row no-gutters align-items-center">
+            <div class="col mr-2">
+              <div
+                class="text-xs font-weight-bold text-primary text-uppercase mb-1"
+              >
+                Total de proveedores activos
+              </div>
+              <div class="h5 mb-0 font-weight-bold text-gray-800">
+                {{ summaryInfo.total_proveedores_activos }}
+              </div>
+            </div>
+            <div class="col-auto">
+              <i class="fas fa-truck-fast fa-2x text-gray-300"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-3 col-md-6 mb-4">
+      <div class="card border-left-primary shadow h-100 py-2">
+        <div class="card-body">
+          <div class="row no-gutters align-items-center">
+            <div class="col mr-2">
+              <div
+                class="text-xs font-weight-bold text-primary text-uppercase mb-1"
+              >
+                Total de empleados activos
+              </div>
+              <div class="h5 mb-0 font-weight-bold text-gray-800">
+                {{ summaryInfo.total_empleados_activos }}
+              </div>
+            </div>
+            <div class="col-auto">
+              <i class="fas fa-users-gear fa-2x text-gray-300"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-3 col-md-6 mb-4">
+      <div class="card border-left-success shadow h-100 py-2">
+        <div class="card-body">
+          <div class="row no-gutters align-items-center">
+            <div class="col mr-2">
+              <div
+                class="text-xs font-weight-bold text-success text-uppercase mb-1"
+              >
+                Valor aquisiciones del año {{ currentYear }}
+              </div>
+              <div class="h5 mb-0 font-weight-bold text-gray-800">
+                ${{ summaryInfo.suma_adquisiciones_ano_actual | numberFormat }}
+              </div>
+            </div>
+            <div class="col-auto">
+              <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row align-self-stretch">
+    <!-- Area Chart -->
+    <div appRoll class="col-md-8">
+      <div class="card shadow mb-4">
+        <!-- Card Header - Dropdown -->
+        <div
+          class="card-header py-3 d-flex flex-row align-items-center justify-content-between"
+        >
+          <h6 class="m-0 font-weight-bold text-primary">
+            Histórico de cotizaciones
+          </h6>
+          <small class="text-gray-800">
+            total de
+            <strong>{{ summaryInfo.total_cotizaciones_activas }}</strong>
+            cotizaciones
+          </small>
+        </div>
+        <!-- Card Body -->
+        <div class="card-body">
+          <div class="chart-wrapper" *ngIf="char.data.datasets.length > 0">
+            <chart
+              height="320"
+              class="mb-3"
+              [type]="char.type"
+              [data]="char.data"
+              [options]="char.options"
+            ></chart>
+          </div>
+          <a [routerLink]="['/cotizaciones/consulta']" rel="nofollow"
+            >ir al modulo de cotizaciones →</a
+          >
+        </div>
+      </div>
+    </div>
+
+    <!-- Pie Chart -->
+    <div class="col-md-4">
+      <div class="card shadow mb-4">
+        <!-- Card Header - Dropdown -->
+        <div
+          class="card-header py-3 d-flex flex-row align-items-center justify-content-between"
+        >
+          <h6 class="m-0 font-weight-bold text-primary">Estado de Proyectos</h6>
+          <small class="text-gray-800">
+            total de
+            <strong>{{ summaryInfo.total_proyectos_activos }}</strong> proyectos
+          </small>
+        </div>
+        <!-- Card Body -->
+        <div class="card-body">
+          <div class="chart-wrapper mb-3" *ngIf="pie.data.labels.length > 0">
+            <chart
+              [type]="pie.type"
+              [data]="pie.data"
+              [options]="pie.options"
+            ></chart>
+          </div>
+          <a [routerLink]="['/proyectos/consulta']" rel="nofollow"
+            >ir al modulo de proyectos →</a
+          >
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
+
+<!-- Earnings (Monthly) Card Example
+<div class="col-xl-3 col-md-6 mb-4">
+  <div class="card border-left-info shadow h-100 py-2">
+    <div class="card-body">
+      <div class="row no-gutters align-items-center">
+        <div class="col mr-2">
+          <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
+            Total de proveedores activos
+          </div>
+          <div class="row no-gutters align-items-center">
+            <div class="col-auto">
+              <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">50%</div>
+            </div>
+            <div class="col">
+              <div class="progress progress-sm mr-2">
+                <div
+                  class="progress-bar bg-info"
+                  role="progressbar"
+                  style="width: 50%"
+                  aria-valuenow="50"
+                  aria-valuemin="0"
+                  aria-valuemax="100"
+                ></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-auto">
+          <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->

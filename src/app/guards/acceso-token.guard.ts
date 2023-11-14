@@ -36,7 +36,6 @@ export class AccesoTokenGuard implements CanActivate {
     const u: UserResponse = this.util.getObj("usuario", true);
     let status: boolean = false;
     if (u) {
-      console.log("🚀 ~ file: acceso-token.guard.ts:38 ~ AccesoTokenGuard ~ valideModules ~ this.validaPath(state):", this.validaPath(state))
       status = this.validAccess(state, u.roll);
     }
     return status;

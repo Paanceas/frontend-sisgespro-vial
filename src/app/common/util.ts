@@ -1,4 +1,18 @@
 import Swal from 'sweetalert2';
+import { SpinnerService } from '../services/spinner.service';
+
+
+export const errorShow = (err: any, spinner: SpinnerService) => {
+  let msn = 'Error!';
+  console.error(err);
+  if (err?.error?.message) {
+    msn = err.error.message;
+  } else {
+    msn = 'Ocurrió un error contacta el administrador';
+  }
+  spinner.loader(false);
+  Swal.fire('Error', msn, 'error');
+};
 export class Util {
 
   delObj(nom: string): void {
@@ -10,8 +24,8 @@ export class Util {
 
   getObj(nom: string, trasnsformJson?: boolean): any {
     try {
-      let obj:any = sessionStorage.getItem(btoa(nom)) ? sessionStorage.getItem(btoa(nom)) : null;
-      if(obj){
+      let obj: any = sessionStorage.getItem(btoa(nom)) ? sessionStorage.getItem(btoa(nom)) : null;
+      if (obj) {
         obj = atob(obj);
         if (trasnsformJson) {
           obj = JSON.parse(obj);
@@ -24,13 +38,13 @@ export class Util {
   }
 
 
-  validObject(object:any){
-    let val:boolean = true;
+  validObject(object: any) {
+    let val: boolean = true;
     Object.keys(object).forEach(el => {
-       if(!object[el]){
-        Swal.fire('Advertencia', "Falta el campo "+el, 'warning');
+      if (!object[el]) {
+        Swal.fire('Advertencia', "Falta el campo " + el, 'warning');
         val = false;
-       }
+      }
     });
     return val;
   }

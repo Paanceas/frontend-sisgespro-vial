@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
+import { HttpMethod } from 'src/app/common/enums/httpMethod.enum';
 import { ApiService } from 'src/app/services/api.service';
-import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +12,6 @@ export class UsuariosService {
   ) { }
 
   getUsuarios() {
-    return this.api.apiGet(environment.services.users);
+    return this.api.apiGet(HttpMethod.users);
   }
 }
