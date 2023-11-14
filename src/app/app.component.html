@@ -1,13 +1,23 @@
-<div style="display: {{session ? 'flex' : 'block'}};">
+<div [style.display]="session ? 'flex' : 'block'">
   <div class="sidebar" *ngIf="session">
     <app-sidebar (size)="sizeView($event)"></app-sidebar>
   </div>
-  <div [ngClass]="{'body': session}">
+  <div [ngClass]="{ body: session }">
     <app-header *ngIf="session"></app-header>
-    <div [ngClass]="{'container-fluid': session}">
+    <div [ngClass]="{ 'container-fluid': session }">
       <br *ngIf="session" />
       <router-outlet></router-outlet>
     </div>
   </div>
 </div>
-<ngx-spinner bdColor = "rgba(0,0,0,0.86)" size = "large" color = "#ffef05" type = "ball-pulse" [fullScreen] = "true"><p style="color: white" > Cargando... </p></ngx-spinner>
+<ngx-spinner
+  bdColor="rgba(0,0,0,0.86)"
+  size="large"
+  color="#ffef05"
+  type="ball-pulse"
+  [fullScreen]="true"
+>
+  <br />
+  <br />
+  <img src="./assets/img/ucompensar.png" width="50%" alt="" />
+</ngx-spinner>

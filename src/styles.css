@@ -94,6 +94,11 @@ input.error2 {
   line-height: 1.42857;
 }
 
+.ngx-spinner-overlay .loading-text {
+  display: flex !important;
+  justify-content: center !important;
+}
+
 @media print {
   .no-imprimir {
     display: none !important;

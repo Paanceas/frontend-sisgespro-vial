@@ -6,6 +6,7 @@ import { ChartModule } from 'angular2-chartjs';
 import { CrearAdquisicionComponent } from './components/crear-adquisicion/crear-adquisicion.component';
 import { DetalleAdquisicionComponent } from './components/detalle-adquisicion/detalle-adquisicion.component';
 import { FormsModule } from '@angular/forms';
+import { PipesModule } from 'src/app/pipes/pipes.module';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { FormsModule } from '@angular/forms';
     CommonModule,
     AdquisicionRoutingModule,
     ChartModule,
+    PipesModule,
     FormsModule
   ]
 })

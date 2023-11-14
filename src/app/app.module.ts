@@ -20,7 +20,7 @@ import { AuthInterceptorService } from './services/auth-interceptor.service';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgxSpinnerModule,
+    NgxSpinnerModule.forRoot({ type: 'ball-pulse' }),
     BrowserAnimationsModule,
     HttpClientModule,
     RouterModule,

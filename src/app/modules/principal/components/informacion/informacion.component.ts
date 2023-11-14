@@ -82,6 +82,7 @@ export class InformacionComponent implements OnInit {
 
     ]).subscribe(([summaryInfo, statusProjects, quotationData]) => {
       this.summaryInfo = this.setData(summaryInfo);
+      this.summaryInfo.suma_adquisiciones_ano_actual = this.summaryInfo.suma_adquisiciones_ano_actual ? this.summaryInfo.suma_adquisiciones_ano_actual : 0;
       this.statusProjects = this.setData(statusProjects);
       this.quotationData = this.setData(quotationData);
       this.setDataAnalyticStatusProject();
