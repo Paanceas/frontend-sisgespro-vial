@@ -6,9 +6,7 @@ import { ApiService } from 'src/app/services/api.service';
   providedIn: 'root',
 })
 export class InventarioService {
-  constructor(
-    private api: ApiService,
-  ) { }
+  constructor(private api: ApiService) {}
 
   getInventario() {
     return this.api.apiGet(HttpMethod.inventory);

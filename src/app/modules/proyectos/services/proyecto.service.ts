@@ -21,4 +21,13 @@ export class ProyectoService {
   setProyecto(proyecto: Proyecto) {
     return this.api.apiPost(HttpMethod.project, proyecto);
   }
+
+  getDisponibilidadMateriales(id_proyecto: number) {
+    const params = `id_proyecto=${id_proyecto}`;
+    return this.api.apiGet(HttpMethod['inventory-project'], params);
+  }
+
+  updEstadoProyecto(id_proyecto: number, id_estado: number) {
+    return this.api.apiPut(HttpMethod.project, { id_proyecto, id_estado });
+  }
 }

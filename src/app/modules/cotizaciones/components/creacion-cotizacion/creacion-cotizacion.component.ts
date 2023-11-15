@@ -16,7 +16,7 @@ export class CreacionCotizacionComponent implements OnInit {
     private svcGlobal: GlobalApiService,
     private svc: CotizacionesService,
     private spinner: SpinnerService
-  ) { }
+  ) {}
 
   private util: Util = new Util();
 
@@ -141,9 +141,15 @@ export class CreacionCotizacionComponent implements OnInit {
   }
 
   cargaTipoUnidadMedida(mat: any) {
-    console.log("🚀 ~ file: creacion-cotizacion.component.ts:144 ~ CreacionCotizacionComponent ~ cargaTipoUnidadMedida ~ mat:", mat)
+    console.log(
+      '🚀 ~ file: creacion-cotizacion.component.ts:144 ~ CreacionCotizacionComponent ~ cargaTipoUnidadMedida ~ mat:',
+      mat
+    );
     let materialEncontrado = this.listaMateriales.find(material => material.id_material === parseInt(mat.id_material));
-    console.log("🚀 ~ file: creacion-cotizacion.component.ts:146 ~ CreacionCotizacionComponent ~ cargaTipoUnidadMedida ~ materialEncontrado:", materialEncontrado)
+    console.log(
+      '🚀 ~ file: creacion-cotizacion.component.ts:146 ~ CreacionCotizacionComponent ~ cargaTipoUnidadMedida ~ materialEncontrado:',
+      materialEncontrado
+    );
     mat.id_tipo_uni_medida = materialEncontrado.id_tipo_uni_medida;
     mat.nombre_tipo_uni_medida = materialEncontrado.nombre_tipo_uni_medida;
   }

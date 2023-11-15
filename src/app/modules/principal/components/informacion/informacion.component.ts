@@ -61,7 +61,7 @@ export class InformacionComponent implements OnInit {
     private _srv: GlobalApiService,
     private _spinner: SpinnerService,
     private _principal: PrincipalService
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this._spinner.loader(true);
@@ -107,7 +107,7 @@ export class InformacionComponent implements OnInit {
   setDataAnalyticStatusProject() {
     let dataSet: any[] = [];
     let dataBack: any[] = [];
-    if (this.statusProjects.length <= 0) {
+    if (this.statusProjects && this.statusProjects.length <= 0) {
       return;
     }
     this.statusProjects.forEach((pie: StatusProjects) => {
@@ -126,7 +126,7 @@ export class InformacionComponent implements OnInit {
   }
 
   setDataAnalyticQuotation() {
-    if (this.quotationData.length <= 0) {
+    if (this.quotationData && this.quotationData.length <= 0) {
       return;
     }
     this.char = this._principal.organizarCotizacionesParaGrafico(this.quotationData);

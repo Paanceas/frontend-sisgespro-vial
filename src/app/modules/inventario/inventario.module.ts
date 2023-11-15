@@ -4,16 +4,8 @@ import { ConsultaInventarioComponent } from './components/consulta-inventario/co
 import { InventarioRoutingModule } from './inventario-routing.module';
 import { FormsModule } from '@angular/forms';
 
-
-
 @NgModule({
-  declarations: [
-    ConsultaInventarioComponent
-  ],
-  imports: [
-    CommonModule,
-    InventarioRoutingModule,
-    FormsModule
-  ]
+  declarations: [ConsultaInventarioComponent],
+  imports: [CommonModule, InventarioRoutingModule, FormsModule],
 })
-export class InventarioModule { }
+export class InventarioModule {}

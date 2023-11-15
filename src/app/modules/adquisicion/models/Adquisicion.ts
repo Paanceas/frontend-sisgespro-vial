@@ -8,7 +8,7 @@ export interface MaterialesAdquisicion {
   id_proveedor: number | null;
   id_categoria: number | null;
   id_tipo_uni_medida: number | null;
-  codigo_material: string | null;
+  codigo_material: string;
   nombre_material: string | null;
   precio_unitario: number | null;
   cantidad_total: number | null;

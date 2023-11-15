@@ -10,4 +10,4 @@ import { FormsModule } from '@angular/forms';
   declarations: [ConsultaUsuariosComponent],
   imports: [CommonModule, UsuariosRoutingModule, DirectivesModule, NgbModalModule, FormsModule],
 })
-export class UsuariosModule { }
+export class UsuariosModule {}

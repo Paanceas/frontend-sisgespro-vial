@@ -16,7 +16,7 @@ export class ConsultaUsuariosComponent implements OnInit {
     private srv: UsuariosService,
     private spinner: SpinnerService,
     private _modalService: NgbModal
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this.getUsuarios();

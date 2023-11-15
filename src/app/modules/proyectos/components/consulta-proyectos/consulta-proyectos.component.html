@@ -51,7 +51,13 @@
                 <button type="button" class="btn btn-outline-primary" (click)="detalle(item)">
                   <i class="fas fa-eye"></i>
                 </button>
-                <button type="button" appRoll class="btn btn-outline-primary">
+                <button
+                  type="button"
+                  [disabled]="item.id_estado === 3"
+                  appRoll
+                  class="btn btn-outline-primary"
+                  (click)="confirmaCambiarEstado(item)"
+                >
                   <i class="fas fa-solid fa-stopwatch"></i>
                 </button>
                 <button

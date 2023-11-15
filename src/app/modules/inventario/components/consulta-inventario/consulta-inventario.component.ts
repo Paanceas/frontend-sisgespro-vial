@@ -7,10 +7,9 @@ import { errorShow } from 'src/app/common/util';
 @Component({
   selector: 'app-consulta-inventario',
   templateUrl: './consulta-inventario.component.html',
-  styleUrls: ['./consulta-inventario.component.css']
+  styleUrls: ['./consulta-inventario.component.css'],
 })
 export class ConsultaInventarioComponent implements OnInit {
-
   listaInventario: InventarioMaterial[] = []; // Reemplazar con tu tipo de datos
   listaInventarioFiltrada: InventarioMaterial[] = []; // Reemplazar con tu tipo de datos
   filtroCodigoMaterial: string = '';
@@ -19,7 +18,8 @@ export class ConsultaInventarioComponent implements OnInit {
 
   constructor(
     private spinner: SpinnerService,
-    private inventarioService: InventarioService) { }
+    private inventarioService: InventarioService
+  ) {}
 
   ngOnInit(): void {
     this.getInventario();
@@ -42,14 +42,15 @@ export class ConsultaInventarioComponent implements OnInit {
   aplicarFiltro() {
     if (this.filtroCodigoMaterial) {
       this.listaInventarioFiltrada = this.listaInventario.filter(item =>
-        item.codigo_material.toLowerCase().includes(this.filtroCodigoMaterial.toLowerCase()));
+        item.codigo_material.toLowerCase().includes(this.filtroCodigoMaterial.toLowerCase())
+      );
     } else {
       this.listaInventarioFiltrada = [...this.listaInventario];
     }
   }
   resetFiltro() {
     this.filtroCodigoMaterial = '';
-    this.aplicarFiltro()
+    this.aplicarFiltro();
   }
 
   ordenarPorColumna(columna: string) {

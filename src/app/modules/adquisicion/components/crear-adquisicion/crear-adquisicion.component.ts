@@ -85,7 +85,7 @@ export class CrearAdquisicionComponent implements OnInit {
       id_proveedor: null,
       id_tipo_uni_medida: null,
       cantidad_total: null,
-      codigo_material: null,
+      codigo_material: '',
       descripcion_material: null,
       nombre_material: null,
       precio_unitario: null,
@@ -115,6 +115,7 @@ export class CrearAdquisicionComponent implements OnInit {
     if (this.util.validObject(this.adquisicion)) {
       let cont = 0;
       this.adquisicion.materiales_adquisicion.forEach(mat => {
+        mat.codigo_material = mat.codigo_material?.toUpperCase();
         if (this.util.validObject(mat)) {
           cont++;
         }
