@@ -126,9 +126,9 @@
                   <input
                     type="number"
                     class="form-control"
-                    id="precio_unitario{{ key }}"
-                    [(ngModel)]="mat.precio_unitario"
-                    name="precio_unitario{{ key }}"
+                    id="cantidad_total{{ key }}"
+                    [(ngModel)]="mat.cantidad_total"
+                    name="cantidad_total{{ key }}"
                     (change)="recalcular()"
                   />
                 </td>
@@ -136,9 +136,9 @@
                   <input
                     type="number"
                     class="form-control"
-                    id="cantidad_total{{ key }}"
-                    [(ngModel)]="mat.cantidad_total"
-                    name="cantidad_total{{ key }}"
+                    id="precio_unitario{{ key }}"
+                    [(ngModel)]="mat.precio_unitario"
+                    name="precio_unitario{{ key }}"
                     (change)="recalcular()"
                   />
                 </td>
