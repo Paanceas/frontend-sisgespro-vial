@@ -29,4 +29,5 @@ export enum HttpMethod {
   'summary-info' = 'summary-info.php',
   'status-projects' = 'status-projects.php',
   'quotation-data' = 'quotation-data.php',
+  inventory = 'inventory.php',
 }

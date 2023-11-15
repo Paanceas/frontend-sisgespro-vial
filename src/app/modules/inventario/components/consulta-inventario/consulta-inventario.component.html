@@ -1,0 +1,79 @@
+<h1 class="h3 mb-2 text-gray-800">Consulta de Inventario</h1>
+
+<div class="card shadow mb-4">
+  <div class="card-body">
+    <div class="input-group mb-3">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Filtrar por Código de Material"
+        [(ngModel)]="filtroCodigoMaterial"
+        (keyup.enter)="aplicarFiltro()"
+      />
+      <div class="input-group-append">
+        <button class="btn btn-primary" type="button" (click)="aplicarFiltro()">Filtrar</button>
+        <button
+          *ngIf="filtroCodigoMaterial.length > 0"
+          class="btn btn-outline-primary"
+          (click)="resetFiltro()"
+          type="button"
+        >
+          Quitar Filtro
+        </button>
+      </div>
+    </div>
+    <table class="table">
+      <caption>
+        Total de ítems en inventario:
+        {{
+          listaInventarioFiltrada.length
+        }}
+      </caption>
+      <thead class="table-dark">
+        <tr>
+          <th scope="col" (click)="ordenarPorColumna('id')">ID</th>
+          <th scope="col" (click)="ordenarPorColumna('codigo_material')">
+            Código Material
+            <span *ngIf="ordenActual === 'codigo_material'">
+              <i class="fas" [ngClass]="{ 'fa-sort-up': ordenAscendente, 'fa-sort-down': !ordenAscendente }"></i>
+            </span>
+          </th>
+          <th scope="col" (click)="ordenarPorColumna('nombre_material')">
+            Nombre Material
+            <span *ngIf="ordenActual === 'nombre_material'">
+              <i class="fas" [ngClass]="{ 'fa-sort-up': ordenAscendente, 'fa-sort-down': !ordenAscendente }"></i>
+            </span>
+          </th>
+          <th scope="col" (click)="ordenarPorColumna('nombre_proveedor')">
+            Proveedor
+            <span *ngIf="ordenActual === 'nombre_proveedor'">
+              <i class="fas" [ngClass]="{ 'fa-sort-up': ordenAscendente, 'fa-sort-down': !ordenAscendente }"></i>
+            </span>
+          </th>
+          <th scope="col" (click)="ordenarPorColumna('nombre_tipo_uni_medida')">
+            Tipo Unidad Medida
+            <span *ngIf="ordenActual === 'nombre_tipo_uni_medida'">
+              <i class="fas" [ngClass]="{ 'fa-sort-up': ordenAscendente, 'fa-sort-down': !ordenAscendente }"></i>
+            </span>
+          </th>
+          <th scope="col" (click)="ordenarPorColumna('cantidad_total')">
+            Cantidad Total Disponible
+            <span *ngIf="ordenActual === 'cantidad_total'">
+              <i class="fas" [ngClass]="{ 'fa-sort-up': ordenAscendente, 'fa-sort-down': !ordenAscendente }"></i>
+            </span>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of listaInventarioFiltrada; let i = index">
+          <th scope="row">{{ i + 1 }}</th>
+          <td>{{ item.codigo_material }}</td>
+          <td>{{ item.nombre_material }}</td>
+          <td>{{ item.nombre_proveedor }}</td>
+          <td>{{ item.nombre_tipo_uni_medida }}</td>
+          <td>{{ item.cantidad_total }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

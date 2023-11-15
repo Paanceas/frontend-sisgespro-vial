@@ -16,7 +16,7 @@ export class ConsultaUsuariosComponent implements OnInit {
     private srv: UsuariosService,
     private spinner: SpinnerService,
     private _modalService: NgbModal
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.getUsuarios();
@@ -35,15 +35,7 @@ export class ConsultaUsuariosComponent implements OnInit {
         }
         this.spinner.loader(false);
       },
-      err => {
-        let msn = 'al ingresar al cargar usuarios!';
-        console.error(err);
-        if (err.error && err.error.message) {
-          msn = err.error.message;
-        }
-        this.spinner.loader(false);
-        Swal.fire('Error', msn, 'error');
-      }
+      err => errorShow(err, this.spinner)
     );
   }
 
