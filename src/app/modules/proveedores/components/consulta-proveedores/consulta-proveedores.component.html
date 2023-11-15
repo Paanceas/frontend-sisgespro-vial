@@ -2,7 +2,12 @@
 <div class="card shadow mb-4">
   <div class="card-body">
     <table class="table">
-      <caption>Total proveedores: {{listaProveedores.length}} </caption>
+      <caption>
+        Total proveedores:
+        {{
+          listaProveedores.length
+        }}
+      </caption>
       <thead class="table-dark">
         <tr>
           <th scope="col">#</th>
@@ -16,16 +21,20 @@
       </thead>
       <tbody>
         <tr *ngFor="let item of listaProveedores">
-          <th scope="row">{{item.id_proveedor}}</th>
-          <td>{{item.tipo_identificacion}}-{{item.identificacion}}</td>
-          <td>{{item.nombre}}</td>
-          <td>{{item.correo}}</td>
-          <td>{{item.direccion}}</td>
-          <td>{{item.nombre_ciudad}} - {{item.nombre_ubicacion}} - {{item.abreviatura}}</td>
+          <th scope="row">{{ item.id_proveedor }}</th>
+          <td>{{ item.tipo_identificacion }}-{{ item.identificacion }}</td>
+          <td>{{ item.nombre }}</td>
+          <td>{{ item.correo }}</td>
+          <td>{{ item.direccion }}</td>
+          <td>{{ item.nombre_ciudad }} - {{ item.nombre_ubicacion }} - {{ item.abreviatura }}</td>
           <td>
             <div class="btn-group" role="group" aria-label="Basic outlined example">
-              <button type="button" class="btn btn-outline-primary" (click)="detalle(item)"><i class="far fa-eye"></i></button>
-              <button type="button" appRoll class="btn btn-outline-primary" (click)="confirmDel(item)"><i class="fas fa-trash-alt"></i></button>
+              <button type="button" class="btn btn-outline-primary" (click)="detalle(item)">
+                <i class="far fa-eye"></i>
+              </button>
+              <button type="button" appRoll class="btn btn-outline-primary" (click)="confirmDel(item)">
+                <i class="fas fa-trash-alt"></i>
+              </button>
             </div>
           </td>
         </tr>

@@ -5,6 +5,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "prettier": "npx prettier --write src/",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
@@ -15,10 +16,12 @@
     "@angular/compiler": "^14.3.0",
     "@angular/core": "^14.3.0",
     "@angular/forms": "^14.3.0",
+    "@angular/localize": "^14.3.0",
     "@angular/platform-browser": "^14.3.0",
     "@angular/platform-browser-dynamic": "^14.3.0",
     "@angular/router": "^14.3.0",
     "@googlemaps/js-api-loader": "^1.16.2",
+    "@ng-bootstrap/ng-bootstrap": "^13.0.0",
     "@popperjs/core": "^2.10.2",
     "angular2-chartjs": "^0.5.1",
     "animate.css": "^4.1.1",
@@ -44,6 +47,7 @@
     "karma-coverage": "~2.0.3",
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "~1.7.0",
-    "typescript": "~4.6.4"
+    "typescript": "~4.6.4",
+    "prettier": "^3.0.2"
   }
 }

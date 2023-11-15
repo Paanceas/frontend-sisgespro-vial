@@ -9,15 +9,14 @@ import { Util, errorShow } from 'src/app/common/util';
 @Component({
   selector: 'app-consulta-cotizaciones',
   templateUrl: './consulta-cotizaciones.component.html',
-  styleUrls: ['./consulta-cotizaciones.component.css']
+  styleUrls: ['./consulta-cotizaciones.component.css'],
 })
 export class ConsultaCotizacionesComponent implements OnInit {
-
   constructor(
     private srvGlobal: GlobalApiService,
     private srv: CotizacionesService,
-    private spinner: SpinnerService,
-  ) { }
+    private spinner: SpinnerService
+  ) {}
 
   private util: Util = new Util();
   listaTipoIdentificacion: any[] = [];
@@ -26,15 +25,16 @@ export class ConsultaCotizacionesComponent implements OnInit {
   id_tipo_identificacion: any = null;
   identificacion: any = '';
 
-
   ngOnInit(): void {
     this.cargaCotizaciones();
   }
 
   buscarCotizaciones() {
-    this.cotizacionesSeleccionadas = this.listaCotizaciones.filter(c => c.identificacion === this.identificacion.toString() && c.tipo_identificacion === this.id_tipo_identificacion);
+    this.cotizacionesSeleccionadas = this.listaCotizaciones.filter(
+      c => c.identificacion === this.identificacion.toString() && c.tipo_identificacion === this.id_tipo_identificacion
+    );
     if (this.cotizacionesSeleccionadas.length <= 0) {
-      Swal.fire('Info', "No se encontraron cotizaciones para los datos ingresados", 'info')
+      Swal.fire('Info', 'No se encontraron cotizaciones para los datos ingresados', 'info');
       this.reset();
     }
   }
@@ -55,7 +55,7 @@ export class ConsultaCotizacionesComponent implements OnInit {
         this.cargaTiposIdentificacion();
       },
       err => errorShow(err, this.spinner)
-    )
+    );
   }
 
   cargaTiposIdentificacion() {
@@ -67,7 +67,7 @@ export class ConsultaCotizacionesComponent implements OnInit {
         this.spinner.loader(false);
       },
       err => errorShow(err, this.spinner)
-    )
+    );
   }
 
   detalle(prov: CotizacionesResponse) {

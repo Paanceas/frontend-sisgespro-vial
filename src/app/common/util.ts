@@ -1,7 +1,6 @@
 import Swal from 'sweetalert2';
 import { SpinnerService } from '../services/spinner.service';
 
-
 export const errorShow = (err: any, spinner: SpinnerService) => {
   let msn = 'Error!';
   console.error(err);
@@ -14,9 +13,8 @@ export const errorShow = (err: any, spinner: SpinnerService) => {
   Swal.fire('Error', msn, 'error');
 };
 export class Util {
-
   delObj(nom: string): void {
-    sessionStorage.removeItem(btoa(nom))
+    sessionStorage.removeItem(btoa(nom));
   }
   setObj(nom: string, info: any): void {
     sessionStorage.setItem(btoa(nom), btoa(info));
@@ -37,12 +35,11 @@ export class Util {
     }
   }
 
-
   validObject(object: any) {
     let val: boolean = true;
     Object.keys(object).forEach(el => {
       if (!object[el]) {
-        Swal.fire('Advertencia', "Falta el campo " + el, 'warning');
+        Swal.fire('Advertencia', 'Falta el campo ' + el, 'warning');
         val = false;
       }
     });
@@ -93,5 +90,4 @@ export class Util {
   //   }
   //   return false;
   // }
-
 }

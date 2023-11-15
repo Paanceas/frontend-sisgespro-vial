@@ -1,27 +1,16 @@
 <div class="container-fluid max-width">
   <h1 class="h3 mb-1 text-gray-800">Creación de Proyecto</h1>
   <div class="d-flex justify-content-between mb-4">
-    <p class="mb-4">
-      En este apartado podrá crear los diferentes proyectos de su compañía
-    </p>
-    <button
-      class="btn btn-primary"
-      (click)="guardarProyecto()"
-      [disabled]="proyectoForm.invalid"
-    >
+    <p class="mb-4">En este apartado podrá crear los diferentes proyectos de su compañía</p>
+    <button class="btn btn-primary" (click)="guardarProyecto()" [disabled]="proyectoForm.invalid">
       Crear Proyecto
     </button>
   </div>
 
-  <form
-    #proyectoForm="ngForm"
-    class="d-flex justify-content-between align-items-stretch flex-wrap"
-  >
+  <form #proyectoForm="ngForm" class="d-flex justify-content-between align-items-stretch flex-wrap">
     <div class="card w-48 shadow mb-4">
       <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">
-          Formulario de creación
-        </h6>
+        <h6 class="m-0 font-weight-bold text-primary">Formulario de creación</h6>
       </div>
       <div class="card-body">
         <div class="form-row">
@@ -36,16 +25,11 @@
               required
               #id_cotizacionControl="ngModel"
               [ngClass]="{
-                error:
-                  id_cotizacionControl.touched &&
-                  id_cotizacionControl.errors?.required
+                error: id_cotizacionControl.touched && id_cotizacionControl.errors?.required
               }"
             >
               <option [ngValue]="null">Seleccione...</option>
-              <option
-                *ngFor="let ctz of listaCotizaciones"
-                [value]="ctz.id_cotizacion"
-              >
+              <option *ngFor="let ctz of listaCotizaciones" [value]="ctz.id_cotizacion">
                 Cotización: #{{ ctz.id_cotizacion }}-{{ ctz.nombre }}
               </option>
             </select>
@@ -61,9 +45,7 @@
               required
               #nombre_proyectoControl="ngModel"
               [ngClass]="{
-                error:
-                  nombre_proyectoControl.touched &&
-                  nombre_proyectoControl.errors?.required
+                error: nombre_proyectoControl.touched && nombre_proyectoControl.errors?.required
               }"
             />
           </div>
@@ -78,9 +60,7 @@
               required
               #codigo_proyectoControl="ngModel"
               [ngClass]="{
-                error:
-                  codigo_proyectoControl.touched &&
-                  codigo_proyectoControl.errors?.required
+                error: codigo_proyectoControl.touched && codigo_proyectoControl.errors?.required
               }"
             />
           </div>
@@ -95,9 +75,7 @@
               required
               #descripcion_proyectoControl="ngModel"
               [ngClass]="{
-                error:
-                  descripcion_proyectoControl.touched &&
-                  descripcion_proyectoControl.errors?.required
+                error: descripcion_proyectoControl.touched && descripcion_proyectoControl.errors?.required
               }"
             ></textarea>
           </div>
@@ -112,9 +90,7 @@
               required
               #fecha_inicio_proyectoControl="ngModel"
               [ngClass]="{
-                error:
-                  fecha_inicio_proyectoControl.touched &&
-                  fecha_inicio_proyectoControl.errors?.required
+                error: fecha_inicio_proyectoControl.touched && fecha_inicio_proyectoControl.errors?.required
               }"
             />
           </div>
@@ -129,9 +105,7 @@
               required
               #valor_anticipadoControl="ngModel"
               [ngClass]="{
-                error:
-                  valor_anticipadoControl.touched &&
-                  valor_anticipadoControl.errors?.required
+                error: valor_anticipadoControl.touched && valor_anticipadoControl.errors?.required
               }"
             />
           </div>
@@ -146,9 +120,7 @@
               required
               #valor_total_proyectoControl="ngModel"
               [ngClass]="{
-                error:
-                  valor_total_proyectoControl.touched &&
-                  valor_total_proyectoControl.errors?.required
+                error: valor_total_proyectoControl.touched && valor_total_proyectoControl.errors?.required
               }"
             />
           </div>
@@ -158,9 +130,7 @@
 
     <div class="card w-48 shadow mb-4">
       <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">
-          Asignación de Empleados
-        </h6>
+        <h6 class="m-0 font-weight-bold text-primary">Asignación de Empleados</h6>
       </div>
       <div class="card-body">
         <app-empleados-proyecto
@@ -171,22 +141,15 @@
     </div>
 
     <div class="card w-100 shadow mb-4">
-      <div
-        class="card-header py-3 d-flex flex-row align-items-center justify-content-between"
-      >
-        <h6 class="m-0 font-weight-bold text-primary">
-          Formulario trazado de mapa
-        </h6>
+      <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+        <h6 class="m-0 font-weight-bold text-primary">Formulario trazado de mapa</h6>
         <small class="text-gray-800">
           en total la traza tiene
           <strong>{{ km }}</strong> kilómetros
         </small>
       </div>
       <div class="card-body">
-        <app-mapa-proyecto
-          [resetSignal]="resetMapSignal"
-          (pathCreated)="handlePathCreated($event)"
-        ></app-mapa-proyecto>
+        <app-mapa-proyecto [resetSignal]="resetMapSignal" (pathCreated)="handlePathCreated($event)"></app-mapa-proyecto>
       </div>
     </div>
   </form>

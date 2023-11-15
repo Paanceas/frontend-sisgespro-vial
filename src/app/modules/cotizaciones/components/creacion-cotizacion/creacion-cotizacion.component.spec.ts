@@ -8,9 +8,8 @@ describe('CreacionCotizacionComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CreacionCotizacionComponent ]
-    })
-    .compileComponents();
+      declarations: [CreacionCotizacionComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

@@ -3,11 +3,10 @@ import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ApiService {
-
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   apiGet(service: string, params?: string) {
     return this.http.get(`${environment.apiUrl + service}${params ? '?' + params : ''}`);
@@ -17,4 +16,7 @@ export class ApiService {
     return this.http.post(`${environment.apiUrl + service}`, body);
   }
 
+  apiPut(service: string, body: any) {
+    return this.http.put(`${environment.apiUrl + service}`, body);
+  }
 }

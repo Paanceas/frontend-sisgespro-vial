@@ -11,35 +11,66 @@
         <div class="form-row">
           <div class="form-group col-md-3">
             <label for="fecha_cotizacion">Fecha cotizacion</label>
-            <input type="date" class="form-control" id="fecha_cotizacion" [(ngModel)]="cotizacion.fecha_cotizacion" name="fecha_cotizacion" required #fecha_cotizacionControl="ngModel" [ngClass]="{'error': fecha_cotizacionControl.touched && fecha_cotizacionControl.errors?.required}" >
+            <input
+              type="date"
+              class="form-control"
+              id="fecha_cotizacion"
+              [(ngModel)]="cotizacion.fecha_cotizacion"
+              name="fecha_cotizacion"
+              required
+              #fecha_cotizacionControl="ngModel"
+              [ngClass]="{ error: fecha_cotizacionControl.touched && fecha_cotizacionControl.errors?.required }"
+            />
           </div>
           <div class="form-group col-md-6">
             <label for="id_cliente">Cliente</label>
             <select name="id_cliente" id="id_cliente" class="form-control" [(ngModel)]="cotizacion.id_cliente">
               <option [ngValue]="null">Seleccione...</option>
-              <option *ngFor="let pr of listaClientes" [value]="pr.id_cliente" >{{pr.tipo_identificacion}}-{{pr.identificacion}}-{{pr.nombre}}</option>
+              <option *ngFor="let pr of listaClientes" [value]="pr.id_cliente">
+                {{ pr.tipo_identificacion }}-{{ pr.identificacion }}-{{ pr.nombre }}
+              </option>
             </select>
           </div>
           <div class="form-group col-md-3">
             <label for="iva">Iva</label>
-            <input type="number" class="form-control" id="iva" [(ngModel)]="cotizacion.iva" name="iva" required #ivaControl="ngModel" [ngClass]="{'error': ivaControl.touched && ivaControl.errors?.required}" (change)="calcularValores()">
+            <input
+              type="number"
+              class="form-control"
+              id="iva"
+              [(ngModel)]="cotizacion.iva"
+              name="iva"
+              required
+              #ivaControl="ngModel"
+              [ngClass]="{ error: ivaControl.touched && ivaControl.errors?.required }"
+              (change)="calcularValores()"
+            />
           </div>
         </div>
         <div class="form-group">
           <label for="nota_inicio">Nota Inicial:</label>
-          <textarea cols="30" class="form-control" rows="5" id="nota_inicio" name="nota_inicio" [(ngModel)]="cotizacion.nota_inicio" required #nota_inicioControl="ngModel" [ngClass]="{'border-bottom-danger': nota_inicioControl.touched && nota_inicioControl.errors?.required}"></textarea>
+          <textarea
+            cols="30"
+            class="form-control"
+            rows="5"
+            id="nota_inicio"
+            name="nota_inicio"
+            [(ngModel)]="cotizacion.nota_inicio"
+            required
+            #nota_inicioControl="ngModel"
+            [ngClass]="{ 'border-bottom-danger': nota_inicioControl.touched && nota_inicioControl.errors?.required }"
+          ></textarea>
         </div>
         <div class="form-group col">
           <div class="d-flex justify-content-between">
             <label>Materiales</label>
             <a (click)="addRow()" class="btn btn-info btn-icon-split btn-sm">
               <span class="icon text-white-50">
-                  <i class="fas fa-plus"></i>
+                <i class="fas fa-plus"></i>
               </span>
               <span class="text">Agregar fila</span>
             </a>
           </div>
-          <br>
+          <br />
           <table class="table">
             <thead class="thead-light">
               <tr>
@@ -55,30 +86,68 @@
             </thead>
             <tbody>
               <tr *ngFor="let mat of cotizacion.materiales_cotizacion; index as key">
-                <th scope="row">{{key+1}}</th>
+                <th scope="row">{{ key + 1 }}</th>
                 <td>
-                    <select name="id_proveedor{{key}}" id="id_proveedor{{key}}" class="form-control" [(ngModel)]="mat.id_material">
-                      <option [ngValue]="null">Seleccione...</option>
-                      <option *ngFor="let pr of listaMateriales" [value]="pr.id_material" >{{pr.codigo_material}}</option>
-                    </select>
-                </td>
-                <td>
-                  <select name="id_tipo_uni_medida{{key}}" id="id_tipo_uni_medida{{key}}" class="form-control" [(ngModel)]="mat.id_tipo_uni_medida">
+                  <select
+                    name="id_proveedor{{ key }}"
+                    id="id_proveedor{{ key }}"
+                    class="form-control"
+                    (change)="cargaTipoUnidadMedida(mat)"
+                    [(ngModel)]="mat.id_material"
+                  >
                     <option [ngValue]="null">Seleccione...</option>
-                    <option *ngFor="let pr of listaUnidadMedida" [value]="pr.id_tipo_uni_medida" >{{pr.nombre_tipo_uni_medida}}</option>
+                    <option *ngFor="let pr of listaMateriales" [value]="pr.id_material">
+                      {{ pr.codigo_material }}
+                    </option>
                   </select>
                 </td>
                 <td>
-                  <input type="number" class="form-control" id="precio{{key}}" [(ngModel)]="mat.precio" name="precio{{key}}" (change)="calcularValores()">
+                  <input
+                    disabled
+                    name="nombre_tipo_uni_medida{{ key }}"
+                    id="nombre_tipo_uni_medida{{ key }}"
+                    class="form-control"
+                    [value]="mat.nombre_tipo_uni_medida"
+                  />
                 </td>
                 <td>
-                  <input type="number" class="form-control" id="cantidad{{key}}" [(ngModel)]="mat.cantidad" name="cantidad{{key}}" (change)="calcularValores()">
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="precio{{ key }}"
+                    [(ngModel)]="mat.precio"
+                    name="precio{{ key }}"
+                    (change)="calcularValores()"
+                  />
                 </td>
                 <td>
-                  <input type="text" class="form-control" id="descripcion{{key}}" [(ngModel)]="mat.descripcion" name="descripcion{{key}}">
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="cantidad{{ key }}"
+                    [(ngModel)]="mat.cantidad"
+                    name="cantidad{{ key }}"
+                    (change)="calcularValores()"
+                  />
                 </td>
                 <td>
-                  <input type="text" class="form-control" id="total{{key}}" value="${{mat.cantidad*mat.precio}}" name="total{{key}}" disabled>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="descripcion{{ key }}"
+                    [(ngModel)]="mat.descripcion"
+                    name="descripcion{{ key }}"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="total{{ key }}"
+                    value="${{ mat.cantidad * mat.precio }}"
+                    name="total{{ key }}"
+                    disabled
+                  />
                 </td>
                 <td>
                   <a (click)="removeRow(key)" class="btn btn-danger btn-circle btn-sm">
@@ -86,28 +155,40 @@
                   </a>
                 </td>
               </tr>
+              <tr></tr>
               <tr>
-                <tr>
-                  <td colspan="7" class="text-right">Total Neto</td>
-                  <td>${{totalNeto}}</td>
-                </tr>
-                <tr>
-                  <td colspan="7" class="text-right">IVA {{cotizacion.iva}}%</td>
-                  <td>${{totalIva}}</td>
-                </tr>
-                <tr>
-                  <td colspan="7" class="text-right">Total</td>
-                  <td>${{valor_cotizacion}}</td>
-                </tr>
+                <td colspan="7" class="text-right">Total Neto</td>
+                <td>${{ totalNeto }}</td>
+              </tr>
+              <tr>
+                <td colspan="7" class="text-right">IVA {{ cotizacion.iva }}%</td>
+                <td>${{ totalIva }}</td>
+              </tr>
+              <tr>
+                <td colspan="7" class="text-right">Total</td>
+                <td>${{ valor_cotizacion }}</td>
+              </tr>
             </tbody>
           </table>
         </div>
-        <br>
+        <br />
         <div class="form-group">
           <label for="nota_final">Nota Final:</label>
-          <textarea cols="30" class="form-control" rows="5" id="nota_final" name="nota_final" [(ngModel)]="cotizacion.nota_final" required #nota_finalControl="ngModel" [ngClass]="{'border-bottom-danger': nota_finalControl.touched && nota_finalControl.errors?.required}"></textarea>
+          <textarea
+            cols="30"
+            class="form-control"
+            rows="5"
+            id="nota_final"
+            name="nota_final"
+            [(ngModel)]="cotizacion.nota_final"
+            required
+            #nota_finalControl="ngModel"
+            [ngClass]="{ 'border-bottom-danger': nota_finalControl.touched && nota_finalControl.errors?.required }"
+          ></textarea>
         </div>
-        <button class="btn btn-primary" [disabled]="cotizacionForm.invalid" (click)="guardar()">Crear Cotización</button>
+        <button class="btn btn-primary" [disabled]="cotizacionForm.invalid" (click)="guardar()">
+          Crear Cotización
+        </button>
       </form>
     </div>
   </div>

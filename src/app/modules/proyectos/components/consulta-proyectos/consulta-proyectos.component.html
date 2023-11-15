@@ -27,28 +27,19 @@
             <td>{{ item.codigo_proyecto }}</td>
             <td>{{ item.nombre_proyecto }}</td>
             <td>
-              <a
-                class="btn btn-warning btn-icon-split"
-                *ngIf="item.id_estado == 1"
-              >
+              <a class="btn btn-warning btn-icon-split" *ngIf="item.id_estado == 1">
                 <span class="icon text-white-50">
                   <i class="fas fa-check"></i>
                 </span>
                 <span class="text fn10">{{ item.tipo_estado }}</span>
               </a>
-              <a
-                class="btn btn-info btn-icon-split"
-                *ngIf="item.id_estado == 2"
-              >
+              <a class="btn btn-info btn-icon-split" *ngIf="item.id_estado == 2">
                 <span class="icon text-white-50">
                   <i class="fas fa-check"></i>
                 </span>
                 <span class="text fn10">{{ item.tipo_estado }}</span>
               </a>
-              <a
-                class="btn btn-success btn-icon-split"
-                *ngIf="item.id_estado == 3"
-              >
+              <a class="btn btn-success btn-icon-split" *ngIf="item.id_estado == 3">
                 <span class="icon text-white-50">
                   <i class="fas fa-check"></i>
                 </span>
@@ -56,16 +47,8 @@
               </a>
             </td>
             <td>
-              <div
-                class="btn-group"
-                role="group"
-                aria-label="Basic outlined example"
-              >
-                <button
-                  type="button"
-                  class="btn btn-outline-primary"
-                  (click)="detalle(item)"
-                >
+              <div class="btn-group" role="group" aria-label="Basic outlined example">
+                <button type="button" class="btn btn-outline-primary" (click)="detalle(item)">
                   <i class="fas fa-eye"></i>
                 </button>
                 <button type="button" appRoll class="btn btn-outline-primary">
@@ -87,13 +70,9 @@
     </div>
   </div>
   <div class="w-48 card shadow mb-4" *ngIf="showMap">
-    <div
-      class="card-header py-3 d-flex flex-row align-items-center justify-content-between"
-    >
+    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
       <h6 class="m-0 font-weight-bold text-primary">Geolocalización</h6>
-      <a style="cursor: pointer" (click)="closeMap()"
-        ><i class="fas fa-close"></i
-      ></a>
+      <a style="cursor: pointer" (click)="closeMap()"><i class="fas fa-close"></i></a>
     </div>
     <div class="card-body">
       <div id="map"></div>

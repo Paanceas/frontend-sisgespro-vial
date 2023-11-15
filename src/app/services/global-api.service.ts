@@ -3,25 +3,22 @@ import { ApiService } from './api.service';
 import { HttpMethod } from '../common/enums/httpMethod.enum';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class GlobalApiService {
-
-  constructor(
-    private api: ApiService
-  ) { }
+  constructor(private api: ApiService) {}
 
   getPais() {
     return this.api.apiGet(HttpMethod.countries);
   }
 
   getDepartamentos(id_pais: number) {
-    const params = `pais=${id_pais}`
+    const params = `pais=${id_pais}`;
     return this.api.apiGet(HttpMethod.states, params);
   }
 
   getCiudades(id_departamento: number) {
-    const params = `ubicacion=${id_departamento}`
+    const params = `ubicacion=${id_departamento}`;
     return this.api.apiGet(HttpMethod.cities, params);
   }
 

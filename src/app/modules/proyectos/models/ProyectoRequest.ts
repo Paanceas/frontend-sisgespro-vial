@@ -14,4 +14,3 @@ export interface Proyecto {
 export interface Empleado {
   id_empleado: number;
 }
-

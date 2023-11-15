@@ -11,10 +11,9 @@ import { QuotationData } from '../../models/quotationData.model';
 @Component({
   selector: 'app-informacion',
   templateUrl: './informacion.component.html',
-  styleUrls: ['./informacion.component.css']
+  styleUrls: ['./informacion.component.css'],
 })
 export class InformacionComponent implements OnInit {
-
   private util: Util = new Util();
   summaryInfo: SummaryInfo = {} as SummaryInfo;
   statusProjects: StatusProjects[] = [];
@@ -24,33 +23,45 @@ export class InformacionComponent implements OnInit {
   char: any = {
     type: 'line',
     data: {
-      labels: ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"],
-      datasets: []
+      labels: [
+        'Enero',
+        'Febrero',
+        'Marzo',
+        'Abril',
+        'Mayo',
+        'Junio',
+        'Julio',
+        'Agosto',
+        'Septiembre',
+        'Octubre',
+        'Noviembre',
+        'Diciembre',
+      ],
+      datasets: [],
     },
     options: {
       responsive: true,
-      maintainAspectRatio: false
-    }
-  }
+      maintainAspectRatio: false,
+    },
+  };
 
   pie: any = {
     type: 'pie',
     data: {
       labels: [],
-      datasets: []
+      datasets: [],
     },
     options: {
       responsive: true,
-      maintainAspectRatio: true
-    }
-  }
+      maintainAspectRatio: true,
+    },
+  };
 
   constructor(
     private _srv: GlobalApiService,
     private _spinner: SpinnerService,
     private _principal: PrincipalService
-
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this._spinner.loader(true);
@@ -70,27 +81,27 @@ export class InformacionComponent implements OnInit {
     if (data?.status === 200 && data?.body) {
       this.statusProjects = data.body;
     } else {
-      errorShow(null, this._spinner)
+      errorShow(null, this._spinner);
     }
   }
 
   getServicesAnalytic() {
-    forkJoin([
-      this._srv.getSummaryInfo(),
-      this._srv.getStatusProjects(),
-      this._srv.getQuotationData(),
-
-    ]).subscribe(([summaryInfo, statusProjects, quotationData]) => {
-      this.summaryInfo = this.setData(summaryInfo);
-      this.summaryInfo.suma_adquisiciones_ano_actual = this.summaryInfo.suma_adquisiciones_ano_actual ? this.summaryInfo.suma_adquisiciones_ano_actual : 0;
-      this.statusProjects = this.setData(statusProjects);
-      this.quotationData = this.setData(quotationData);
-      this.setDataAnalyticStatusProject();
-      this.setDataAnalyticQuotation();
-      this._spinner.loader(false);
-    }, error => {
-      errorShow(error, this._spinner)
-    });
+    forkJoin([this._srv.getSummaryInfo(), this._srv.getStatusProjects(), this._srv.getQuotationData()]).subscribe(
+      ([summaryInfo, statusProjects, quotationData]) => {
+        this.summaryInfo = this.setData(summaryInfo);
+        this.summaryInfo.suma_adquisiciones_ano_actual = this.summaryInfo.suma_adquisiciones_ano_actual
+          ? this.summaryInfo.suma_adquisiciones_ano_actual
+          : 0;
+        this.statusProjects = this.setData(statusProjects);
+        this.quotationData = this.setData(quotationData);
+        this.setDataAnalyticStatusProject();
+        this.setDataAnalyticQuotation();
+        this._spinner.loader(false);
+      },
+      error => {
+        errorShow(error, this._spinner);
+      }
+    );
   }
 
   setDataAnalyticStatusProject() {
@@ -102,15 +113,16 @@ export class InformacionComponent implements OnInit {
       dataBack.push(this.util.getRandomColor());
     });
 
-    this.pie.data.datasets = [{
-      label: "estados",
-      data: dataSet,
-      backgroundColor: dataBack
-    }];
+    this.pie.data.datasets = [
+      {
+        label: 'estados',
+        data: dataSet,
+        backgroundColor: dataBack,
+      },
+    ];
   }
 
   setDataAnalyticQuotation() {
     this.char = this._principal.organizarCotizacionesParaGrafico(this.quotationData);
   }
-
 }

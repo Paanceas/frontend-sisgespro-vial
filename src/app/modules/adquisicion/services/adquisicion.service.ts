@@ -4,21 +4,17 @@ import { Adquisicion } from '../models/Adquisicion';
 import { HttpMethod } from 'src/app/common/enums/httpMethod.enum';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AdquisicionService {
-
-
-  constructor(
-    private api: ApiService
-  ) { }
+  constructor(private api: ApiService) {}
 
   getAdquisiciones() {
     return this.api.apiGet(HttpMethod.acquisitions);
   }
 
   getAdquisicion(id_adquisicion: number) {
-    const params = `id_adquisicion=${id_adquisicion}`
+    const params = `id_adquisicion=${id_adquisicion}`;
     return this.api.apiGet(HttpMethod.acquisition, params);
   }
 

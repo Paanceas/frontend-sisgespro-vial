@@ -10,26 +10,24 @@ import { GlobalsService } from 'src/app/services/globals.service';
 @Component({
   selector: 'app-inicio-sesion',
   templateUrl: './inicio-sesion.component.html',
-  styleUrls: ['./inicio-sesion.component.css']
+  styleUrls: ['./inicio-sesion.component.css'],
 })
 export class InicioSesionComponent implements OnInit {
-
   user: User = {
     password: '',
     roll: '',
-    user: ''
+    user: '',
   };
 
   private util: Util = new Util();
   private subscriptions: Subscription[] = [];
 
-
   constructor(
     private spinner: SpinnerService,
     private svc: LoginService,
-    private _router:Router,
-    private globalSvc:GlobalsService
-  ) { }
+    private _router: Router,
+    private globalSvc: GlobalsService
+  ) {}
 
   ngOnInit(): void {
     window.sessionStorage.clear();
@@ -39,30 +37,29 @@ export class InicioSesionComponent implements OnInit {
   ngOnDestroy(): void {
     this.subscriptions.forEach(sub => {
       sub.unsubscribe();
-    })
+    });
   }
 
   private resetUser() {
     this.user = {
       password: '',
       roll: '',
-      user: ''
+      user: '',
     };
   }
 
   loadSesion() {
     this.spinner.loader(true);
     this.subscriptions.push(
-      this.svc.login(this.user)
-      .subscribe(
+      this.svc.login(this.user).subscribe(
         (data: any) => {
           this.spinner.loader(false);
           if (data && data.status === 200) {
             if (data && data.body) {
               let usuarioL = data.body;
               if (usuarioL.estado === 0) {
-                this.util.setObj("token", JSON.stringify('828fbcc651f82f21e0b6fc0c23a4f5c4'));
-                this.util.setObj("usuario", JSON.stringify(usuarioL));
+                this.util.setObj('token', JSON.stringify('828fbcc651f82f21e0b6fc0c23a4f5c4'));
+                this.util.setObj('usuario', JSON.stringify(usuarioL));
                 this.globalSvc.updateSession(true);
                 this._router.navigate(['/sisgespro']);
               } else {
@@ -86,9 +83,9 @@ export class InicioSesionComponent implements OnInit {
           }
           this.resetUser();
           this.spinner.loader(false);
-          Swal.fire('Error', msn, 'error')
+          Swal.fire('Error', msn, 'error');
         }
       )
-    )
+    );
   }
 }

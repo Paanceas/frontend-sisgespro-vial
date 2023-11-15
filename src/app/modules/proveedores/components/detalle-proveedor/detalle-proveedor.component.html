@@ -1,30 +1,39 @@
-
-<a [routerLink]="['/proveedores/consulta']" class="d-none ml-4 mb-4 d-sm-inline-block btn btn-sm btn-dark shadow-sm"><i class="fas fa-arrow-circle-left a-sm text-white-50"></i> Volver </a>
-<br>
-<div class="d-flex flex-column align-items-center justify-content-center w-100 container-sisgespro" *ngIf="listaMateriales.length === 0">
-  <h2> No se encontrarón resultados para el proveedor <u>{{proveedor.nombre}}</u> </h2>
-  <br>
-  <img src="./assets/img/empty.svg" alt="">
+<a [routerLink]="['/proveedores/consulta']" class="d-none ml-4 mb-4 d-sm-inline-block btn btn-sm btn-dark shadow-sm"
+  ><i class="fas fa-arrow-circle-left a-sm text-white-50"></i> Volver
+</a>
+<br />
+<div
+  class="d-flex flex-column align-items-center justify-content-center w-100 container-sisgespro"
+  *ngIf="listaMateriales.length === 0"
+>
+  <h2>
+    No se encontrarón resultados para el proveedor <u>{{ proveedor.nombre }}</u>
+  </h2>
+  <br />
+  <img src="./assets/img/empty.svg" alt="" />
 </div>
 <div class="container-fluid" *ngIf="listaMateriales.length > 0">
-  <h1 class="h3 mb-1 text-gray-800">Materiales del proveedor {{proveedor.nombre}}</h1>
-  <p class="mb-4">En este apartado podra ver los materiales que estan refetenciados al proveedor {{proveedor.nombre}}</p>
+  <h1 class="h3 mb-1 text-gray-800">Materiales del proveedor {{ proveedor.nombre }}</h1>
+  <p class="mb-4">
+    En este apartado podra ver los materiales que estan refetenciados al proveedor {{ proveedor.nombre }}
+  </p>
   <div class="container-materiales">
     <div class="card shadow mb-4 w-48" *ngFor="let mat of listaMateriales">
       <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary"> {{mat.codigo_material}} - {{mat.nombre_material}} </h6>
+        <h6 class="m-0 font-weight-bold text-primary">{{ mat.codigo_material }} - {{ mat.nombre_material }}</h6>
       </div>
       <div class="card-body">
         <div>
           <p>
-            {{mat.descripcion_material}}
+            {{ mat.descripcion_material }}
           </p>
           <ul class="list-group list-group-flush">
-            <li class="list-group-item"><strong>Categoria</strong>: {{mat.nombre_categoria}}</li>
-            <li class="list-group-item"><strong>Cantidad</strong>:  {{mat.cantidad_total}} {{mat.abreviatura}}</li>
-            <li class="list-group-item"><strong>Precio Unitario</strong>: ${{mat.precio_unitario}}</li>
+            <li class="list-group-item"><strong>Categoria</strong>: {{ mat.nombre_categoria }}</li>
+            <li class="list-group-item"><strong>Cantidad</strong>: {{ mat.cantidad_total }} {{ mat.abreviatura }}</li>
+            <li class="list-group-item"><strong>Precio Unitario</strong>: ${{ mat.precio_unitario }}</li>
           </ul>
         </div>
       </div>
     </div>
+  </div>
 </div>

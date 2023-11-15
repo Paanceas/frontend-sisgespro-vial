@@ -4,24 +4,20 @@ import { Cotizacion } from '../models/Contizacion';
 import { HttpMethod } from 'src/app/common/enums/httpMethod.enum';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CotizacionesService {
-
-  constructor(
-    private api: ApiService
-  ) { }
+  constructor(private api: ApiService) {}
 
   getCotizaciones() {
     return this.api.apiGet(HttpMethod.quotations);
   }
   getCotizacion(id_cotizacion: number) {
-    const params = `cotizacion=${id_cotizacion}`
+    const params = `cotizacion=${id_cotizacion}`;
     return this.api.apiGet(HttpMethod.quotation, params);
   }
 
   postCotizacion(ad: Cotizacion) {
     return this.api.apiPost(HttpMethod.quotation, ad);
   }
-
 }

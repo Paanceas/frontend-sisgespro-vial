@@ -14,20 +14,11 @@
     Resultados de búsqueda para <u>{{ search }}</u>
   </h2>
   <div class="d-flex align-items-center w-100 flex-wrap">
-    <div
-      class="card m-5 align-self-stretch"
-      style="width: 18rem"
-      *ngFor="let m of modules"
-    >
+    <div class="card m-5 align-self-stretch" style="width: 18rem" *ngFor="let m of modules">
       <em class="icon-big {{ m.icon }}"></em>
       <div class="card-body">
         <h5 class="card-title">{{ m.name }}</h5>
-        <a
-          *ngIf="m.submenu.length === 0"
-          [routerLink]="[m.path]"
-          class="card-link"
-          >Ir al Módulo</a
-        >
+        <a *ngIf="m.submenu.length === 0" [routerLink]="[m.path]" class="card-link">Ir al Módulo</a>
       </div>
       <ul class="list-group list-group-flush" *ngFor="let sub of m.submenu">
         <li class="list-group-item d-flex justify-content-between">

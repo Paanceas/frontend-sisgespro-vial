@@ -1,37 +1,40 @@
-<a [routerLink]="['/proyectos/consulta']" class="d-none ml-4 mb-4 d-sm-inline-block btn btn-sm btn-dark shadow-sm"><i class="fas fa-arrow-circle-left a-sm text-white-50"></i> Volver </a>
-<br>
+<a [routerLink]="['/proyectos/consulta']" class="d-none ml-4 mb-4 d-sm-inline-block btn btn-sm btn-dark shadow-sm"
+  ><i class="fas fa-arrow-circle-left a-sm text-white-50"></i> Volver
+</a>
+<br />
 <div class="container-fluid">
-  <h1 class="h3 mb-1 text-gray-800">Proyecto {{proyecto.nombre_proyecto}}</h1>
-  <p class="mb-4">En este apartado podra ver el detalle del proyecto {{proyecto.nombre_proyecto}}</p>
+  <h1 class="h3 mb-1 text-gray-800">Proyecto {{ proyecto.nombre_proyecto }}</h1>
+  <p class="mb-4">En este apartado podra ver el detalle del proyecto {{ proyecto.nombre_proyecto }}</p>
   <div class="container-materiales">
     <div class="card shadow mb-4 w-48">
       <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary"> Detalle </h6>
+        <h6 class="m-0 font-weight-bold text-primary">Detalle</h6>
       </div>
       <div class="card-body">
         <ul class="list-group list-group-flush">
-          <li class="list-group-item"><strong>Id</strong>: {{proyecto.id_proyecto}}</li>
-          <li class="list-group-item"><strong>Descripción</strong>: {{proyecto.descripcion_proyecto}}</li>
-          <li class="list-group-item"><strong>Fecha Inicial</strong>: {{proyecto.fecha_inicio_proyecto}}</li>
-          <li class="list-group-item"><strong>Fecha Final</strong>: {{proyecto.fecha_final_proyecto}}</li>
-          <li class="list-group-item"><strong>Valor Anticipo</strong>: ${{proyecto.valor_anticipado}}</li>
-          <li class="list-group-item"><strong>Valor Total</strong>: ${{proyecto.valor_total_proyecto}}</li>
-          <li class="list-group-item"><strong>Estado</strong>: {{proyecto.tipo_estado}}</li>
+          <li class="list-group-item"><strong>Id</strong>: {{ proyecto.id_proyecto }}</li>
+          <li class="list-group-item"><strong>Descripción</strong>: {{ proyecto.descripcion_proyecto }}</li>
+          <li class="list-group-item"><strong>Fecha Inicial</strong>: {{ proyecto.fecha_inicio_proyecto }}</li>
+          <li class="list-group-item"><strong>Fecha Final</strong>: {{ proyecto.fecha_final_proyecto }}</li>
+          <li class="list-group-item"><strong>Valor Anticipo</strong>: ${{ proyecto.valor_anticipado }}</li>
+          <li class="list-group-item"><strong>Valor Total</strong>: ${{ proyecto.valor_total_proyecto }}</li>
+          <li class="list-group-item"><strong>Estado</strong>: {{ proyecto.tipo_estado }}</li>
         </ul>
       </div>
     </div>
     <div class="card shadow mb-4 w-48">
       <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary"> Empleados asignados al proyecto </h6>
+        <h6 class="m-0 font-weight-bold text-primary">Empleados asignados al proyecto</h6>
       </div>
       <div class="card-body">
         <div *ngFor="let em of listaEmpleados">
           <ul class="list-group list-group-flush">
-            <li class="list-group-item"><strong>Id</strong>: {{em.id_empleado}}</li>
-            <li class="list-group-item"><strong>Nombre</strong>: {{em.nombre}}</li>
-            <li class="list-group-item"><strong>Cargo</strong>: {{em.nombre_cargo}}</li>
+            <li class="list-group-item"><strong>Id</strong>: {{ em.id_empleado }}</li>
+            <li class="list-group-item"><strong>Nombre</strong>: {{ em.nombre }}</li>
+            <li class="list-group-item"><strong>Cargo</strong>: {{ em.nombre_cargo }}</li>
           </ul>
         </div>
       </div>
     </div>
+  </div>
 </div>

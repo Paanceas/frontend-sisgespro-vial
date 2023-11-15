@@ -9,8 +9,6 @@ import { FormsModule } from '@angular/forms';
 import { EmpleadosProyectoComponent } from './components/empleados-proyecto/empleados-proyecto.component';
 import { FilterPipe } from './pipes/Filter.pipe';
 
-
-
 @NgModule({
   declarations: [
     ConsultaProyectosComponent,
@@ -18,12 +16,8 @@ import { FilterPipe } from './pipes/Filter.pipe';
     DetalleProyectoComponent,
     MapaProyectoComponent,
     EmpleadosProyectoComponent,
-    FilterPipe
+    FilterPipe,
   ],
-  imports: [
-    CommonModule,
-    FormsModule,
-    ProyectosRoutingModule
-  ]
+  imports: [CommonModule, FormsModule, ProyectosRoutingModule],
 })
-export class ProyectosModule { }
+export class ProyectosModule {}

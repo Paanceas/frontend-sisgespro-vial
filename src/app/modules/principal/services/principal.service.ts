@@ -13,11 +13,23 @@ interface AnioCotizacion {
 }
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class PrincipalService {
-
-  meses: string[] = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
+  meses: string[] = [
+    'Enero',
+    'Febrero',
+    'Marzo',
+    'Abril',
+    'Mayo',
+    'Junio',
+    'Julio',
+    'Agosto',
+    'Septiembre',
+    'Octubre',
+    'Noviembre',
+    'Diciembre',
+  ];
   private util: Util = new Util();
 
   public organizarCotizacionesParaGrafico(cotizaciones: QuotationData[]) {
@@ -26,9 +38,11 @@ export class PrincipalService {
 
     aniosUnicos.forEach(anio => {
       const datosMes = new Array(12).fill(0);
-      cotizaciones.filter(c => c.anio === anio).forEach(cotizacion => {
-        datosMes[cotizacion.mes - 1] = cotizacion.cantidad_cotizaciones;
-      });
+      cotizaciones
+        .filter(c => c.anio === anio)
+        .forEach(cotizacion => {
+          datosMes[cotizacion.mes - 1] = cotizacion.cantidad_cotizaciones;
+        });
 
       const color = this.util.getRandomColor();
       datasets.push({
@@ -44,12 +58,12 @@ export class PrincipalService {
       type: 'line',
       data: {
         labels: this.meses,
-        datasets: datasets
+        datasets: datasets,
       },
       options: {
         responsive: true,
-        maintainAspectRatio: true
-      }
+        maintainAspectRatio: true,
+      },
     };
   }
 }

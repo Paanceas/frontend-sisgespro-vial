@@ -6,14 +6,14 @@ import { UnauthorizedComponent } from './components/unauthorized/unauthorized.co
 import { ConsultaComponent } from './components/consulta/consulta.component';
 
 const routes: Routes = [
-    {path:'', component: InformacionComponent, canActivate:[AccesoTokenGuard]},
-    {path:'consulta/:search', component: ConsultaComponent, canActivate:[AccesoTokenGuard]},
-    {path:'unauthorized', component: UnauthorizedComponent, canActivate:[AccesoTokenGuard]},
-    {path:'sisgespro', component: InformacionComponent, canActivate:[AccesoTokenGuard]},
+  { path: '', component: InformacionComponent, canActivate: [AccesoTokenGuard] },
+  { path: 'consulta/:search', component: ConsultaComponent, canActivate: [AccesoTokenGuard] },
+  { path: 'unauthorized', component: UnauthorizedComponent, canActivate: [AccesoTokenGuard] },
+  { path: 'sisgespro', component: InformacionComponent, canActivate: [AccesoTokenGuard] },
 ];
 
 @NgModule({
-    imports: [RouterModule.forChild(routes)],
-    exports: [RouterModule]
+  imports: [RouterModule.forChild(routes)],
+  exports: [RouterModule],
 })
 export class PrincipalRoutingModule {}

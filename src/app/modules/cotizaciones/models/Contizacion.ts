@@ -1,6 +1,7 @@
 export interface MaterialesCotizacion {
   id_material: number | null;
   id_tipo_uni_medida: number | null;
+  nombre_tipo_uni_medida?: string | null;
   precio: number;
   cantidad: number;
   descripcion: string | null;

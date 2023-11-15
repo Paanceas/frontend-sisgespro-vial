@@ -7,14 +7,14 @@ import { DetalleProveedorComponent } from './components/detalle-proveedor/detall
 import { InformacionComponent } from '../principal/components/informacion/informacion.component';
 
 const routes: Routes = [
-  {path: '', redirectTo:'/proveedores/consulta', pathMatch:'full'},
-  {path:'consulta', component: ConsultaProveedoresComponent, canActivate:[AccesoTokenGuard]},
-  {path:'creacion', component: CrearProveedorComponent, canActivate:[AccesoTokenGuard]},
-  {path:'detalle/:proveedor', component: DetalleProveedorComponent, canActivate:[AccesoTokenGuard]},
+  { path: '', redirectTo: '/proveedores/consulta', pathMatch: 'full' },
+  { path: 'consulta', component: ConsultaProveedoresComponent, canActivate: [AccesoTokenGuard] },
+  { path: 'creacion', component: CrearProveedorComponent, canActivate: [AccesoTokenGuard] },
+  { path: 'detalle/:proveedor', component: DetalleProveedorComponent, canActivate: [AccesoTokenGuard] },
 ];
 
 @NgModule({
-    imports: [RouterModule.forChild(routes)],
-    exports: [RouterModule]
+  imports: [RouterModule.forChild(routes)],
+  exports: [RouterModule],
 })
 export class ProveedoresRoutingModule {}

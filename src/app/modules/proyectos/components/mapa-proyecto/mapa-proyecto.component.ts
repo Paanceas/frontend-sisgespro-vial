@@ -6,10 +6,9 @@ import { mapData } from '../../models/MapData';
 @Component({
   selector: 'app-mapa-proyecto',
   templateUrl: './mapa-proyecto.component.html',
-  styleUrls: ['./mapa-proyecto.component.css']
+  styleUrls: ['./mapa-proyecto.component.css'],
 })
 export class MapaProyectoComponent implements OnInit {
-
   @Output() pathCreated = new EventEmitter<mapData>();
   @Input() resetSignal: boolean = false;
 
@@ -19,7 +18,7 @@ export class MapaProyectoComponent implements OnInit {
   private readonly defaultCenter = { lat: 4.60971, lng: -74.08175 };
   private readonly defaultZoom = 11;
 
-  constructor(private googleMapsLoader: GoogleMapsLoaderService) { }
+  constructor(private googleMapsLoader: GoogleMapsLoaderService) {}
 
   ngOnInit() {
     this.googleMapsLoader.loader.load().then(() => {
@@ -35,30 +34,30 @@ export class MapaProyectoComponent implements OnInit {
   }
 
   private initializeMap(): void {
-    this.map = new google.maps.Map(document.getElementById("map") as HTMLElement, {
+    this.map = new google.maps.Map(document.getElementById('map') as HTMLElement, {
       zoom: this.defaultZoom,
       center: this.defaultCenter,
-      mapTypeId: "terrain",
+      mapTypeId: 'terrain',
       streetViewControl: false,
       styles: [
         {
-          featureType: "poi", // Desactiva los lugares (Points of Interest)
-          stylers: [{ visibility: "off" }]
+          featureType: 'poi', // Desactiva los lugares (Points of Interest)
+          stylers: [{ visibility: 'off' }],
         },
         {
-          featureType: "transit", // Desactiva las opciones de tránsito
-          stylers: [{ visibility: "off" }]
-        }
+          featureType: 'transit', // Desactiva las opciones de tránsito
+          stylers: [{ visibility: 'off' }],
+        },
       ],
     });
 
     this.poly = new google.maps.Polyline({
-      strokeColor: "#FEEE04",
+      strokeColor: '#FEEE04',
       strokeOpacity: 1.0,
       strokeWeight: 3,
     });
     this.poly.setMap(this.map);
-    this.map.addListener("click", this.addLatLngToPoly.bind(this));
+    this.map.addListener('click', this.addLatLngToPoly.bind(this));
   }
 
   private addLatLngToPoly(event: any): void {
@@ -91,10 +90,10 @@ export class MapaProyectoComponent implements OnInit {
   }
 
   private initializeAutocomplete(): void {
-    const input = document.getElementById("place-search") as HTMLInputElement;
+    const input = document.getElementById('place-search') as HTMLInputElement;
     const autocomplete = new google.maps.places.Autocomplete(input);
-    autocomplete.bindTo("bounds", this.map);
-    autocomplete.addListener("place_changed", this.handlePlaceChange.bind(this, autocomplete));
+    autocomplete.bindTo('bounds', this.map);
+    autocomplete.addListener('place_changed', this.handlePlaceChange.bind(this, autocomplete));
   }
 
   private handlePlaceChange(autocomplete: google.maps.places.Autocomplete): void {
@@ -110,25 +109,25 @@ export class MapaProyectoComponent implements OnInit {
 
   private savePolyline(): void {
     const path = this.poly.getPath().getArray();
-    const formattedPath: any = path.map((latLng) => {
+    const formattedPath: any = path.map(latLng => {
       return { lat: latLng.lat(), lng: latLng.lng() };
     });
 
     if (JSON.stringify(formattedPath).length > 1000) {
-      Swal.fire('Atención', "Superaste el limite de puntos a trazar", 'warning');
+      Swal.fire('Atención', 'Superaste el limite de puntos a trazar', 'warning');
       this.removeLastPoint();
       return;
     }
 
     this.pathCreated.emit({
       kilometers: this.calculatePolylineDistance(),
-      path: formattedPath
+      path: formattedPath,
     });
   }
 
   resetMap(): void {
-    const input = document.getElementById("place-search") as HTMLInputElement;
-    input.value = "";
+    const input = document.getElementById('place-search') as HTMLInputElement;
+    input.value = '';
     this.markers.forEach(this.removeMarker);
     this.markers = [];
     this.resetPolyline();
@@ -138,7 +137,7 @@ export class MapaProyectoComponent implements OnInit {
   private resetPolyline(): void {
     this.poly.setMap(null);
     this.poly = new google.maps.Polyline({
-      strokeColor: "#FEEE04",
+      strokeColor: '#FEEE04',
       strokeOpacity: 1.0,
       strokeWeight: 3,
     });
@@ -161,5 +160,4 @@ export class MapaProyectoComponent implements OnInit {
     }
     return Math.round((distance / 1000) * 100) / 100;
   }
-
 }

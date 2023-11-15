@@ -11,12 +11,9 @@ import { HeaderComponent } from './components/header/header.component';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AuthInterceptorService } from './services/auth-interceptor.service';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 @NgModule({
-  declarations: [
-    AppComponent,
-    SidebarComponent,
-    HeaderComponent
-  ],
+  declarations: [AppComponent, SidebarComponent, HeaderComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -24,17 +21,18 @@ import { AuthInterceptorService } from './services/auth-interceptor.service';
     BrowserAnimationsModule,
     HttpClientModule,
     RouterModule,
-    FormsModule
+    FormsModule,
+    NgbModule,
   ],
   providers: [
     { provide: LocationStrategy, useClass: HashLocationStrategy },
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptorService,
-      multi: true
-    }
+      multi: true,
+    },
   ],
   bootstrap: [AppComponent],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
-export class AppModule { }
+export class AppModule {}

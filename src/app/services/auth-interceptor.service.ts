@@ -6,12 +6,12 @@ import { catchError } from 'rxjs/operators';
 import { Router } from '@angular/router';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthInterceptorService implements HttpInterceptor {
-  util:Util = new Util();
+  util: Util = new Util();
 
-  constructor(private _router:Router) {}
+  constructor(private _router: Router) {}
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     const token: string = this.util.getObj('token');
@@ -19,20 +19,17 @@ export class AuthInterceptorService implements HttpInterceptor {
     if (token) {
       request = req.clone({
         setHeaders: {
-          Auth: `${ token }`
-        }
+          Auth: `${token}`,
+        },
       });
     }
-    return next.handle(request).pipe(
-      catchError( this.setErrors )
-    );
+    return next.handle(request).pipe(catchError(this.setErrors));
   }
 
-  setErrors(error:HttpErrorResponse){
-    if(error.status === 401){
+  setErrors(error: HttpErrorResponse) {
+    if (error.status === 401) {
       window.location.href = '/#/unauthorized';
     }
     return throwError(error);
   }
 }
-

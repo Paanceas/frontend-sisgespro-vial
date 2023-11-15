@@ -7,16 +7,15 @@ import { GlobalsService } from 'src/app/services/globals.service';
 @Component({
   selector: 'app-consulta',
   templateUrl: './consulta.component.html',
-  styleUrls: ['./consulta.component.css']
+  styleUrls: ['./consulta.component.css'],
 })
 export class ConsultaComponent implements OnInit {
-
   private subscription: Subscription;
   private subscriptionP: Subscription;
   private listSidebar: Sidebar[] = [];
 
   modules: Sidebar[] = [];
-  search: string = "";
+  search: string = '';
 
   constructor(
     private rutaActiva: ActivatedRoute,
@@ -27,12 +26,10 @@ export class ConsultaComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.subscription = this.rutaActiva.params.subscribe(
-      (params: Params) => {
-        this.search = params.search;
-        this.find();
-      }
-    );
+    this.subscription = this.rutaActiva.params.subscribe((params: Params) => {
+      this.search = params.search;
+      this.find();
+    });
     this.subscription = this.globalSvc.getSidebar$().subscribe(response => {
       this.listSidebar = response;
       this.find();
@@ -50,9 +47,8 @@ export class ConsultaComponent implements OnInit {
 
   valideModules(list: Sidebar[], search: string): Sidebar[] {
     let newList: Sidebar[] = [];
-    newList = list.filter((m) => {
-      return m.name.toLowerCase()
-        .includes(search.toLowerCase());
+    newList = list.filter(m => {
+      return m.name.toLowerCase().includes(search.toLowerCase());
     });
     return newList;
   }
@@ -61,5 +57,4 @@ export class ConsultaComponent implements OnInit {
     this.subscription.unsubscribe();
     this.subscriptionP.unsubscribe();
   }
-
 }

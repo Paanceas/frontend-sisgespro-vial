@@ -7,32 +7,65 @@
     <form #consultaCForm="ngForm" class="form-inline">
       <div class="form-group mb-2">
         <label for="id_tipo_identificacion" class="sr-only">Tipo de Identificación</label>
-        <select name="id_tipo_identificacion" id="id_tipo_identificacion" class="form-control" [disabled]="cotizacionesSeleccionadas.length > 0" [(ngModel)]="id_tipo_identificacion" required #id_tipo_identificacionControl="ngModel" [ngClass]="{'error': id_tipo_identificacionControl.touched && id_tipo_identificacionControl.errors?.required}">
+        <select
+          name="id_tipo_identificacion"
+          id="id_tipo_identificacion"
+          class="form-control"
+          [disabled]="cotizacionesSeleccionadas.length > 0"
+          [(ngModel)]="id_tipo_identificacion"
+          required
+          #id_tipo_identificacionControl="ngModel"
+          [ngClass]="{ error: id_tipo_identificacionControl.touched && id_tipo_identificacionControl.errors?.required }"
+        >
           <option [ngValue]="null">Seleccione tipo de identificación...</option>
-          <option *ngFor="let ti of listaTipoIdentificacion" [value]="ti.tipo_identificacion" >{{ti.tipo_identificacion}}</option>
+          <option *ngFor="let ti of listaTipoIdentificacion" [value]="ti.tipo_identificacion">
+            {{ ti.tipo_identificacion }}
+          </option>
         </select>
       </div>
       <div class="form-group mx-sm-3 mb-2">
         <label for="identificacion" class="sr-only">Password</label>
-        <input type="number" class="form-control" id="identificacion" name="identificacion" [disabled]="cotizacionesSeleccionadas.length > 0" [(ngModel)]="identificacion" required #identificacionControl="ngModel" placeholder="Número identificación" [ngClass]="{'error': identificacionControl.touched && identificacionControl.errors?.required}">
+        <input
+          type="number"
+          class="form-control"
+          id="identificacion"
+          name="identificacion"
+          [disabled]="cotizacionesSeleccionadas.length > 0"
+          [(ngModel)]="identificacion"
+          required
+          #identificacionControl="ngModel"
+          placeholder="Número identificación"
+          [ngClass]="{ error: identificacionControl.touched && identificacionControl.errors?.required }"
+        />
       </div>
-      <button class="btn btn-primary mb-2" [disabled]="consultaCForm.invalid || cotizacionesSeleccionadas.length > 0" (click)="buscarCotizaciones()">Buscar Cotizaciones</button>
-      <button class="btn ml-2 btn-dark mb-2" *ngIf="cotizacionesSeleccionadas.length > 0" (click)="reset()">Nueva busqueda</button>
-
+      <button
+        class="btn btn-primary mb-2"
+        [disabled]="consultaCForm.invalid || cotizacionesSeleccionadas.length > 0"
+        (click)="buscarCotizaciones()"
+      >
+        Buscar Cotizaciones
+      </button>
+      <button class="btn ml-2 btn-dark mb-2" *ngIf="cotizacionesSeleccionadas.length > 0" (click)="reset()">
+        Nueva busqueda
+      </button>
     </form>
   </div>
 </div>
 
-<div *ngIf="cotizacionesSeleccionadas.length > 0" class=" max-width d-flex flex-wrap align-items-stretch">
+<div *ngIf="cotizacionesSeleccionadas.length > 0" class="max-width d-flex flex-wrap align-items-stretch">
   <div class="card shadow mb-4 w-25 mr-2" *ngFor="let item of cotizacionesSeleccionadas">
-      <div class="card-header py-3">
-          <h6 class="m-0 font-weight-bold text-primary">Cotización #{{item.id_cotizacion}}</h6>
-      </div>
-      <div class="card-body">
-          <p>
-            Cotización registrada el <span>{{item.fecha_cotizacion}}</span> por solicitud del cliente <span>{{item.nombre}}</span>,
-            esta cotización tiene un IVA del {{item.iva}}%
-            para mas información: <a [routerLink]="['/cotizaciones/detalle', item.id_cotizacion]" (click)="detalle(item)">Ver cotización completa →</a>
-      </div>
+    <div class="card-header py-3">
+      <h6 class="m-0 font-weight-bold text-primary">Cotización #{{ item.id_cotizacion }}</h6>
+    </div>
+    <div class="card-body">
+      <p>
+        Cotización registrada el <span>{{ item.fecha_cotizacion }}</span> por solicitud del cliente
+        <span>{{ item.nombre }}</span
+        >, esta cotización tiene un IVA del {{ item.iva }}% para mas información:
+        <a [routerLink]="['/cotizaciones/detalle', item.id_cotizacion]" (click)="detalle(item)"
+          >Ver cotización completa →</a
+        >
+      </p>
+    </div>
   </div>
 </div>

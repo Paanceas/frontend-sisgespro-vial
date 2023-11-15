@@ -10,10 +10,9 @@ import Swal from 'sweetalert2';
 @Component({
   selector: 'app-detalle-proyecto',
   templateUrl: './detalle-proyecto.component.html',
-  styleUrls: ['./detalle-proyecto.component.css']
+  styleUrls: ['./detalle-proyecto.component.css'],
 })
 export class DetalleProyectoComponent implements OnInit {
-
   private subscription: Subscription;
   private id_proyecto: number = 0;
   private util: Util = new Util();
@@ -22,7 +21,7 @@ export class DetalleProyectoComponent implements OnInit {
     private rutaActiva: ActivatedRoute,
     private srv: ProyectoService,
     private spinner: SpinnerService,
-    private _router: Router,
+    private _router: Router
   ) {
     this.subscription = new Subscription();
   }
@@ -31,43 +30,39 @@ export class DetalleProyectoComponent implements OnInit {
   proyecto: any;
 
   ngOnInit(): void {
-    this.subscription = this.rutaActiva.params.subscribe(
-      (params: Params) => {
-        this.id_proyecto = params.proyecto;
-        this.proyecto = this.util.getObj("proyecto", true);
-        if (!this.proyecto) {
-          this._router.navigate(["/proyectos/consulta"]);
-        }
-        this.util.delObj("proyecto");
-        this.getProyecto();
+    this.subscription = this.rutaActiva.params.subscribe((params: Params) => {
+      this.id_proyecto = params.proyecto;
+      this.proyecto = this.util.getObj('proyecto', true);
+      if (!this.proyecto) {
+        this._router.navigate(['/proyectos/consulta']);
       }
-    );
+      this.util.delObj('proyecto');
+      this.getProyecto();
+    });
   }
 
   getProyecto() {
     this.spinner.loader(true);
-    this.srv.getProyecto(this.id_proyecto)
-      .subscribe(
-        (data: any) => {
-          if (data && data.body && data.body.length > 0) {
-            this.listaEmpleados = data.body;
-          }
-          this.spinner.loader(false);
-        },
-        err => {
-          let msn = 'Error!';
-          console.error(err);
-          if (err.error && err.error.message) {
-            msn = err.error.message;
-          }
-          this.spinner.loader(false);
-          Swal.fire('Error', msn, 'error')
+    this.srv.getProyecto(this.id_proyecto).subscribe(
+      (data: any) => {
+        if (data && data.body && data.body.length > 0) {
+          this.listaEmpleados = data.body;
         }
-      )
+        this.spinner.loader(false);
+      },
+      err => {
+        let msn = 'Error!';
+        console.error(err);
+        if (err.error && err.error.message) {
+          msn = err.error.message;
+        }
+        this.spinner.loader(false);
+        Swal.fire('Error', msn, 'error');
+      }
+    );
   }
 
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
   }
-
 }

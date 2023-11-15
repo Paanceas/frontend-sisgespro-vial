@@ -5,24 +5,20 @@ import { Proyecto } from '../models/ProyectoRequest';
 import { HttpMethod } from 'src/app/common/enums/httpMethod.enum';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ProyectoService {
-
-  constructor(
-    private api: ApiService
-  ) { }
+  constructor(private api: ApiService) {}
 
   getProyectos() {
     return this.api.apiGet(HttpMethod.projects);
   }
   getProyecto(id_proyecto: number) {
-    const params = `id_proyecto=${id_proyecto}`
+    const params = `id_proyecto=${id_proyecto}`;
     return this.api.apiGet(HttpMethod.project, params);
   }
 
   setProyecto(proyecto: Proyecto) {
     return this.api.apiPost(HttpMethod.project, proyecto);
   }
-
 }

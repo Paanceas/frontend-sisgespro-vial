@@ -4,13 +4,13 @@ import { InicioComponent } from './components/inicio/inicio.component';
 import { NoSessionGuard } from 'src/app/guards/no-session.guard';
 
 const routes: Routes = [
-    {path:'', component: InicioComponent, canActivate:[NoSessionGuard]},
-    {path:'inicio', component: InicioComponent, canActivate:[NoSessionGuard] },
-    {path:'**', redirectTo:'/inicio', pathMatch:'full'}
+  { path: '', component: InicioComponent, canActivate: [NoSessionGuard] },
+  { path: 'inicio', component: InicioComponent, canActivate: [NoSessionGuard] },
+  { path: '**', redirectTo: '/inicio', pathMatch: 'full' },
 ];
 
 @NgModule({
-    imports: [RouterModule.forChild(routes)],
-    exports: [RouterModule]
+  imports: [RouterModule.forChild(routes)],
+  exports: [RouterModule],
 })
 export class SiteRoutingModule {}

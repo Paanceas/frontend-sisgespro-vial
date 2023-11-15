@@ -1,6 +1,6 @@
-@import "~bootstrap/dist/css/bootstrap.css";
-@import "~animate.css/animate.min.css";
-@import "styleDasboard.css";
+@import '~bootstrap/dist/css/bootstrap.css';
+@import '~animate.css/animate.min.css';
+@import 'styleDasboard.css';
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
 /*===== VARIABLES CSS =====*/
 
@@ -8,14 +8,14 @@
   --nav-width: 92px;
   /*===== Colores =====*/
   --first-color: #ffef05;
-  --bg-color: #12192C;
-  --sub-color: #F6F6F6;
-  --white-color: #FFF;
+  --bg-color: #12192c;
+  --sub-color: #f6f6f6;
+  --white-color: #fff;
   --silver-color: #f7faff;
   /*===== Fuente y tipografia =====*/
   --body-font: 'Poppins', sans-serif;
   --normal-font-size: 1rem;
-  --small-font-size: .875rem;
+  --small-font-size: 0.875rem;
   /*===== z index =====*/
   --z-fixed: 100;
 }
@@ -41,7 +41,9 @@ a {
   height: 600px;
 }
 
-div.error, input.error, textarea.error {
+div.error,
+input.error,
+textarea.error {
   border-bottom: 2px solid #e77171 !important;
   color: #e77171;
 }
@@ -51,11 +53,15 @@ input.error2 {
   color: #e77171;
 }
 
-.error::placeholder, .error>input::placeholder, .error>div>input::placeholder {
+.error::placeholder,
+.error > input::placeholder,
+.error > div > input::placeholder {
   color: #e77171;
 }
 
-.error>em, label.error, .error>.i>em {
+.error > em,
+label.error,
+.error > .i > em {
   color: #e77171;
 }
 
@@ -97,6 +103,10 @@ input.error2 {
 .ngx-spinner-overlay .loading-text {
   display: flex !important;
   justify-content: center !important;
+}
+
+.modal {
+  z-index: 99999999 !important;
 }
 
 @media print {

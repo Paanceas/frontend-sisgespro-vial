@@ -9,17 +9,7 @@ import { FormsModule } from '@angular/forms';
 import { PipesModule } from 'src/app/pipes/pipes.module';
 
 @NgModule({
-  declarations: [
-    ConsultaAdquisicionComponent,
-    CrearAdquisicionComponent,
-    DetalleAdquisicionComponent
-  ],
-  imports: [
-    CommonModule,
-    AdquisicionRoutingModule,
-    ChartModule,
-    PipesModule,
-    FormsModule
-  ]
+  declarations: [ConsultaAdquisicionComponent, CrearAdquisicionComponent, DetalleAdquisicionComponent],
+  imports: [CommonModule, AdquisicionRoutingModule, ChartModule, PipesModule, FormsModule],
 })
-export class AdquisicionModule { }
+export class AdquisicionModule {}

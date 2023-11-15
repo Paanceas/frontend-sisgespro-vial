@@ -9,17 +9,7 @@ import { PipesModule } from 'src/app/pipes/pipes.module';
 import { DirectivesModule } from 'src/app/directives/directives.module';
 
 @NgModule({
-  declarations: [
-    InformacionComponent,
-    UnauthorizedComponent,
-    ConsultaComponent
-  ],
-  imports: [
-    CommonModule,
-    PrincipalRoutingModule,
-    ChartModule,
-    PipesModule,
-    DirectivesModule
-  ]
+  declarations: [InformacionComponent, UnauthorizedComponent, ConsultaComponent],
+  imports: [CommonModule, PrincipalRoutingModule, ChartModule, PipesModule, DirectivesModule],
 })
-export class PrincipalModule { }
+export class PrincipalModule {}

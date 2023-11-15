@@ -5,13 +5,7 @@ import { InicioSesionComponent } from './components/inicio-sesion/inicio-sesion.
 import { LoginRoutingModule } from './login-routing.module';
 
 @NgModule({
-  declarations: [
-    InicioSesionComponent
-  ],
-  imports: [
-    CommonModule,
-    LoginRoutingModule,
-    FormsModule
-  ]
+  declarations: [InicioSesionComponent],
+  imports: [CommonModule, LoginRoutingModule, FormsModule],
 })
-export class LoginModule { }
+export class LoginModule {}

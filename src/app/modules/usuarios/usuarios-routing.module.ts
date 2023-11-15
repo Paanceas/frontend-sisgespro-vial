@@ -4,13 +4,12 @@ import { AccesoTokenGuard } from 'src/app/guards/acceso-token.guard';
 import { ConsultaUsuariosComponent } from './components/consulta-usuarios/consulta-usuarios.component';
 
 const routes: Routes = [
-  {path:'consulta', component: ConsultaUsuariosComponent, canActivate:[AccesoTokenGuard]},
-  {path: '**', redirectTo:'/sisgespro', pathMatch:'full'},
-
+  { path: 'consulta', component: ConsultaUsuariosComponent, canActivate: [AccesoTokenGuard] },
+  { path: '**', redirectTo: '/sisgespro', pathMatch: 'full' },
 ];
 
 @NgModule({
-    imports: [RouterModule.forChild(routes)],
-    exports: [RouterModule]
+  imports: [RouterModule.forChild(routes)],
+  exports: [RouterModule],
 })
 export class UsuariosRoutingModule {}

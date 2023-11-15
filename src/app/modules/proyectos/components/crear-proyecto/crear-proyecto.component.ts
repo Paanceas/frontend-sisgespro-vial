@@ -11,10 +11,9 @@ import { mapData } from '../../models/MapData';
 @Component({
   selector: 'app-crear-proyecto',
   templateUrl: './crear-proyecto.component.html',
-  styleUrls: ['./crear-proyecto.component.css']
+  styleUrls: ['./crear-proyecto.component.css'],
 })
 export class CrearProyectoComponent implements OnInit {
-
   polylinePath: google.maps.LatLng[] = [];
   resetMapSignal: boolean = false;
   proyecto: Proyecto = {} as Proyecto;
@@ -26,8 +25,8 @@ export class CrearProyectoComponent implements OnInit {
     private srvCotizacion: CotizacionesService,
     private srvProyecto: ProyectoService,
     private spinner: SpinnerService,
-    private _router: Router,
-  ) { }
+    private _router: Router
+  ) {}
 
   ngOnInit(): void {
     this.cargaCotizaciones();
@@ -43,12 +42,12 @@ export class CrearProyectoComponent implements OnInit {
         this.spinner.loader(false);
       },
       err => this.errorShow(err)
-    )
+    );
   }
 
   triggerReset() {
     this.resetMapSignal = true;
-    setTimeout(() => this.resetMapSignal = false, 0);
+    setTimeout(() => (this.resetMapSignal = false), 0);
   }
 
   handlePathCreated(data: mapData): void {
@@ -63,11 +62,11 @@ export class CrearProyectoComponent implements OnInit {
 
   guardarProyecto() {
     if (!this.proyecto.geoposicion || this.proyecto.geoposicion.length <= 0) {
-      Swal.fire('Atención', "No hay trazabilidad en el mapa", 'warning')
+      Swal.fire('Atención', 'No hay trazabilidad en el mapa', 'warning');
       return;
     }
     if (!this.proyecto.empleados_proyecto || this.proyecto.empleados_proyecto.length <= 0) {
-      Swal.fire('Atención', "No hay empleados asignados en el proyecto", 'warning')
+      Swal.fire('Atención', 'No hay empleados asignados en el proyecto', 'warning');
       return;
     }
     this.proyecto.id_estado = 1;
@@ -76,16 +75,18 @@ export class CrearProyectoComponent implements OnInit {
 
   enviarRegistro() {
     this.spinner.loader(false);
-    this.srvProyecto.setProyecto(this.proyecto).subscribe((data: any) => {
-      if (data && data.status && data.status === 200) {
-        Swal.fire('Registro exitoso', "Proyecto creado exitosamente", 'success');
-        this._router.navigate(["/proyectos/consulta"]);
-        this.proyecto = {} as Proyecto;
-        this.triggerReset();
-      }
-      this.spinner.loader(false);
-    },
-      err => this.errorShow(err));
+    this.srvProyecto.setProyecto(this.proyecto).subscribe(
+      (data: any) => {
+        if (data && data.status && data.status === 200) {
+          Swal.fire('Registro exitoso', 'Proyecto creado exitosamente', 'success');
+          this._router.navigate(['/proyectos/consulta']);
+          this.proyecto = {} as Proyecto;
+          this.triggerReset();
+        }
+        this.spinner.loader(false);
+      },
+      err => this.errorShow(err)
+    );
   }
 
   errorShow(err: any) {
@@ -95,7 +96,6 @@ export class CrearProyectoComponent implements OnInit {
       msn = err.error.message;
     }
     this.spinner.loader(false);
-    Swal.fire('Error', msn, 'error')
+    Swal.fire('Error', msn, 'error');
   }
-
 }

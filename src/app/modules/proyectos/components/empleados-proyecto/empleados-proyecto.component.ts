@@ -7,10 +7,9 @@ import { Empleado } from '../../models/ProyectoRequest';
 @Component({
   selector: 'app-empleados-proyecto',
   templateUrl: './empleados-proyecto.component.html',
-  styleUrls: ['./empleados-proyecto.component.css']
+  styleUrls: ['./empleados-proyecto.component.css'],
 })
 export class EmpleadosProyectoComponent implements OnInit {
-
   empleados: EmpleadoResponse[] = [];
   empleadosSeleccionados: EmpleadoResponse[] = [];
   indiceSeleccionado: number = -1;
@@ -19,10 +18,7 @@ export class EmpleadosProyectoComponent implements OnInit {
   @Output() empleadosCambiados = new EventEmitter<Empleado[]>();
   @Input() resetSignal: boolean = false;
 
-
-  constructor(
-    private srvEmpleados: GlobalApiService,
-  ) { }
+  constructor(private srvEmpleados: GlobalApiService) {}
 
   ngOnInit(): void {
     this.cargaEmpleados();
@@ -43,7 +39,7 @@ export class EmpleadosProyectoComponent implements OnInit {
         }
       },
       err => this.errorShow(err)
-    )
+    );
   }
 
   errorShow(err: any) {
@@ -52,7 +48,7 @@ export class EmpleadosProyectoComponent implements OnInit {
     if (err.error && err.error.message) {
       msn = err.error.message;
     }
-    Swal.fire('Error', msn, 'error')
+    Swal.fire('Error', msn, 'error');
   }
 
   seleccionarConTeclado(event: KeyboardEvent) {
@@ -88,8 +84,6 @@ export class EmpleadosProyectoComponent implements OnInit {
     if (!this.searchTerm.trim()) {
       return [];
     }
-    return this.empleados.filter(empleado =>
-      empleado.nombre.toLowerCase().includes(this.searchTerm.toLowerCase())
-    );
+    return this.empleados.filter(empleado => empleado.nombre.toLowerCase().includes(this.searchTerm.toLowerCase()));
   }
 }

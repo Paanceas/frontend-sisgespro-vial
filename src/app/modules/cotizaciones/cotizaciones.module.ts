@@ -6,18 +6,8 @@ import { CotizacionesRoutingModule } from './cotizaciones-routing.module';
 import { DetalleCotizacionComponent } from './components/detalle-cotizacion/detalle-cotizacion.component';
 import { CreacionCotizacionComponent } from './components/creacion-cotizacion/creacion-cotizacion.component';
 
-
-
 @NgModule({
-  declarations: [
-    ConsultaCotizacionesComponent,
-    DetalleCotizacionComponent,
-    CreacionCotizacionComponent
-  ],
-  imports: [
-    CommonModule,
-    CotizacionesRoutingModule,
-    FormsModule
-  ]
+  declarations: [ConsultaCotizacionesComponent, DetalleCotizacionComponent, CreacionCotizacionComponent],
+  imports: [CommonModule, CotizacionesRoutingModule, FormsModule],
 })
-export class CotizacionesModule { }
+export class CotizacionesModule {}

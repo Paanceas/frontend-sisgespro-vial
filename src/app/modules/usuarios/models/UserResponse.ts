@@ -3,4 +3,5 @@ export interface UserResponse {
   tipo_roll: string;
   nombre_usuario: string;
   estado: boolean;
+  clave?: string;
 }

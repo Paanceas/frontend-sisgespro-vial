@@ -11,11 +11,30 @@
         <div class="form-row">
           <div class="form-group col-6">
             <label for="fecha_adquisicion">Fecha adquisición</label>
-            <input type="date" class="form-control" id="fecha_adquisicion" [(ngModel)]="adquisicion.fecha_adquisicion" name="fecha_adquisicion" required #fecha_adquisicionControl="ngModel" [ngClass]="{'error': fecha_adquisicionControl.touched && fecha_adquisicionControl.errors?.required}" >
+            <input
+              type="date"
+              class="form-control"
+              id="fecha_adquisicion"
+              [(ngModel)]="adquisicion.fecha_adquisicion"
+              name="fecha_adquisicion"
+              required
+              #fecha_adquisicionControl="ngModel"
+              [ngClass]="{ error: fecha_adquisicionControl.touched && fecha_adquisicionControl.errors?.required }"
+            />
           </div>
           <div class="form-group col-6">
             <label for="valor_total_adquisicion">Valor total de la adquisición</label>
-            <input type="number" disabled class="form-control" id="valor_total_adquisicion" [(ngModel)]="adquisicion.valor_total_adquisicion" name="valor_total_adquisicion" required #valor_total_adquisicion="ngModel" [ngClass]="{'error': valor_total_adquisicion.touched && valor_total_adquisicion.errors?.required}" >
+            <input
+              type="number"
+              disabled
+              class="form-control"
+              id="valor_total_adquisicion"
+              [(ngModel)]="adquisicion.valor_total_adquisicion"
+              name="valor_total_adquisicion"
+              required
+              #valor_total_adquisicion="ngModel"
+              [ngClass]="{ error: valor_total_adquisicion.touched && valor_total_adquisicion.errors?.required }"
+            />
           </div>
         </div>
         <div class="form-group col">
@@ -23,12 +42,12 @@
             <label>Materiales</label>
             <a (click)="addRow()" class="btn btn-info btn-icon-split btn-sm">
               <span class="icon text-white-50">
-                  <i class="fas fa-plus"></i>
+                <i class="fas fa-plus"></i>
               </span>
               <span class="text">Agregar fila</span>
             </a>
           </div>
-          <br>
+          <br />
 
           <table class="table">
             <thead class="thead-light">
@@ -47,39 +66,90 @@
             </thead>
             <tbody>
               <tr *ngFor="let mat of adquisicion.materiales_adquisicion; index as key">
-                <th scope="row">{{key+1}}</th>
+                <th scope="row">{{ key + 1 }}</th>
                 <td>
-                    <select name="id_proveedor{{key}}" id="id_proveedor{{key}}" class="form-control" [(ngModel)]="mat.id_proveedor">
-                      <option [ngValue]="null">Seleccione...</option>
-                      <option *ngFor="let pr of proveedores" [value]="pr.id_proveedor" >{{pr.nombre}}</option>
-                    </select>
-                </td>
-                <td>
-                  <select name="id_categoria{{key}}" id="id_categoria{{key}}" class="form-control" [(ngModel)]="mat.id_categoria">
+                  <select
+                    name="id_proveedor{{ key }}"
+                    id="id_proveedor{{ key }}"
+                    class="form-control"
+                    [(ngModel)]="mat.id_proveedor"
+                  >
                     <option [ngValue]="null">Seleccione...</option>
-                    <option *ngFor="let pr of listaCategorias" [value]="pr.id_categoria" >{{pr.nombre_categoria}}</option>
+                    <option *ngFor="let pr of proveedores" [value]="pr.id_proveedor">{{ pr.nombre }}</option>
                   </select>
                 </td>
                 <td>
-                  <select name="id_tipo_uni_medida{{key}}" id="id_tipo_uni_medida{{key}}" class="form-control" [(ngModel)]="mat.id_tipo_uni_medida">
+                  <select
+                    name="id_categoria{{ key }}"
+                    id="id_categoria{{ key }}"
+                    class="form-control"
+                    [(ngModel)]="mat.id_categoria"
+                  >
                     <option [ngValue]="null">Seleccione...</option>
-                    <option *ngFor="let pr of listaUnidadMedida" [value]="pr.id_tipo_uni_medida" >{{pr.nombre_tipo_uni_medida}}</option>
+                    <option *ngFor="let pr of listaCategorias" [value]="pr.id_categoria">
+                      {{ pr.nombre_categoria }}
+                    </option>
                   </select>
                 </td>
                 <td>
-                  <input type="text" class="form-control" id="codigo_material{{key}}" [(ngModel)]="mat.codigo_material" name="codigo_material{{key}}">
+                  <select
+                    name="id_tipo_uni_medida{{ key }}"
+                    id="id_tipo_uni_medida{{ key }}"
+                    class="form-control"
+                    [(ngModel)]="mat.id_tipo_uni_medida"
+                  >
+                    <option [ngValue]="null">Seleccione...</option>
+                    <option *ngFor="let pr of listaUnidadMedida" [value]="pr.id_tipo_uni_medida">
+                      {{ pr.nombre_tipo_uni_medida }}
+                    </option>
+                  </select>
                 </td>
                 <td>
-                  <input type="text" class="form-control" id="nombre_material{{key}}" [(ngModel)]="mat.nombre_material" name="nombre_material{{key}}">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="codigo_material{{ key }}"
+                    [(ngModel)]="mat.codigo_material"
+                    name="codigo_material{{ key }}"
+                  />
                 </td>
                 <td>
-                  <input type="number" class="form-control" id="precio_unitario{{key}}" [(ngModel)]="mat.precio_unitario" name="precio_unitario{{key}}" (change)="recalcular()">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="nombre_material{{ key }}"
+                    [(ngModel)]="mat.nombre_material"
+                    name="nombre_material{{ key }}"
+                  />
                 </td>
                 <td>
-                  <input type="number" class="form-control" id="cantidad_total{{key}}" [(ngModel)]="mat.cantidad_total" name="cantidad_total{{key}}" (change)="recalcular()">
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="precio_unitario{{ key }}"
+                    [(ngModel)]="mat.precio_unitario"
+                    name="precio_unitario{{ key }}"
+                    (change)="recalcular()"
+                  />
                 </td>
                 <td>
-                  <input type="text" class="form-control" id="descripcion_material{{key}}" [(ngModel)]="mat.descripcion_material" name="descripcion_material{{key}}">
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="cantidad_total{{ key }}"
+                    [(ngModel)]="mat.cantidad_total"
+                    name="cantidad_total{{ key }}"
+                    (change)="recalcular()"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="descripcion_material{{ key }}"
+                    [(ngModel)]="mat.descripcion_material"
+                    name="descripcion_material{{ key }}"
+                  />
                 </td>
                 <td>
                   <a (click)="removeRow(key)" class="btn btn-danger btn-circle btn-sm">
@@ -87,11 +157,13 @@
                   </a>
                 </td>
               </tr>
-              <tr>
+              <tr></tr>
             </tbody>
           </table>
-          <br>
-          <button class="btn btn-primary" (click)="guardar()" [disabled]="adquisicionForm.invalid">Crear Adquisición</button>
+          <br />
+          <button class="btn btn-primary" (click)="guardar()" [disabled]="adquisicionForm.invalid">
+            Crear Adquisición
+          </button>
         </div>
       </form>
     </div>

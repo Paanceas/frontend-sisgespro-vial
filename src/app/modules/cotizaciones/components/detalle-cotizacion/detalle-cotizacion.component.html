@@ -1,21 +1,28 @@
-<a [routerLink]="['/cotizaciones/consulta']" class="d-none ml-4 mb-4 d-sm-inline-block btn btn-sm btn-dark shadow-sm"><i
-    class="fas fa-arrow-circle-left a-sm text-white-50"></i> Volver </a>
-<br>
+<a [routerLink]="['/cotizaciones/consulta']" class="d-none ml-4 mb-4 d-sm-inline-block btn btn-sm btn-dark shadow-sm"
+  ><i class="fas fa-arrow-circle-left a-sm text-white-50"></i> Volver
+</a>
+<br />
 <div class="d-flex flex-column align-items-center justify-content-center w-100 container-sisgespro" *ngIf="!cotizacion">
-  <h2> No se encontrarón la cotización <u>#{{cotizacion.id_cotizacion}}</u> </h2>
-  <br>
-  <img src="./assets/img/empty.svg" alt="">
+  <h2>
+    No se encontrarón la cotización <u>#{{ cotizacion.id_cotizacion }}</u>
+  </h2>
+  <br />
+  <img src="./assets/img/empty.svg" alt="" />
 </div>
 <div class="container-fluid" *ngIf="cotizacion">
-  <h1 class="h3 mb-1 text-gray-800">Detalle cotización <u>#{{cotizacion.id_cotizacion}}</u></h1>
-  <p class="mb-4">En este apartado podra ver la cotización <u>#{{cotizacion.id_cotizacion}}</u></p>
+  <h1 class="h3 mb-1 text-gray-800">
+    Detalle cotización <u>#{{ cotizacion.id_cotizacion }}</u>
+  </h1>
+  <p class="mb-4">
+    En este apartado podra ver la cotización <u>#{{ cotizacion.id_cotizacion }}</u>
+  </p>
   <div class="container-cotizacion mb-3">
     <div class="card border-left-primary shadow h-100 py-2 w-48">
       <div class="card-body">
         <div class="row no-gutters align-items-center">
           <div class="col mr-2">
             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Fecha de la cotización</div>
-            <div class="h5 mb-0 font-weight-bold text-gray-800">{{cotizacion.fecha_cotizacion}}</div>
+            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ cotizacion.fecha_cotizacion }}</div>
           </div>
           <div class="col-auto">
             <i class="fas fa-calendar fa-2x text-gray-300"></i>
@@ -28,7 +35,7 @@
         <div class="row no-gutters align-items-center">
           <div class="col mr-2">
             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Valor de la cotización</div>
-            <div class="h5 mb-0 font-weight-bold text-gray-800">${{valor_cotizacion}}</div>
+            <div class="h5 mb-0 font-weight-bold text-gray-800">${{ valor_cotizacion }}</div>
           </div>
           <div class="col-auto">
             <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
@@ -43,28 +50,60 @@
         <div class="form-row">
           <div class="form-group col-md-2">
             <label for="tipo_identificacion">Tipo Documento</label>
-            <input type="text" class="form-control" id="tipo_identificacion" name="tipo_identificacion"
-              [(ngModel)]="cotizacion.tipo_identificacion" disabled>
+            <input
+              type="text"
+              class="form-control"
+              id="tipo_identificacion"
+              name="tipo_identificacion"
+              [(ngModel)]="cotizacion.tipo_identificacion"
+              disabled
+            />
           </div>
           <div class="form-group col-md-2">
             <label for="identificacion">Número Documento</label>
-            <input type="text" class="form-control" id="identificacion" name="identificacion"
-              [(ngModel)]="cotizacion.identificacion" disabled>
+            <input
+              type="text"
+              class="form-control"
+              id="identificacion"
+              name="identificacion"
+              [(ngModel)]="cotizacion.identificacion"
+              disabled
+            />
           </div>
           <div class="form-group col-md-6">
             <label for="identificacion">Nombre</label>
-            <input type="text" class="form-control" id="nombre" name="nombre" [(ngModel)]="cotizacion.nombre" disabled>
+            <input
+              type="text"
+              class="form-control"
+              id="nombre"
+              name="nombre"
+              [(ngModel)]="cotizacion.nombre"
+              disabled
+            />
           </div>
           <div class="form-group col-md-2">
             <label for="telefono">Télefono</label>
-            <input type="text" class="form-control" id="telefono" name="telefono" [(ngModel)]="cotizacion.telefono"
-              disabled>
+            <input
+              type="text"
+              class="form-control"
+              id="telefono"
+              name="telefono"
+              [(ngModel)]="cotizacion.telefono"
+              disabled
+            />
           </div>
         </div>
         <div class="form-group">
           <label for="nota_inicio">Nota Inicial:</label>
-          <textarea cols="30" class="form-control" rows="5" id="nota_inicio" name="nota_inicio"
-            [(ngModel)]="cotizacion.nota_inicio" disabled></textarea>
+          <textarea
+            cols="30"
+            class="form-control"
+            rows="5"
+            id="nota_inicio"
+            name="nota_inicio"
+            [(ngModel)]="cotizacion.nota_inicio"
+            disabled
+          ></textarea>
         </div>
         <div class="form-group">
           <label>Materiales</label>
@@ -84,26 +123,26 @@
               </thead>
               <tbody>
                 <tr *ngFor="let mat of listaMateriales; index as key">
-                  <th scope="row">{{key+1}}</th>
-                  <td>{{mat.codigo_material}}</td>
-                  <td>{{mat.nombre_material}}</td>
-                  <td>{{mat.nombre_tipo_uni_medida}}</td>
-                  <td>{{mat.descripcion}}</td>
-                  <td>{{mat.cantidad}}</td>
-                  <td>${{mat.precio}}</td>
-                  <td>${{mat.precio*mat.cantidad}}</td>
+                  <th scope="row">{{ key + 1 }}</th>
+                  <td>{{ mat.codigo_material }}</td>
+                  <td>{{ mat.nombre_material }}</td>
+                  <td>{{ mat.nombre_tipo_uni_medida }}</td>
+                  <td>{{ mat.descripcion }}</td>
+                  <td>{{ mat.cantidad }}</td>
+                  <td>${{ mat.precio }}</td>
+                  <td>${{ mat.precio * mat.cantidad }}</td>
                 </tr>
                 <tr>
                   <td colspan="7" class="text-right">Total Neto</td>
-                  <td>${{totalNeto}}</td>
+                  <td>${{ totalNeto }}</td>
                 </tr>
                 <tr>
-                  <td colspan="7" class="text-right">IVA {{cotizacion.iva}}%</td>
-                  <td>${{totalIva}}</td>
+                  <td colspan="7" class="text-right">IVA {{ cotizacion.iva }}%</td>
+                  <td>${{ totalIva }}</td>
                 </tr>
                 <tr>
                   <td colspan="7" class="text-right">Total</td>
-                  <td>${{valor_cotizacion}}</td>
+                  <td>${{ valor_cotizacion }}</td>
                 </tr>
               </tbody>
             </table>
@@ -111,8 +150,15 @@
         </div>
         <div class="form-group">
           <label for="nota_final">Nota Final:</label>
-          <textarea cols="30" class="form-control" rows="5" id="nota_final" name="nota_final"
-            [(ngModel)]="cotizacion.nota_final" disabled></textarea>
+          <textarea
+            cols="30"
+            class="form-control"
+            rows="5"
+            id="nota_final"
+            name="nota_final"
+            [(ngModel)]="cotizacion.nota_final"
+            disabled
+          ></textarea>
         </div>
       </form>
     </div>

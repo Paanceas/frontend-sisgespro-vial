@@ -7,25 +7,25 @@ import * as rawData from '../common/pathValid.json';
 import { Sidebar } from '../models/Sidebar';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AccesoTokenGuard implements CanActivate {
   util: Util = new Util();
   unauthorizedRoutes: string[] = rawData.default.map((item: any) => item.path);
 
-  constructor(private _router: Router) { }
+  constructor(private _router: Router) {}
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
-    const token = this.util.getObj("token");
+    const token = this.util.getObj('token');
     if (!token || token == null || token == '') {
-      this._router.navigate(["/login"]);
+      this._router.navigate(['/login']);
       return false;
     } else {
       if (this.valideModules(state)) {
         return true;
       } else {
         if (!this.isUrlUnauthorized(state.url)) {
-          this._router.navigate(["/sisgespro/unauthorized"]);
+          this._router.navigate(['/sisgespro/unauthorized']);
         }
         return false;
       }
@@ -33,7 +33,7 @@ export class AccesoTokenGuard implements CanActivate {
   }
 
   valideModules(state: RouterStateSnapshot): boolean {
-    const u: UserResponse = this.util.getObj("usuario", true);
+    const u: UserResponse = this.util.getObj('usuario', true);
     let status: boolean = false;
     if (u) {
       status = this.validAccess(state, u.roll);

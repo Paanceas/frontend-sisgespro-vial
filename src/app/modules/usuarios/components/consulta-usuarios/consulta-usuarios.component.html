@@ -1,44 +1,119 @@
-<h1 class="h3 mb-2 text-gray-800">Consulta de Usuarios</h1>
-<div class="card shadow mb-4">
-  <div class="card-body">
-    <table class="table">
-      <caption>Total usuarios: {{listaUsuarios.length}} </caption>
-      <thead class="table-dark">
-        <tr>
-          <th scope="col"># id</th>
-          <th scope="col">Nombre</th>
-          <th scope="col">Roll</th>
-          <th scope="col">Estado</th>
-          <th scope="col"></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let item of listaUsuarios">
-          <th scope="row">{{item.id_usuario}}</th>
-          <td>{{item.nombre_usuario}}</td>
-          <td>{{item.tipo_roll}}</td>
-          <td>
-            <a class="btn btn-success btn-icon-split" *ngIf="!item.estado">
+<div class="w-100 container-sisgespro">
+  <div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">Consulta de Usuarios</h1>
+    <a (click)="createUser(content)" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
+      ><i class="fas fa-user fa-sm text-white-50"></i> Crear usuario</a
+    >
+  </div>
+  <div class="card shadow mb-4">
+    <div class="card-body">
+      <table class="table">
+        <caption>
+          Total usuarios:
+          {{
+            listaUsuarios.length
+          }}
+        </caption>
+        <thead class="table-dark">
+          <tr>
+            <th scope="col"># id</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Roll</th>
+            <th scope="col">Estado</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of listaUsuarios">
+            <th scope="row">{{ item.id_usuario }}</th>
+            <td>{{ item.nombre_usuario }}</td>
+            <td>{{ item.tipo_roll }}</td>
+            <td>
+              <a class="btn btn-success btn-icon-split" *ngIf="!item.estado">
                 <span class="icon text-white-50">
-                    <i class="fas fa-check"></i>
+                  <i class="fas fa-check"></i>
                 </span>
                 <span class="text">Activo</span>
-            </a>
-            <a class="btn btn-danger btn-icon-split" *ngIf="item.estado">
-              <span class="icon text-white-50">
+              </a>
+              <a class="btn btn-danger btn-icon-split" *ngIf="item.estado">
+                <span class="icon text-white-50">
                   <i class="fas fa-close"></i>
-              </span>
-              <span class="text">Inactivo</span>
-          </a>
-          </td>
-          <td>
-            <div class="btn-group" role="group" aria-label="Basic outlined example">
-              <button type="button" class="btn btn-outline-primary"><i class="fas {{item.estado ? 'fa-check' :'fa-close' }}"></i></button>
-              <button type="button" appRoll class="btn btn-outline-primary"><i class="fas fa-trash-alt"></i></button>
-            </div>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+                </span>
+                <span class="text">Inactivo</span>
+              </a>
+            </td>
+            <td>
+              <div class="btn-group" role="group" aria-label="Basic outlined example">
+                <button type="button" class="btn btn-outline-primary" (click)="confirmDel(item)">
+                  <i class="fas {{ item.estado ? 'fa-check' : 'fa-close' }}"></i>
+                </button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>
+
+<ng-template #content let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Crear usuario</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="d('Cross click')"></button>
+  </div>
+  <div class="modal-body">
+    <form #usuarioForm="ngForm">
+      <div class="form-row">
+        <div class="form-group col-md-12">
+          <label for="tipo_roll">Tipo de Identificación</label>
+          <select
+            name="tipo_roll"
+            id="tipo_roll"
+            class="form-control"
+            [(ngModel)]="usuario.tipo_roll"
+            required
+            #tipo_rollControl="ngModel"
+            [ngClass]="{
+              error: tipo_rollControl.touched && tipo_rollControl.errors?.required
+            }"
+          >
+            <option [ngValue]="null">Seleccione...</option>
+            <option value="Administrador">Administrador</option>
+            <option value="Secretaria">Secretaria</option>
+          </select>
+        </div>
+
+        <div class="form-group col-md-12">
+          <label for="nombre_usuario">Nombre de Usuario</label>
+          <input
+            type="text"
+            class="form-control"
+            id="nombre_usuario"
+            name="nombre_usuario"
+            [(ngModel)]="usuario.nombre_usuario"
+            required
+            #nombreUsuarioControl="ngModel"
+            [ngClass]="{
+              error: nombreUsuarioControl.touched && nombreUsuarioControl.errors?.required
+            }"
+          />
+        </div>
+
+        <div class="form-group col-md-12">
+          <label for="clave">Clave</label>
+          <input
+            type="password"
+            class="form-control"
+            id="clave"
+            name="clave"
+            [(ngModel)]="usuario.clave"
+            #claveControl="ngModel"
+          />
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button [disabled]="usuarioForm.invalid" class="btn btn-success" (click)="guardarUsuario()">Guardar usuario</button>
+  </div>
+</ng-template>

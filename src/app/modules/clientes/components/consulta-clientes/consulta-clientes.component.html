@@ -1,4 +1,217 @@
-<h1 class="h3 mb-2 text-gray-800">Consulta de Clientes</h1>
-<div class="card shadow mb-4">
-  <div class="card-body"></div>
+<div class="w-100 container-sisgespro">
+  <div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">Consulta de Clientes</h1>
+    <a (click)="abrirCrearEditarCliente(content)" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+      <i class="fas fa-user fa-sm text-white-50"></i> Crear Cliente
+    </a>
+  </div>
+
+  <div class="card shadow mb-4">
+    <div class="card-body">
+      <table class="table">
+        <caption>
+          Total clientes:
+          {{
+            listaClientes.length
+          }}
+        </caption>
+        <thead class="table-dark">
+          <tr>
+            <th scope="col"># ID</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Identificación</th>
+            <th scope="col">Teléfono</th>
+            <th scope="col">Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let cliente of listaClientes">
+            <th scope="row">{{ cliente.id_cliente }}</th>
+            <td>{{ cliente.nombre }}</td>
+            <td>{{ cliente.identificacion }}</td>
+            <td>{{ cliente.telefono }}</td>
+            <td>
+              <div class="btn-group" role="group" aria-label="Acciones del Cliente">
+                <button
+                  type="button"
+                  class="btn btn-outline-primary"
+                  (click)="abrirCrearEditarCliente(content, cliente)"
+                >
+                  <i class="fas fa-edit"></i>
+                </button>
+                <button
+                  type="button"
+                  class="btn btn-outline-primary"
+                  (click)="abrirModalInfoCliente(infoCliente, cliente)"
+                >
+                  <i class="fas fa-info-circle"></i>
+                </button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </div>
+
+<ng-template #content let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Crear/Editar Cliente</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="d('Cross click')"></button>
+  </div>
+  <div class="modal-body">
+    <form #clienteForm="ngForm">
+      <div class="form-row">
+        <div class="form-group col-md-12">
+          <label for="tipo_identificacion">Tipo de Identificación</label>
+          <select
+            class="form-control"
+            id="tipo_identificacion"
+            name="tipo_identificacion"
+            [(ngModel)]="cliente.id_tipo_identificacion"
+            required
+            #tipoIdentificacionControl="ngModel"
+            [ngClass]="{
+              error: tipoIdentificacionControl.touched && tipoIdentificacionControl.errors?.required
+            }"
+          >
+            <option [ngValue]="null">Seleccione...</option>
+            <option *ngFor="let pr of tiposDoc" [value]="pr.id_tipo_identificacion">
+              {{ pr.tipo_identificacion }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group col-md-12">
+          <label for="nombre">Nombre</label>
+          <input
+            type="text"
+            class="form-control"
+            id="nombre"
+            name="nombre"
+            [(ngModel)]="cliente.nombre"
+            required
+            #nombreControl="ngModel"
+            [ngClass]="{
+              error: nombreControl.touched && nombreControl.errors?.required
+            }"
+          />
+        </div>
+
+        <div class="form-group col-md-12">
+          <label for="identificacion">Identificación</label>
+          <input
+            type="number"
+            class="form-control"
+            id="identificacion"
+            name="identificacion"
+            [(ngModel)]="cliente.identificacion"
+            required
+            #identificacionControl="ngModel"
+            [ngClass]="{
+              error: identificacionControl.touched && identificacionControl.errors?.required
+            }"
+          />
+        </div>
+        <div class="form-group col-md-12">
+          <label for="telefono">Teléfono</label>
+          <input
+            type="number"
+            class="form-control"
+            id="telefono"
+            name="telefono"
+            [(ngModel)]="cliente.telefono"
+            required
+            #telefonoControl="ngModel"
+            [ngClass]="{
+              error: telefonoControl.touched && telefonoControl.errors?.required
+            }"
+          />
+        </div>
+
+        <div class="form-group col-md-12">
+          <label for="celular">Celular</label>
+          <input
+            type="number"
+            class="form-control"
+            id="celular"
+            name="celular"
+            [(ngModel)]="cliente.celular"
+            required
+            #celularControl="ngModel"
+            [ngClass]="{
+              error: celularControl.touched && celularControl.errors?.required
+            }"
+          />
+        </div>
+
+        <div class="form-group col-md-12">
+          <label for="direccion">Dirección</label>
+          <input
+            type="text"
+            class="form-control"
+            id="direccion"
+            name="direccion"
+            [(ngModel)]="cliente.direccion"
+            required
+            #direccionControl="ngModel"
+            [ngClass]="{
+              error: direccionControl.touched && direccionControl.errors?.required
+            }"
+          />
+        </div>
+
+        <div class="form-group col-md-12">
+          <label for="correo">Correo Electrónico</label>
+          <input
+            type="email"
+            class="form-control"
+            id="correo"
+            name="correo"
+            [(ngModel)]="cliente.correo"
+            required
+            #correoControl="ngModel"
+            [ngClass]="{
+              error: correoControl.touched && correoControl.errors?.required
+            }"
+          />
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button [disabled]="clienteForm.invalid" class="btn btn-success" (click)="guardarCliente()">Guardar Cliente</button>
+  </div>
+</ng-template>
+
+<ng-template #infoCliente let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title" id="infoClienteModal">Información del Cliente</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="d('Cross click')"></button>
+  </div>
+  <div class="modal-body">
+    <div class="form-group">
+      <label>Teléfono:</label>
+      <p>{{ clienteSeleccionado.telefono }}</p>
+    </div>
+
+    <div class="form-group">
+      <label>Celular:</label>
+      <p>{{ clienteSeleccionado.celular }}</p>
+    </div>
+
+    <div class="form-group">
+      <label>Dirección:</label>
+      <p>{{ clienteSeleccionado.direccion }}</p>
+    </div>
+
+    <div class="form-group">
+      <label>Correo Electrónico:</label>
+      <p>{{ clienteSeleccionado.correo }}</p>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-secondary" (click)="d('Cross click')">Cerrar</button>
+  </div>
+</ng-template>

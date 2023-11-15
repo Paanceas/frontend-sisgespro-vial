@@ -10,10 +10,9 @@ import Swal from 'sweetalert2';
 @Component({
   selector: 'app-detalle-cotizacion',
   templateUrl: './detalle-cotizacion.component.html',
-  styleUrls: ['./detalle-cotizacion.component.css']
+  styleUrls: ['./detalle-cotizacion.component.css'],
 })
 export class DetalleCotizacionComponent implements OnInit {
-
   private subscription: Subscription;
   private id_cotizacion: number = 0;
   private util: Util = new Util();
@@ -29,46 +28,43 @@ export class DetalleCotizacionComponent implements OnInit {
     private rutaActiva: ActivatedRoute,
     private srv: CotizacionesService,
     private spinner: SpinnerService,
-    private _router: Router,
+    private _router: Router
   ) {
     this.subscription = new Subscription();
   }
 
   ngOnInit(): void {
-    this.subscription = this.rutaActiva.params.subscribe(
-      (params: Params) => {
-        this.id_cotizacion = params.cotizacion;
-        this.cotizacion = this.util.getObj("cotizacion", true);
-        if (!this.cotizacion) {
-          this._router.navigate(["/cotizaciones/consulta"]);
-        }
-        this.util.delObj("cotizacion");
-        this.getCotizaciones();
+    this.subscription = this.rutaActiva.params.subscribe((params: Params) => {
+      this.id_cotizacion = params.cotizacion;
+      this.cotizacion = this.util.getObj('cotizacion', true);
+      if (!this.cotizacion) {
+        this._router.navigate(['/cotizaciones/consulta']);
       }
-    );
+      this.util.delObj('cotizacion');
+      this.getCotizaciones();
+    });
   }
 
   getCotizaciones() {
     this.spinner.loader(true);
-    this.srv.getCotizacion(this.id_cotizacion)
-      .subscribe(
-        (data: any) => {
-          if (data && data.body && data.body.length > 0) {
-            this.listaMateriales = data.body;
-            this.calcularValores();
-          }
-          this.spinner.loader(false);
-        },
-        err => {
-          let msn = 'Error!';
-          console.error(err);
-          if (err.error && err.error.message) {
-            msn = err.error.message;
-          }
-          this.spinner.loader(false);
-          Swal.fire('Error', msn, 'error')
+    this.srv.getCotizacion(this.id_cotizacion).subscribe(
+      (data: any) => {
+        if (data && data.body && data.body.length > 0) {
+          this.listaMateriales = data.body;
+          this.calcularValores();
         }
-      )
+        this.spinner.loader(false);
+      },
+      err => {
+        let msn = 'Error!';
+        console.error(err);
+        if (err.error && err.error.message) {
+          msn = err.error.message;
+        }
+        this.spinner.loader(false);
+        Swal.fire('Error', msn, 'error');
+      }
+    );
   }
 
   calcularValores() {

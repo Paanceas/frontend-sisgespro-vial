@@ -9,10 +9,7 @@
       (keydown)="seleccionarConTeclado($event)"
     />
 
-    <div
-      *ngIf="searchTerm"
-      class="list-empleados list-group position-absolute w-100"
-    >
+    <div *ngIf="searchTerm" class="list-empleados list-group position-absolute w-100">
       <button
         type="button"
         class="list-group-item list-group-item-action"
@@ -38,13 +35,7 @@
         <td>{{ empleado.nombre }}</td>
         <td>{{ empleado.nombre_cargo }}</td>
         <td>
-          <button
-            type="button"
-            class="btn btn-danger btn-sm"
-            (click)="eliminarEmpleado(empleado)"
-          >
-            Eliminar
-          </button>
+          <button type="button" class="btn btn-danger btn-sm" (click)="eliminarEmpleado(empleado)">Eliminar</button>
         </td>
       </tr>
     </tbody>

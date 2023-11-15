@@ -7,19 +7,8 @@ import { DirectivesModule } from 'src/app/directives/directives.module';
 import { DetalleProveedorComponent } from './components/detalle-proveedor/detalle-proveedor.component';
 import { FormsModule } from '@angular/forms';
 
-
-
 @NgModule({
-  declarations: [
-    ConsultaProveedoresComponent,
-    CrearProveedorComponent,
-    DetalleProveedorComponent
-  ],
-  imports: [
-    CommonModule,
-    ProveedoresRoutingModule,
-    DirectivesModule,
-    FormsModule
-  ]
+  declarations: [ConsultaProveedoresComponent, CrearProveedorComponent, DetalleProveedorComponent],
+  imports: [CommonModule, ProveedoresRoutingModule, DirectivesModule, FormsModule],
 })
-export class ProveedoresModule { }
+export class ProveedoresModule {}
