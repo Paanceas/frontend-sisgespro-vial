@@ -107,7 +107,7 @@ export class InformacionComponent implements OnInit {
   setDataAnalyticStatusProject() {
     let dataSet: any[] = [];
     let dataBack: any[] = [];
-    if (this.statusProjects && this.statusProjects.length <= 0) {
+    if (!this.statusProjects) {
       return;
     }
     this.statusProjects.forEach((pie: StatusProjects) => {
@@ -126,7 +126,7 @@ export class InformacionComponent implements OnInit {
   }
 
   setDataAnalyticQuotation() {
-    if (this.quotationData && this.quotationData.length <= 0) {
+    if (!this.quotationData) {
       return;
     }
     this.char = this._principal.organizarCotizacionesParaGrafico(this.quotationData);

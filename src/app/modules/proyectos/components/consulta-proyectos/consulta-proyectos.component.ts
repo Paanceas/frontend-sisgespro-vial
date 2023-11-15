@@ -65,7 +65,7 @@ export class ConsultaProyectosComponent implements OnInit {
           if (materialesNoDisponibles.length > 0) {
             let mensaje = 'Los siguientes materiales no tienen suficiente disponibilidad:\n';
             materialesNoDisponibles.forEach((material: any) => {
-              mensaje += `${material.nombre_material} (Necesario: ${material.cantidad_necesaria}, Disponible: ${material.cantidad_disponible})\n`;
+              mensaje += `${material.nombre_material} - ${material.codigo_material} (Necesario: ${material.cantidad_necesaria}, Disponible: ${material.cantidad_disponible})\n`;
             });
             Swal.fire('Error', mensaje, 'error');
           } else {
